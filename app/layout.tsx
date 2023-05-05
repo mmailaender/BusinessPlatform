@@ -8,6 +8,7 @@ import {
   Tabs,
   TabsProps,
   Divider,
+  DividerProps,
 } from "reshaped";
 
 import "./globals.css";
@@ -34,7 +35,12 @@ export default function RootLayout({
             <View>
               {/* Upper part */}
               <View padding={[4, 6]} className="flex flex-row justify-between">
-                <Text variant="title-2">Business platform</Text>
+                <Text
+                  variant="title-2"
+                  className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
+                >
+                  Business platform
+                </Text>
 
                 <Button>Search</Button>
               </View>
@@ -42,13 +48,14 @@ export default function RootLayout({
 
               {/* Lower part */}
               <View padding={[0, 6]}>
-                <Tabs>
+                <Tabs variant="borderless">
                   <Tabs.List>
                     <Tabs.Item value="0">Documents</Tabs.Item>
                     <Tabs.Item value="1">Templates</Tabs.Item>
                   </Tabs.List>
                 </Tabs>
               </View>
+              <Divider blank />
             </View>
           </Reshaped>
         </body>
