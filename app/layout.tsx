@@ -1,11 +1,4 @@
-import {
-  Reshaped,
-  View,
-  Text,
-  Button,
-  Tabs,
-  Divider,
-} from "reshaped";
+import { Reshaped, View, Text, Button, Tabs, Divider } from "reshaped";
 
 import "./globals.css";
 import "reshaped/themes/reshaped/theme.css";
@@ -32,9 +25,14 @@ export default function RootLayout({
             {/* Header */}
             <View>
               {/* Upper part */}
-              <View paddingBlock={4} paddingInline={6} className="flex flex-row justify-between">
+              <View
+                paddingBlock={4}
+                paddingInline={6}
+                className="flex flex-row justify-between"
+              >
                 <Text
-                  variant="featured-2" weight="bold"
+                  variant="featured-2"
+                  weight="bold"
                   className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
                 >
                   Business platform
