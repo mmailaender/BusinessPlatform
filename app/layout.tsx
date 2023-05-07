@@ -1,14 +1,10 @@
 import {
   Reshaped,
   View,
-  ViewProps,
   Text,
-  TextProps,
   Button,
   Tabs,
-  TabsProps,
   Divider,
-  DividerProps,
 } from "reshaped";
 
 import "./globals.css";
@@ -36,9 +32,9 @@ export default function RootLayout({
             {/* Header */}
             <View>
               {/* Upper part */}
-              <View padding={[4, 6]} className="flex flex-row justify-between">
+              <View paddingBlock={4} paddingInline={6} className="flex flex-row justify-between">
                 <Text
-                  variant="title-2"
+                  variant="featured-2" weight="bold"
                   className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
                 >
                   Business platform
@@ -49,7 +45,7 @@ export default function RootLayout({
               <Divider />
 
               {/* Lower part */}
-              <View padding={[0, 6]}>
+              <View paddingBlock={0} paddingInline={6}>
                 <Tabs variant="borderless">
                   <Tabs.List>
                     <Tabs.Item value="0" icon={<Docs />}>
