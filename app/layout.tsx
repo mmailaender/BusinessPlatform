@@ -10,6 +10,8 @@ import {
 import "./globals.css";
 import "reshaped/themes/reshaped/theme.css";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
+import Docs from "@/components/Icons/Docs";
+import Template from "@/components/Icons/Template";
 
 export const metadata = {
   title: "Create Next App",
@@ -46,8 +48,12 @@ export default function RootLayout({
               <View paddingBlock={0} paddingInline={6}>
                 <Tabs variant="borderless">
                   <Tabs.List>
-                    <Tabs.Item value="0">Documents</Tabs.Item>
-                    <Tabs.Item value="1">Templates</Tabs.Item>
+                    <Tabs.Item value="0" icon={<Docs />}>
+                      Documents
+                    </Tabs.Item>
+                    <Tabs.Item value="1" icon={<Template />}>
+                      Templates
+                    </Tabs.Item>
                   </Tabs.List>
                 </Tabs>
               </View>
