@@ -10,7 +10,7 @@ import {
   IconProps,
 } from "reshaped";
 import CreateFile from "@/components/File/index";
-import TemplateFile from "@/components/File/index";
+import { TemplateFile } from "@/components/File/index";
 
 export default function Home() {
   return (
