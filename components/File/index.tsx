@@ -8,6 +8,8 @@ import {
   TextProps,
   Icon,
   IconProps,
+  DropdownMenu,
+  DropdownMenuProps,
 } from "reshaped";
 
 import CreateDocument from "@/components/Icons/CreateDocument";
@@ -57,12 +59,28 @@ export function TemplateFile() {
           className="transition ease-in-out duration-300 hover:bg-neutral-highlighted"
         >
           <View position="absolute" insetTop={2} insetEnd={2}>
-            <Button
-              rounded={true}
-              elevated={true}
-              icon={<MoreIcon />}
-              color="white"
-            ></Button>
+            <DropdownMenu>
+              <DropdownMenu.Trigger>
+                {(attributes) => (
+                  <Button
+                    rounded={true}
+                    elevated={true}
+                    icon={<MoreIcon />}
+                    color="white"
+                  ></Button>
+                )}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item>Action 1</DropdownMenu.Item>
+                  <DropdownMenu.Item>Action 2</DropdownMenu.Item>
+                </DropdownMenu.Section>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item>Action 3</DropdownMenu.Item>
+                  <DropdownMenu.Item>Action 4</DropdownMenu.Item>
+                </DropdownMenu.Section>
+              </DropdownMenu.Content>
+            </DropdownMenu>
           </View>
           <Template />
         </View>
