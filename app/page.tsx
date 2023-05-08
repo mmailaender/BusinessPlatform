@@ -18,13 +18,13 @@ export default function Home() {
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <CreateFile />
       </View.Item>
-      <View.Item columns={3}>
+      <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <TemplateFile />
       </View.Item>
-      <View.Item columns={3}>
+      <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <View height={40} width="100%" backgroundColor="primary"></View>
       </View.Item>
-      <View.Item columns={3}>
+      <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <View height={40} width="100%" backgroundColor="primary"></View>
       </View.Item>
     </View>
