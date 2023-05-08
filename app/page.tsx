@@ -22,10 +22,10 @@ export default function Home() {
         <TemplateFile />
       </View.Item>
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
-        <View height={40} width="100%" backgroundColor="primary"></View>
+        <TemplateFile />
       </View.Item>
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
-        <View height={40} width="100%" backgroundColor="primary"></View>
+        <TemplateFile />
       </View.Item>
     </View>
   );
