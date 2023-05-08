@@ -3,8 +3,8 @@ import { Reshaped, View, Text, Button, Tabs, Divider } from "reshaped";
 import "./globals.css";
 import "reshaped/themes/reshaped/theme.css";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
-import Docs from "@/components/Icons/Docs";
-import Template from "@/components/Icons/Template";
+import Docs from "@/components/Icons/DocsIcon";
+import Template from "@/components/Icons/TemplateIcon";
 
 export const metadata = {
   title: "Create Next App",
