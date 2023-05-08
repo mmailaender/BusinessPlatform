@@ -3,31 +3,28 @@ const Template = () => {
     <svg
       width="100%"
       height="100%"
-      viewBox="0 0 126 180"
+      viewBox="0 0 107 147"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g filter="url(#filter0_dd_328_8893)">
+      <g filter="url(#filter0_dd_32_13043)">
         <path
-          d="M9 176H121C123.761 176 126 173.761 126 171V88V44V28.7092L95.802 0H65H9C6.23858 0 4 2.23857 4 5V171C4 173.761 6.23858 176 9 176Z"
+          d="M8 142H99C101.761 142 104 139.761 104 137V71.5V36.25V24L79 1H53.5H8C5.23858 1 3 3.23858 3 6V137C3 139.761 5.23857 142 8 142Z"
           fill="#5A58F2"
         />
       </g>
       <path
-        d="M76.1428 73H51.8572C50.2815 73 49 74.2815 49 75.8572V100.143C49 101.719 50.2815 103 51.8572 103H76.1428C77.7177 103 79 101.719 79 100.143V75.8572C78.9998 74.2815 77.7178 73 76.1428 73ZM76.1428 84.4285H63.2857V75.8571H76.1428V84.4285ZM51.8572 75.8571H60.4286V100.143H51.8572V75.8571ZM63.2857 100.143V87.2857H76.1434L76.1442 100.143H63.2857Z"
+        d="M65.1428 57H40.8572C39.2815 57 38 58.2815 38 59.8572V84.1428C38 85.7185 39.2815 87 40.8572 87H65.1428C66.7177 87 68 85.7185 68 84.1428V59.8572C67.9998 58.2815 66.7178 57 65.1428 57ZM65.1428 68.4285H52.2857V59.8571H65.1428V68.4285ZM40.8572 59.8571H49.4286V84.1427H40.8572V59.8571ZM52.2857 84.1427V71.2857H65.1434L65.1442 84.1427H52.2857Z"
         fill="white"
       />
-      <path
-        d="M95.802 0L126 28.7092H97.802C96.6974 28.7092 95.802 27.8138 95.802 26.7092V0Z"
-        fill="#E8E7FD"
-      />
+      <path d="M79 1L104 24H81C79.8954 24 79 23.1046 79 22V1Z" fill="#E8E7FD" />
       <defs>
         <filter
-          id="filter0_dd_328_8893"
+          id="filter0_dd_32_13043"
           x="0"
           y="0"
-          width="126"
-          height="180"
+          width="107"
+          height="147"
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
@@ -38,17 +35,23 @@ const Template = () => {
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
             result="hardAlpha"
           />
-          <feOffset dx="-2" dy="2" />
+          <feMorphology
+            radius="1"
+            operator="erode"
+            in="SourceAlpha"
+            result="effect1_dropShadow_32_13043"
+          />
+          <feOffset dy="1" />
           <feGaussianBlur stdDeviation="1" />
           <feComposite in2="hardAlpha" operator="out" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0.9625 0 0 0 0 0.973214 0 0 0 0 1 0 0 0 1 0"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
           />
           <feBlend
-            mode="multiply"
+            mode="normal"
             in2="BackgroundImageFix"
-            result="effect1_dropShadow_328_8893"
+            result="effect1_dropShadow_32_13043"
           />
           <feColorMatrix
             in="SourceAlpha"
@@ -56,21 +59,22 @@ const Template = () => {
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
             result="hardAlpha"
           />
-          <feOffset dx="-1" dy="1" />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="1.5" />
           <feComposite in2="hardAlpha" operator="out" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0.92625 0 0 0 0 0.933036 0 0 0 0 0.95 0 0 0 1 0"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
           />
           <feBlend
             mode="normal"
-            in2="effect1_dropShadow_328_8893"
-            result="effect2_dropShadow_328_8893"
+            in2="effect1_dropShadow_32_13043"
+            result="effect2_dropShadow_32_13043"
           />
           <feBlend
             mode="normal"
             in="SourceGraphic"
-            in2="effect2_dropShadow_328_8893"
+            in2="effect2_dropShadow_32_13043"
             result="shape"
           />
         </filter>

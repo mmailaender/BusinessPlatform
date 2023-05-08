@@ -10,7 +10,7 @@ import {
   IconProps,
 } from "reshaped";
 import CreateFile from "@/components/File/index";
-import { TemplateFile } from "@/components/File/index";
+import { TemplateFile, DocumentFile } from "@/components/File/index";
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
         <TemplateFile />
       </View.Item>
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
-        <TemplateFile />
+        <DocumentFile />
       </View.Item>
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <TemplateFile />
