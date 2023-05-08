@@ -21,7 +21,6 @@ export default function RootLayout({
       <ClerkProvider>
         <body>
           <Reshaped theme="reshaped">
-            {children}
             {/* Header */}
             <View>
               {/* Upper part */}
@@ -57,6 +56,7 @@ export default function RootLayout({
               </View>
               <Divider blank />
             </View>
+            {children}
           </Reshaped>
         </body>
       </ClerkProvider>
