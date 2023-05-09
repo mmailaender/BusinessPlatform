@@ -15,7 +15,13 @@ import { TemplateFile, DocumentFile } from "@/components/File/index";
 
 export default function Home() {
   return (
-    <View width="100%" direction="row" gap={1} paddingTop={4}>
+    <View
+      width="100%"
+      direction="row"
+      gap={1}
+      paddingTop={4}
+      position="relative"
+    >
       <DocumentHeader />
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <CreateFile />
