@@ -88,7 +88,7 @@ export function TemplateFile() {
             align="center"
             className="group-hover:text-neutral-faded"
           >
-            Financial Business Plan
+            Financial Business Plan Template
           </Text>
           <Text variant="caption-1" align="center" color="neutral-faded">
             Today
