@@ -23,6 +23,9 @@ export default function Home() {
       position="relative"
     >
       <DocumentHeader />
+      {/* File page section */}
+      <View width="100%"></View>
+
       <View.Item columns={{ xl: 3, l: 3, m: 4, s: 6 }}>
         <CreateFile />
       </View.Item>

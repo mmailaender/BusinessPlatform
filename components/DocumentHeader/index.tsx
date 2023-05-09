@@ -36,7 +36,7 @@ export default function CreateFile() {
 
   return (
     <View width="100%">
-      <View direction="row" paddingInline={5} paddingBlock={4}>
+      <View direction="row" paddingInline={6} paddingBlock={4}>
         {/* Back Button */}
         <View.Item columns={4}>
           <View justify="start" align="start">
