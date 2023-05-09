@@ -13,9 +13,11 @@ import {
   useFormControl,
   FormControlProps,
   Divider,
+  DividerProps,
   Accordion,
   AccordionProps,
   MenuItem,
+  Placeholder,
 } from "reshaped";
 
 import PlusIcon from "../Icons/PlusIcon";
@@ -29,9 +31,10 @@ export default function FileNavigation() {
         width="100%"
         className="justify-between"
         align="center"
-        paddingBottom={4}
+        paddingBottom={6}
+        paddingStart={4}
       >
-        <Text variant="body-2" weight="medium">
+        <Text variant="body-3" weight="medium" color="neutral-faded">
           Sections
         </Text>
         <Button
@@ -42,18 +45,104 @@ export default function FileNavigation() {
         ></Button>
       </View>
 
-      <Accordion defaultActive={false}>
-        <Accordion.Trigger>
-          <View borderRadius="small" overflow="hidden" paddingBottom={1}>
-            <MenuItem>Section 1</MenuItem>
-          </View>
-        </Accordion.Trigger>
-        <Accordion.Content>
-          <View>
-            <View backgroundColor="neutral-faded" height={10} />
-          </View>
-        </Accordion.Content>
-      </Accordion>
+      {/* Sections */}
+      <View width="100%" paddingEnd={2}>
+        <Accordion defaultActive={false}>
+          <Accordion.Trigger>
+            <View paddingBottom={2}>
+              <MenuItem roundedCorners={true}>Section 1</MenuItem>
+            </View>
+          </Accordion.Trigger>
+          <Accordion.Content>
+            {/* List of subsection */}
+            <View gap={1} paddingBottom={3}>
+              <View
+                direction="row"
+                align="center"
+                gap={3}
+                paddingStart={4}
+                width="100%"
+              >
+                <View height={10} align="start">
+                  <Divider vertical />
+                </View>
+                {/* subsection list */}
+                <View.Item grow>
+                  <MenuItem selected={true} roundedCorners={true}>
+                    Hint with very long title
+                  </MenuItem>
+                </View.Item>
+              </View>
+
+              <View
+                direction="row"
+                align="center"
+                gap={3}
+                paddingStart={4}
+                width="100%"
+              >
+                <View height={10}>
+                  <Divider vertical />
+                </View>
+                {/* subsection list */}
+                <View.Item grow>
+                  <MenuItem roundedCorners={true}>Hint</MenuItem>
+                </View.Item>
+              </View>
+            </View>
+          </Accordion.Content>
+        </Accordion>
+      </View>
+
+      <View width="100%" paddingEnd={2}>
+        <Accordion defaultActive={false}>
+          <Accordion.Trigger>
+            <View paddingBottom={2}>
+              <MenuItem roundedCorners={true}>
+                Section about something else
+              </MenuItem>
+            </View>
+          </Accordion.Trigger>
+          <Accordion.Content>
+            {/* List of subsection */}
+            <View gap={1} paddingBottom={3}>
+              <View
+                direction="row"
+                align="center"
+                gap={3}
+                paddingStart={4}
+                width="100%"
+              >
+                <View height={10}>
+                  <Divider vertical />
+                </View>
+                {/* subsection list */}
+                <View.Item grow>
+                  <MenuItem selected={true} roundedCorners={true}>
+                    Hint
+                  </MenuItem>
+                </View.Item>
+              </View>
+
+              <View
+                direction="row"
+                align="center"
+                gap={3}
+                paddingStart={4}
+                width="100%"
+              >
+                <View height={10}>
+                  <Divider vertical />
+                </View>
+                {/* subsection list */}
+                <View.Item grow>
+                  <MenuItem roundedCorners={true}>Hint</MenuItem>
+                </View.Item>
+              </View>
+            </View>
+          </Accordion.Content>
+        </Accordion>
+      </View>
     </View>
   );
 }
