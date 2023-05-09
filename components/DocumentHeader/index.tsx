@@ -36,7 +36,7 @@ export default function CreateFile() {
 
   return (
     <View width="100%">
-      <View direction="row" padding={6}>
+      <View direction="row" paddingInline={5} paddingBlock={4}>
         {/* Back Button */}
         <View.Item columns={4}>
           <View justify="start" align="start">
@@ -46,18 +46,21 @@ export default function CreateFile() {
 
         {/* File name & Type */}
         <View.Item columns={4}>
-          <View className="group" width="100%" align="center">
-            <View
-              direction="row"
-              borderRadius="small"
-              gap={2}
-              paddingInline={2}
-              paddingBlock={2}
-              className="transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
-            >
-              <Icon svg={<DocsIcon />} size={6} />
-              <View>
-                <CustomInput />
+          <View align="center">
+            <View className="group">
+              <View
+                direction="row"
+                borderRadius="small"
+                justify="center"
+                gap={2}
+                paddingInline={2}
+                paddingBlock={2}
+                className="w-fit transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
+              >
+                <Icon svg={<DocsIcon />} size={6} />
+                <View>
+                  <CustomInput />
+                </View>
               </View>
             </View>
           </View>
