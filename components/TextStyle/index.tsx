@@ -19,7 +19,7 @@ export default function TextStyle() {
         paddingBlock={1}
         backgroundColor="black"
         borderRadius="small"
-        className=" w-fit opacity-0 group-hover:opacity-100"
+        className=" w-fit opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transform transition-all duration-400"
       >
         <Text variant="body-3" weight="medium">
           Bold
