@@ -1,3 +1,4 @@
+import { UserButton } from '@clerk/nextjs/app-beta';
 import Link from 'next/link';
 
 export default function DashboardLayout({
@@ -12,6 +13,7 @@ export default function DashboardLayout({
         <Link href='/' className='ml-x5'>
           Documents
         </Link>
+        <UserButton />
       </section>
       {children}
     </>
