@@ -1,3 +1,4 @@
+import Bubble from "@/components/Bubble";
 import FileNavigation from "@/components/FileNavigation";
 import {
   Button,
@@ -20,10 +21,17 @@ import {
 const page = () => {
   return (
     <>
-      <View paddingInline={6} paddingTop={16} width="100%">
+      <View direction="row" paddingInline={6} paddingTop={16} width="100%">
         <View.Item columns={2}>
           <View>
             <FileNavigation />
+          </View>
+        </View.Item>
+        <View.Item columns={1}></View.Item>
+        <View.Item columns={6}>
+          <View>
+            Some text
+            <Bubble />
           </View>
         </View.Item>
       </View>

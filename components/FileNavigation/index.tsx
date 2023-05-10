@@ -18,6 +18,8 @@ import {
   AccordionProps,
   MenuItem,
   Placeholder,
+  DropdownMenu,
+  DropdownMenuProps,
 } from "reshaped";
 
 import PlusIcon from "../Icons/PlusIcon";
@@ -37,12 +39,23 @@ export default function FileNavigation() {
         <Text variant="body-3" weight="medium" color="neutral-faded">
           Sections
         </Text>
-        <Button
-          size="small"
-          variant="outline"
-          rounded
-          icon={<PlusIcon />}
-        ></Button>
+        <DropdownMenu position="bottom">
+          <DropdownMenu.Trigger>
+            {(attributes) => (
+              <Button
+                size="small"
+                variant="outline"
+                rounded
+                icon={<PlusIcon />}
+                attributes={attributes}
+              ></Button>
+            )}
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content>
+            <DropdownMenu.Item>Add Sectoion</DropdownMenu.Item>
+            <DropdownMenu.Item>Add Subsection</DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu>
       </View>
 
       {/* Sections */}
