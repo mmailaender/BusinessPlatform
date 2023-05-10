@@ -23,5 +23,8 @@
   "blockman.n35A01DisableRecommendationDialog": true,
   // Intellisense - Complete function calls: .map(x => x)
   "javascript.suggest.completeFunctionCalls": true,
-  "typescript.suggest.completeFunctionCalls": true
+  "typescript.suggest.completeFunctionCalls": true,
+
+  // Custom VScode Icon Theme
+  "workbench.iconTheme": "material-icon-theme"
 }
