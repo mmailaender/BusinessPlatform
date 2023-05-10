@@ -16,6 +16,12 @@ import CreateDocument from "@/components/Icons/CreateDocument";
 import Template from "../Icons/Template";
 import Document from "../Icons/Document";
 import MoreIcon from "../Icons/MoreIcon";
+import DocsIcon from "../Icons/DocsIcon";
+import ShareIcon from "../Icons/ShareIcon";
+import PrintIcon from "../Icons/PrintIcon";
+import RenameIcon from "../Icons/RenameIcon";
+import DuplicateIcon from "../Icons/DuplicateIcon";
+import BinIcon from "../Icons/BinIcon";
 
 export default function CreateFile() {
   return (
@@ -71,12 +77,40 @@ export function TemplateFile() {
             insetEnd={2}
             className="transition ease-in-out duration-300 opacity-0 group-hover:opacity-100"
           >
-            <Button
-              rounded={true}
-              elevated={true}
-              icon={<MoreIcon />}
-              color="white"
-            ></Button>
+            <DropdownMenu position="bottom-end">
+              <DropdownMenu.Trigger>
+                {(attributes) => (
+                  <Button
+                    rounded={true}
+                    elevated={true}
+                    icon={<MoreIcon />}
+                    color="white"
+                    attributes={attributes}
+                  ></Button>
+                )}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item startSlot={<ShareIcon />}>
+                    Share
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<PrintIcon />}>
+                    Print
+                  </DropdownMenu.Item>
+                </DropdownMenu.Section>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item startSlot={<RenameIcon />}>
+                    Rename
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<DuplicateIcon />}>
+                    Duplicate
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<BinIcon />}>
+                    Delete
+                  </DropdownMenu.Item>
+                </DropdownMenu.Section>
+              </DropdownMenu.Content>
+            </DropdownMenu>
           </View>
           <Template />
         </View>
@@ -120,12 +154,40 @@ export function DocumentFile() {
             insetEnd={2}
             className="transition ease-in-out duration-300 opacity-0 group-hover:opacity-100"
           >
-            <Button
-              rounded={true}
-              elevated={true}
-              icon={<MoreIcon />}
-              color="white"
-            ></Button>
+            <DropdownMenu position="bottom-end">
+              <DropdownMenu.Trigger>
+                {(attributes) => (
+                  <Button
+                    rounded={true}
+                    elevated={true}
+                    icon={<MoreIcon />}
+                    color="white"
+                    attributes={attributes}
+                  ></Button>
+                )}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item startSlot={<ShareIcon />}>
+                    Share
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<PrintIcon />}>
+                    Print
+                  </DropdownMenu.Item>
+                </DropdownMenu.Section>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item startSlot={<RenameIcon />}>
+                    Rename
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<DuplicateIcon />}>
+                    Duplicate
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<BinIcon />}>
+                    Delete
+                  </DropdownMenu.Item>
+                </DropdownMenu.Section>
+              </DropdownMenu.Content>
+            </DropdownMenu>
           </View>
           <Document />
         </View>
