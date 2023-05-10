@@ -13,12 +13,17 @@ import {
   useFormControl,
   FormControlProps,
   Divider,
+  DropdownMenu,
+  DropdownMenuProps,
 } from "reshaped";
 import ArrowLeft from "../Icons/ArrowLeft";
 import DocsIcon from "../Icons/DocsIcon";
 import MoreIcon from "../Icons/MoreIcon";
 import PrintIcon from "../Icons/PrintIcon";
 import ShareIcon from "../Icons/ShareIcon";
+import DuplicateIcon from "../Icons/DuplicateIcon";
+import BinIcon from "../Icons/BinIcon";
+import RenameIcon from "../Icons/RenameIcon";
 
 export default function CreateFile() {
   const CustomInput = () => {
@@ -73,12 +78,32 @@ export default function CreateFile() {
             <Button rounded size="medium" icon={<ShareIcon />}>
               Share
             </Button>
-            <Button
-              rounded
-              size="medium"
-              variant="ghost"
-              icon={<MoreIcon />}
-            ></Button>
+            <DropdownMenu position="bottom-end">
+              <DropdownMenu.Trigger>
+                {(attributes) => (
+                  <Button
+                    rounded
+                    size="medium"
+                    variant="ghost"
+                    icon={<MoreIcon />}
+                    attributes={attributes}
+                  ></Button>
+                )}
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Section>
+                  <DropdownMenu.Item startSlot={<RenameIcon />}>
+                    Rename
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<DuplicateIcon />}>
+                    Duplicate
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item startSlot={<BinIcon />}>
+                    Delete
+                  </DropdownMenu.Item>
+                </DropdownMenu.Section>
+              </DropdownMenu.Content>
+            </DropdownMenu>
           </View>
         </View.Item>
       </View>
