@@ -23,6 +23,11 @@ import {
 } from "reshaped";
 
 import PlusIcon from "../Icons/PlusIcon";
+import MoreIcon from "../Icons/MoreIcon";
+import RenameIcon from "../Icons/RenameIcon";
+import DuplicateIcon from "../Icons/DuplicateIcon";
+import BinIcon from "../Icons/BinIcon";
+import Section from "../Section";
 
 export default function FileNavigation() {
   return (
@@ -63,7 +68,7 @@ export default function FileNavigation() {
         <Accordion defaultActive={false}>
           <Accordion.Trigger>
             <View paddingBottom={2}>
-              <MenuItem roundedCorners={true}>Section 1</MenuItem>
+              <Section />
             </View>
           </Accordion.Trigger>
           <Accordion.Content>
@@ -81,9 +86,7 @@ export default function FileNavigation() {
                 </View>
                 {/* subsection list */}
                 <View.Item grow>
-                  <MenuItem selected={true} roundedCorners={true}>
-                    Hint with very long title
-                  </MenuItem>
+                  <Section />
                 </View.Item>
               </View>
 
@@ -99,7 +102,7 @@ export default function FileNavigation() {
                 </View>
                 {/* subsection list */}
                 <View.Item grow>
-                  <MenuItem roundedCorners={true}>Hint</MenuItem>
+                  <Section />
                 </View.Item>
               </View>
             </View>
@@ -111,9 +114,7 @@ export default function FileNavigation() {
         <Accordion defaultActive={false}>
           <Accordion.Trigger>
             <View paddingBottom={2}>
-              <MenuItem roundedCorners={true}>
-                Section about something else
-              </MenuItem>
+              <Section />
             </View>
           </Accordion.Trigger>
           <Accordion.Content>
@@ -131,9 +132,7 @@ export default function FileNavigation() {
                 </View>
                 {/* subsection list */}
                 <View.Item grow>
-                  <MenuItem selected={true} roundedCorners={true}>
-                    Hint
-                  </MenuItem>
+                  <Section />
                 </View.Item>
               </View>
 
@@ -149,7 +148,7 @@ export default function FileNavigation() {
                 </View>
                 {/* subsection list */}
                 <View.Item grow>
-                  <MenuItem roundedCorners={true}>Hint</MenuItem>
+                  <Section />
                 </View.Item>
               </View>
             </View>
