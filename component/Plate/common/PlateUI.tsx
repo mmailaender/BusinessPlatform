@@ -39,7 +39,7 @@ export const plateUI = createPlateUI({
         margin: 0,
         padding: '4px 0',
       },
-    },
+    } as Record<string, any>,
     prefixClassNames: 'p',
   }),
   [ELEMENT_H1]: withProps(StyledElement, {
@@ -53,7 +53,7 @@ export const plateUI = createPlateUI({
         fontWeight: 'var(--rs-font-weight-title-1)',
         fontSize: 'var(--rs-font-size-title-1)',
       },
-    },
+    } as Record<string, any>,
   }),
   [ELEMENT_H2]: withProps(StyledElement, {
     styles: {
@@ -63,6 +63,6 @@ export const plateUI = createPlateUI({
         fontFamily:
           'BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
       },
-    },
+    } as Record<string, any>,
   }),
 });

@@ -15,7 +15,7 @@ import {
 } from '@udecode/plate';
 import { useMyPlateEditorRef } from './interfaces/plateTypes';
 
-export const markTooltip = {
+export const markTooltip: TippyProps = {
   arrow: true,
   delay: 0,
   duration: [200, 0],
