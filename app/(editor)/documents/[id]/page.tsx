@@ -1,5 +1,5 @@
 import FileNavigation from "@/components/FileNavigation";
-import Plate from '@/component/Plate';
+import Plate from "@/component/Plate";
 import { View } from "reshaped";
 
 const page = () => {
@@ -17,6 +17,7 @@ const page = () => {
             <Plate />
           </View>
         </View.Item>
+        <View.Item columns={3}></View.Item>
       </View>
     </>
   );
