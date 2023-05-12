@@ -1,22 +1,6 @@
-import Bubble from "@/components/Bubble";
 import FileNavigation from "@/components/FileNavigation";
-import {
-  Button,
-  TextField,
-  TextFieldProps,
-  View,
-  Text,
-  ViewProps,
-  TextProps,
-  Icon,
-  IconProps,
-  FormControl,
-  useFormControl,
-  FormControlProps,
-  Divider,
-  DropdownMenu,
-  DropdownMenuProps,
-} from "reshaped";
+import Plate from '@/component/Plate';
+import { View } from "reshaped";
 
 const page = () => {
   return (
@@ -30,8 +14,7 @@ const page = () => {
         <View.Item columns={1}></View.Item>
         <View.Item columns={6}>
           <View>
-            Some text
-            <Bubble />
+            <Plate />
           </View>
         </View.Item>
       </View>
