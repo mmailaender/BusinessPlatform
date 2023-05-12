@@ -18,16 +18,17 @@ import {
   ELEMENT_BLOCKQUOTE,
   MARK_SUPERSCRIPT,
   MARK_COLOR,
+  ELEMENT_TODO_LI,
   MediaEmbedElement,
   StyledElement,
   withProps,
-} from '@udecode/plate';
+} from "@udecode/plate";
 
 export const plateUI = createPlateUI({
   [ELEMENT_MEDIA_EMBED]: withProps(MediaEmbedElement, {
     nodeProps: {
       twitterOptions: {
-        theme: 'dark',
+        theme: "dark",
       },
     },
   }),
@@ -37,31 +38,65 @@ export const plateUI = createPlateUI({
     styles: {
       root: {
         margin: 0,
-        padding: '4px 0',
+        padding: "4px 0",
+        fontFamily: "var(--rs-font-family-body-2)",
+        lineHeight: "var(--rs-line-height-body-2)",
+        fontWeight: "var(--rs-font-weight-regular)",
+        fontSize: "var(--rs-font-size-body-2)",
       },
     } as Record<string, any>,
-    prefixClassNames: 'p',
+    prefixClassNames: "p",
+  }),
+  [ELEMENT_TODO_LI]: withProps(StyledElement, {
+    as: "ToDo List",
+    styles: {
+      root: {
+        margin: 0,
+        padding: "4px 0",
+        fontFamily: "var(--rs-font-family-body-2)",
+        lineHeight: "var(--rs-line-height-body-2)",
+        fontWeight: "var(--rs-font-weight-regular)",
+        fontSize: "var(--rs-font-size-body-2)",
+      },
+    } as Record<string, any>,
+    prefixClassNames: "p",
   }),
   [ELEMENT_H1]: withProps(StyledElement, {
-    as: 'h1',
+    as: "h1",
     styles: {
       root: {
         marginTop: 8,
-        padding: '4px 0',
-        fontFamily: 'var(--rs-font-family-title-1)',
-        lineHeight: 'var(--rs-line-height-title-1)',
-        fontWeight: 'var(--rs-font-weight-title-1)',
-        fontSize: 'var(--rs-font-size-title-1)',
+        padding: "4px 0",
+        fontFamily: "var(--rs-font-family-featured-1)",
+        lineHeight: "var(--rs-line-height-featured-1)",
+        fontWeight: "var(--rs-font-weight-heavy)",
+        fontSize: "var(--rs-font-size-featured-1)",
       },
     } as Record<string, any>,
   }),
   [ELEMENT_H2]: withProps(StyledElement, {
+    as: "h2",
     styles: {
       root: {
-        fontWeight: 800,
-        fontSize: 6,
-        fontFamily:
-          'BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
+        marginTop: 8,
+        padding: "4px 0",
+        fontFamily: "var(--rs-font-family-featured-2)",
+        lineHeight: "var(--rs-line-height-featured-2)",
+        fontWeight: "var(--rs-font-weight-heavy)",
+        fontSize: "var(--rs-font-size-featured-2)",
+      },
+    } as Record<string, any>,
+  }),
+  [ELEMENT_H3]: withProps(StyledElement, {
+    as: "h3",
+    styles: {
+      root: {
+        marginTop: 8,
+        padding: "4px 0",
+        fontFamily: "var(--rs-font-family-featured-3)",
+        lineHeight: "var(--rs-line-height-featured-3)",
+        fontWeight: "var(--rs-font-weight-heavy)",
+        fontSize: "var(--rs-font-size-featured-3)",
       },
     } as Record<string, any>,
   }),
