@@ -16,6 +16,10 @@ import {
   createCodePlugin,
   createItalicPlugin,
   createUnderlinePlugin,
+  createStrikethroughPlugin,
+  createSubscriptPlugin,
+  createSuperscriptPlugin,
+  createFontColorPlugin,
 } from '@udecode/plate';
 
 import './styles.css';
@@ -49,6 +53,10 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createSoftBreakPlugin(),
     createExitBreakPlugin(),
     createUnderlinePlugin(),
+    createStrikethroughPlugin(),
+    createSubscriptPlugin(),
+    createSuperscriptPlugin(),
+    createFontColorPlugin(),
   ],
   { components: plateUI }
 );
