@@ -1,9 +1,13 @@
+import Plate from '@/component/Plate';
+
 const page = () => {
   return (
     <div>
-      Editor - Documents
+      <p>Editor - Documents</p>
+
+      <Plate />
     </div>
   );
-}
+};
 
 export default page;
