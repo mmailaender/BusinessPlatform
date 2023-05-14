@@ -29,14 +29,15 @@ export default function FileNavigation() {
       <View
         direction="row"
         width="100%"
-        className="justify-between"
         align="center"
         paddingBottom={6}
         paddingStart={4}
       >
-        <Text variant="body-3" weight="medium" color="neutral-faded">
-          Sections
-        </Text>
+        <View.Item grow>
+          <Text variant="body-3" weight="medium" color="neutral-faded">
+            Sections
+          </Text>
+        </View.Item>
         <DropdownMenu position="bottom">
           <DropdownMenu.Trigger>
             {(attributes) => (

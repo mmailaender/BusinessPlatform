@@ -32,6 +32,8 @@ import { Looks6 } from "@styled-icons/material/Looks6";
 import { LooksOne } from "@styled-icons/material/LooksOne";
 import { LooksTwo } from "@styled-icons/material/LooksTwo";
 import TextStyle from "@/components/TextStyle";
+import BoldIcon from "@/components/Icons/BoldIcon";
+import ItalicIcon from "@/components/Icons/ItalicIcon";
 
 const tooltip = (content: string) => ({
   content,
@@ -73,14 +75,14 @@ export const BasicElementToolbarButtons = () => {
         icon={<Looks6 />}
       />
       <MarkToolbarButton
-        tooltip={tooltip("Bold (⌘+B)")}
+        tooltip={tooltip("")}
         type={getPluginType(editor, MARK_BOLD)}
-        icon={<TextStyle />}
+        icon={<TextStyle label="Bold" icon={<BoldIcon />} />}
       />
       <MarkToolbarButton
-        tooltip={tooltip("Italic (⌘+I)")}
+        tooltip={tooltip("")}
         type={getPluginType(editor, MARK_ITALIC)}
-        icon={<FormatItalic />}
+        icon={<TextStyle label="Italic" icon={<ItalicIcon />} />}
       />
       <MarkToolbarButton
         tooltip={tooltip("Underline (⌘+U)")}
