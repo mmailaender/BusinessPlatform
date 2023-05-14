@@ -19,13 +19,15 @@ export type Props = {
 
 export default function TextStyle({ label, icon }) {
   return (
-    <View className="group w-fit" align="center">
+    <View className="group w-fit" align="center" position="a">
       <View
         paddingInline={2}
         paddingBlock={1}
         backgroundColor="black"
         borderRadius="small"
-        className=" w-fit opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transform transition-all duration-400"
+        position="absolute"
+        insetTop={-8}
+        className="w-fit opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transform transition-all duration-400"
       >
         <Text variant="body-3" weight="medium">
           {label}

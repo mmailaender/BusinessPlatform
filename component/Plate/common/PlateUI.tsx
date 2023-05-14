@@ -7,6 +7,7 @@ import {
   ELEMENT_H1,
   ELEMENT_H2,
   ELEMENT_H3,
+  ELEMENT_LINK,
   ELEMENT_H4,
   ELEMENT_H5,
   ELEMENT_H6,
@@ -99,5 +100,20 @@ export const plateUI = createPlateUI({
         fontSize: "var(--rs-font-size-featured-3)",
       },
     } as Record<string, any>,
+  }),
+  [ELEMENT_LINK]: withProps(StyledElement, {
+    as: "link",
+    styles: {
+      root: {
+        margin: 0,
+        padding: "4px 0",
+        color: "var(--rs-color-foreground-primary)",
+        fontFamily: "var(--rs-font-family-body-2)",
+        lineHeight: "var(--rs-line-height-body-2)",
+        fontWeight: "var(--rs-font-weight-regular)",
+        fontSize: "var(--rs-font-size-body-2)",
+      },
+    } as Record<string, any>,
+    prefixClassNames: "p",
   }),
 });
