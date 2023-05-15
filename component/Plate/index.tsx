@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Plate,
@@ -20,21 +20,21 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin,
   createFontColorPlugin,
-} from '@udecode/plate';
+} from "@udecode/plate";
 
-import './styles.css';
+import "./styles.css";
 import {
   MyPlatePlugin,
   MyValue,
   createMyPlugins,
-} from './interfaces/plateTypes';
-import { BasicElementToolbarButtons } from './HeadingToolbar';
-import { Toolbar } from './Toolbar';
-import { plateUI } from './common/PlateUI';
-import { MarkBalloonToolbar } from './MarkBalloonToolbar';
+} from "./interfaces/plateTypes";
+import { BasicElementToolbarButtons } from "./HeadingToolbar";
+import { Toolbar } from "./Toolbar";
+import { plateUI } from "./common/PlateUI";
+import { MarkBalloonToolbar } from "./MarkBalloonToolbar";
 
 const editableProps: TEditableProps<MyValue> = {
-  placeholder: 'Type...',
+  placeholder: "Type...",
   spellCheck: false,
   autoFocus: false,
 };
@@ -63,9 +63,9 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
 
 export default () => (
   <PlateProvider<MyValue> plugins={plugins}>
-    <Toolbar>
+    {/* <Toolbar>
       <BasicElementToolbarButtons />
-    </Toolbar>
+    </Toolbar> */}
 
     <Plate<MyValue> editableProps={editableProps}>
       <MarkBalloonToolbar />

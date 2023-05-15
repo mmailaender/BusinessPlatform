@@ -48,7 +48,7 @@ export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
 
   return (
-    <>
+    <View>
       <BlockToolbarButton
         tooltip={tooltip("Heading 1")}
         type={getPluginType(editor, ELEMENT_H1)}
@@ -125,6 +125,6 @@ export const BasicElementToolbarButtons = () => {
         type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
         icon={<FormatQuote />}
       /> */}
-    </>
+    </View>
   );
 };

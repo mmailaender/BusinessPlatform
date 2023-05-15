@@ -24,6 +24,7 @@ import BoldIcon from "@/components/Icons/BoldIcon";
 import StrikethroughIcon from "@/components/Icons/StrikethroughIcon";
 import LinkIcon from "@/components/Icons/LinkIcon";
 import TextIcon from "@/components/Icons/TextIcon";
+import TableIcon from "@/components/Icons/TableIcon";
 
 export const markTooltip: TippyProps = {
   arrow: true,
@@ -98,11 +99,19 @@ export const MarkBalloonToolbar = (
             actionHandler="onMouseDown"
           />
         </View>
-        <View direction="row" align="center" paddingEnd={1}>
+        <View direction="row" align="center">
           <MarkToolbarButton
             tooltip={linkTooltip}
             type={getPluginType(editor, ELEMENT_LINK)}
             icon={<TextStyle label="Link" icon={<LinkIcon />} />}
+            actionHandler="onMouseDown"
+          />
+        </View>
+        <View direction="row" align="center" paddingEnd={1}>
+          <MarkToolbarButton
+            tooltip={linkTooltip}
+            type={getPluginType(editor, ELEMENT_LINK)}
+            icon={<TextStyle label="Table" icon={<TableIcon />} />}
             actionHandler="onMouseDown"
           />
         </View>
