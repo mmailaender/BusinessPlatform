@@ -93,7 +93,7 @@ export const BasicElementToolbarButtons = () => {
         <MarkToolbarButton
           tooltip={tooltip("")}
           type={getPluginType(editor, MARK_UNDERLINE)}
-          icon={<TextStyle label="Italic" icon={<UnderlineIcon />} />}
+          icon={<TextStyle label="Underline" icon={<UnderlineIcon />} />}
         />
         <MarkToolbarButton
           tooltip={tooltip("")}
