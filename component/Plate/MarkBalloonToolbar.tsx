@@ -8,6 +8,7 @@ import {
   BalloonToolbarProps,
   ELEMENT_LINK,
   getPluginType,
+  ELEMENT_TABLE,
   MARK_BOLD,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
@@ -110,7 +111,7 @@ export const MarkBalloonToolbar = (
         <View direction="row" align="center" paddingEnd={1}>
           <MarkToolbarButton
             tooltip={linkTooltip}
-            type={getPluginType(editor, ELEMENT_LINK)}
+            type={getPluginType(editor, ELEMENT_TABLE)}
             icon={<TextStyle label="Table" icon={<TableIcon />} />}
             actionHandler="onMouseDown"
           />
