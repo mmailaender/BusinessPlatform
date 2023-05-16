@@ -20,18 +20,26 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin,
   createFontColorPlugin,
-} from "@udecode/plate";
+  LinkToolbarButton,
+  createLinkPlugin,
+  createTablePlugin,
+} from '@udecode/plate';
+import { Link } from '@styled-icons/material/Link';
 
 import "./styles.css";
 import {
   MyPlatePlugin,
   MyValue,
   createMyPlugins,
-} from "./interfaces/plateTypes";
-import { BasicElementToolbarButtons } from "./HeadingToolbar";
-import { Toolbar } from "./Toolbar";
-import { plateUI } from "./common/PlateUI";
-import { MarkBalloonToolbar } from "./MarkBalloonToolbar";
+} from './interfaces/plateTypes';
+import { BasicElementToolbarButtons } from './HeadingToolbar';
+import { Toolbar } from './Toolbar';
+import { plateUI } from './common/PlateUI';
+import { MarkBalloonToolbar } from './MarkBalloonToolbar';
+import { linkPlugin } from './plugins/linkPlugin';
+import { TableToolbarButtons } from './toolbar/TableToolbarButtons';
+import { softBreakPlugin } from './plugins/softPlugin';
+import { exitBreakPlugin } from './plugins/exitBreakPlugin';
 
 const editableProps: TEditableProps<MyValue> = {
   placeholder: "Type...",
@@ -50,25 +58,31 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createCodePlugin(),
     createItalicPlugin(),
     createResetNodePlugin(),
-    createSoftBreakPlugin(),
-    createExitBreakPlugin(),
+    createSoftBreakPlugin(softBreakPlugin),
+    createExitBreakPlugin(exitBreakPlugin),
     createUnderlinePlugin(),
     createStrikethroughPlugin(),
     createSubscriptPlugin(),
     createSuperscriptPlugin(),
     createFontColorPlugin(),
+    createLinkPlugin(linkPlugin),
+    createTablePlugin(),
   ],
   { components: plateUI }
 );
 
-export default () => (
-  <PlateProvider<MyValue> plugins={plugins}>
-    {/* <Toolbar>
-      <BasicElementToolbarButtons />
-    </Toolbar> */}
+export default function PlateEditor() {
+  return (
+    <PlateProvider<MyValue> plugins={plugins}>
+      <Toolbar>
+        <BasicElementToolbarButtons />
+        <LinkToolbarButton icon={<Link />} />
+        <TableToolbarButtons />
+      </Toolbar>
 
-    <Plate<MyValue> editableProps={editableProps}>
-      <MarkBalloonToolbar />
-    </Plate>
-  </PlateProvider>
-);
+      <Plate<MyValue> editableProps={editableProps}>
+        <MarkBalloonToolbar />
+      </Plate>
+    </PlateProvider>
+  );
+}
