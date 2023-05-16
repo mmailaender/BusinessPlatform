@@ -1,5 +1,5 @@
 import FileNavigation from "@/components/FileNavigation";
-import Plate from "@/component/Plate";
+import Plate from "@/components/Plate";
 import { View } from "reshaped";
 
 const page = () => {
