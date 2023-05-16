@@ -12,16 +12,16 @@ const CreateDocument = () => {
         fill="#F4F5F7"
         stroke="#DFE2EA"
       />
-      <g clip-path="url(#clip0_328_14098)">
+      <g clipPath="url(#clip0_328_14098)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M77 83.4498L43.0002 83.4498C41.5919 83.4498 40.4502 84.5914 40.4502 85.9998C40.4502 87.4081 41.5919 88.5498 43.0002 88.5498L77 88.5498C78.4083 88.5498 79.55 87.4081 79.55 85.9998C79.55 84.5915 78.4083 83.4498 77 83.4498Z"
           fill="#C7CDDB"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M60.0004 105.55C61.4088 105.55 62.5504 104.408 62.5504 103L62.5502 68.9998C62.5502 67.5915 61.4085 66.4498 60.0002 66.4498C58.5919 66.4498 57.4502 67.5915 57.4502 68.9998L57.4504 103C57.4504 104.408 58.5921 105.55 60.0004 105.55Z"
           fill="#C7CDDB"
         />
