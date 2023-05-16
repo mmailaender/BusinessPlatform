@@ -1,11 +1,16 @@
-import FileNavigation from "@/components/FileNavigation";
-import Plate from '@/component/Plate';
-import { View } from "reshaped";
+import FileNavigation from '@/components/FileNavigation';
+import Plate from '@/components/Plate';
+import { View } from 'reshaped';
 
 const page = () => {
   return (
     <>
-      <View direction="row" paddingInline={6} paddingTop={16} width="100%">
+      <View
+        direction='row'
+        paddingInline={6}
+        paddingTop={16}
+        width='100%'
+      >
         <View.Item columns={2}>
           <View>
             <FileNavigation />
