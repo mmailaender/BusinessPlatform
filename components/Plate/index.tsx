@@ -23,23 +23,25 @@ import {
   LinkToolbarButton,
   createLinkPlugin,
   createTablePlugin,
-} from '@udecode/plate';
-import { Link } from '@styled-icons/material/Link';
+} from "@udecode/plate";
+import { Link } from "@styled-icons/material/Link";
 
 import "./styles.css";
 import {
   MyPlatePlugin,
   MyValue,
   createMyPlugins,
-} from './interfaces/plateTypes';
-import { BasicElementToolbarButtons } from './HeadingToolbar';
-import { Toolbar } from './Toolbar';
-import { plateUI } from './common/PlateUI';
-import { MarkBalloonToolbar } from './MarkBalloonToolbar';
-import { linkPlugin } from './plugins/linkPlugin';
-import { TableToolbarButtons } from './toolbar/TableToolbarButtons';
-import { softBreakPlugin } from './plugins/softPlugin';
-import { exitBreakPlugin } from './plugins/exitBreakPlugin';
+} from "./interfaces/plateTypes";
+import { BasicElementToolbarButtons } from "./HeadingToolbar";
+import { Toolbar } from "./Toolbar";
+import { plateUI } from "./common/PlateUI";
+import { MarkBalloonToolbar } from "./MarkBalloonToolbar";
+import { linkPlugin } from "./plugins/linkPlugin";
+import { TableToolbarButtons } from "./toolbar/TableToolbarButtons";
+import { softBreakPlugin } from "./plugins/softPlugin";
+import { exitBreakPlugin } from "./plugins/exitBreakPlugin";
+import LinkIcon from "../Icons/LinkIcon";
+import TextStyle from "../TextStyle";
 
 const editableProps: TEditableProps<MyValue> = {
   placeholder: "Type...",
@@ -76,7 +78,9 @@ export default function PlateEditor() {
     <PlateProvider<MyValue> plugins={plugins}>
       <Toolbar>
         <BasicElementToolbarButtons />
-        <LinkToolbarButton icon={<Link />} />
+        <LinkToolbarButton
+          icon={<TextStyle label="Link" icon={<LinkIcon />} />}
+        />
         <TableToolbarButtons />
       </Toolbar>
 

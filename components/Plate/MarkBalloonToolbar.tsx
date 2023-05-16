@@ -15,6 +15,7 @@ import {
   MARK_UNDERLINE,
   MarkToolbarButton,
   WithPartial,
+  LinkToolbarButton,
 } from "@udecode/plate";
 import { useMyPlateEditorRef } from "./interfaces/plateTypes";
 import { Select, View, ViewProps, SelectProps } from "reshaped";
@@ -101,19 +102,8 @@ export const MarkBalloonToolbar = (
           />
         </View>
         <View direction="row" align="center">
-          <MarkToolbarButton
-            tooltip={linkTooltip}
-            type={getPluginType(editor, ELEMENT_LINK)}
+          <LinkToolbarButton
             icon={<TextStyle label="Link" icon={<LinkIcon />} />}
-            actionHandler="onMouseDown"
-          />
-        </View>
-        <View direction="row" align="center" paddingEnd={1}>
-          <MarkToolbarButton
-            tooltip={linkTooltip}
-            type={getPluginType(editor, ELEMENT_TABLE)}
-            icon={<TextStyle label="Table" icon={<TableIcon />} />}
-            actionHandler="onMouseDown"
           />
         </View>
       </View>
