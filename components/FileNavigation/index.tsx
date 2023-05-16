@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Button,
   TextField,
@@ -20,36 +20,40 @@ import {
   Placeholder,
   DropdownMenu,
   DropdownMenuProps,
-} from "reshaped";
+} from 'reshaped';
 
-import PlusIcon from "../Icons/PlusIcon";
-import MoreIcon from "../Icons/MoreIcon";
-import RenameIcon from "../Icons/RenameIcon";
-import DuplicateIcon from "../Icons/DuplicateIcon";
-import BinIcon from "../Icons/BinIcon";
-import Section from "../Section";
+import PlusIcon from '../Icons/PlusIcon';
+import MoreIcon from '../Icons/MoreIcon';
+import RenameIcon from '../Icons/RenameIcon';
+import DuplicateIcon from '../Icons/DuplicateIcon';
+import BinIcon from '../Icons/BinIcon';
+import Section from '../Section';
 
-export default function FileNavigation() {
+export default function FileNavigation({ sections }) {
   return (
-    <View width="100%">
+    <View width='100%'>
       {/* Headline with add button */}
       <View
-        direction="row"
-        width="100%"
-        className="justify-between"
-        align="center"
+        direction='row'
+        width='100%'
+        className='justify-between'
+        align='center'
         paddingBottom={6}
         paddingStart={4}
       >
-        <Text variant="body-3" weight="medium" color="neutral-faded">
+        <Text
+          variant='body-3'
+          weight='medium'
+          color='neutral-faded'
+        >
           Sections
         </Text>
-        <DropdownMenu position="bottom">
+        <DropdownMenu position='bottom'>
           <DropdownMenu.Trigger>
             {(attributes) => (
               <Button
-                size="small"
-                variant="outline"
+                size='small'
+                variant='outline'
                 rounded
                 icon={<PlusIcon />}
                 attributes={attributes}
@@ -64,7 +68,10 @@ export default function FileNavigation() {
       </View>
 
       {/* Sections */}
-      <View width="100%" paddingEnd={2}>
+      <View
+        width='100%'
+        paddingEnd={2}
+      >
         <Accordion defaultActive={false}>
           <Accordion.Trigger>
             <View paddingBottom={2}>
@@ -73,15 +80,21 @@ export default function FileNavigation() {
           </Accordion.Trigger>
           <Accordion.Content>
             {/* List of subsection */}
-            <View gap={1} paddingBottom={3}>
+            <View
+              gap={1}
+              paddingBottom={3}
+            >
               <View
-                direction="row"
-                align="center"
+                direction='row'
+                align='center'
                 gap={3}
                 paddingStart={4}
-                width="100%"
+                width='100%'
               >
-                <View height={10} align="start">
+                <View
+                  height={10}
+                  align='start'
+                >
                   <Divider vertical />
                 </View>
                 {/* subsection list */}
@@ -91,57 +104,11 @@ export default function FileNavigation() {
               </View>
 
               <View
-                direction="row"
-                align="center"
+                direction='row'
+                align='center'
                 gap={3}
                 paddingStart={4}
-                width="100%"
-              >
-                <View height={10}>
-                  <Divider vertical />
-                </View>
-                {/* subsection list */}
-                <View.Item grow>
-                  <Section />
-                </View.Item>
-              </View>
-            </View>
-          </Accordion.Content>
-        </Accordion>
-      </View>
-
-      <View width="100%" paddingEnd={2}>
-        <Accordion defaultActive={false}>
-          <Accordion.Trigger>
-            <View paddingBottom={2}>
-              <Section />
-            </View>
-          </Accordion.Trigger>
-          <Accordion.Content>
-            {/* List of subsection */}
-            <View gap={1} paddingBottom={3}>
-              <View
-                direction="row"
-                align="center"
-                gap={3}
-                paddingStart={4}
-                width="100%"
-              >
-                <View height={10}>
-                  <Divider vertical />
-                </View>
-                {/* subsection list */}
-                <View.Item grow>
-                  <Section />
-                </View.Item>
-              </View>
-
-              <View
-                direction="row"
-                align="center"
-                gap={3}
-                paddingStart={4}
-                width="100%"
+                width='100%'
               >
                 <View height={10}>
                   <Divider vertical />

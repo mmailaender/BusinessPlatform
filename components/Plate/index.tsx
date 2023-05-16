@@ -71,16 +71,27 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
   { components: plateUI }
 );
 
-export default function PlateEditor() {
+export interface PlateEditorProps {
+  value: MyValue;
+  onChange(value: MyValue): void;
+}
+
+export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   return (
-    <PlateProvider<MyValue> plugins={plugins}>
+    <PlateProvider<MyValue>
+      plugins={plugins}
+      onChange={onChange}
+    >
       <Toolbar>
         <BasicElementToolbarButtons />
         <LinkToolbarButton icon={<Link />} />
         <TableToolbarButtons />
       </Toolbar>
 
-      <Plate<MyValue> editableProps={editableProps}>
+      <Plate<MyValue>
+        editableProps={editableProps}
+        value={value}
+      >
         <MarkBalloonToolbar />
       </Plate>
     </PlateProvider>
