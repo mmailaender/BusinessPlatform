@@ -20,7 +20,10 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin,
   createFontColorPlugin,
+  LinkToolbarButton,
+  createLinkPlugin,
 } from '@udecode/plate';
+import { Link } from '@styled-icons/material/Link';
 
 import './styles.css';
 import {
@@ -32,6 +35,7 @@ import { BasicElementToolbarButtons } from './HeadingToolbar';
 import { Toolbar } from './Toolbar';
 import { plateUI } from './common/PlateUI';
 import { MarkBalloonToolbar } from './MarkBalloonToolbar';
+import { linkPlugin } from './plugins/linkPlugin';
 
 const editableProps: TEditableProps<MyValue> = {
   placeholder: 'Type...',
@@ -57,18 +61,22 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createSubscriptPlugin(),
     createSuperscriptPlugin(),
     createFontColorPlugin(),
+    createLinkPlugin(linkPlugin),
   ],
   { components: plateUI }
 );
 
-export default () => (
-  <PlateProvider<MyValue> plugins={plugins}>
-    <Toolbar>
-      <BasicElementToolbarButtons />
-    </Toolbar>
+export default function PlateEditor() {
+  return (
+    <PlateProvider<MyValue> plugins={plugins}>
+      <Toolbar>
+        <BasicElementToolbarButtons />
+        <LinkToolbarButton icon={<Link />} />
+      </Toolbar>
 
-    <Plate<MyValue> editableProps={editableProps}>
-      <MarkBalloonToolbar />
-    </Plate>
-  </PlateProvider>
-);
+      <Plate<MyValue> editableProps={editableProps}>
+        <MarkBalloonToolbar />
+      </Plate>
+    </PlateProvider>
+  );
+}
