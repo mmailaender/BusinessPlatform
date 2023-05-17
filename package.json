@@ -4,19 +4,19 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "next dev",
+    "dev": "doppler run -- next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "4.17.3",
+    "@clerk/nextjs": "4.18.0",
     "@styled-icons/material": "10.47.0",
     "@tippyjs/react": "4.2.6",
-    "@types/node": "20.1.3",
+    "@types/node": "20.1.5",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
-    "@udecode/plate": "21.1.2",
+    "@udecode/plate": "21.1.4",
     "autoprefixer": "10.4.14",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
@@ -28,7 +28,7 @@
     "slate": "0.94.1",
     "slate-history": "0.93.0",
     "slate-hyperscript": "0.77.0",
-    "slate-react": "0.94.0",
+    "slate-react": "0.94.2",
     "styled-components": "6.0.0-rc.1",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
