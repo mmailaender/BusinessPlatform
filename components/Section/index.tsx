@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Button,
   TextField,
@@ -20,31 +20,38 @@ import {
   Placeholder,
   DropdownMenu,
   DropdownMenuProps,
-} from "reshaped";
+  Tooltip,
+} from 'reshaped';
 
-import PlusIcon from "../Icons/PlusIcon";
-import MoreIcon from "../Icons/MoreIcon";
-import RenameIcon from "../Icons/RenameIcon";
-import DuplicateIcon from "../Icons/DuplicateIcon";
-import BinIcon from "../Icons/BinIcon";
+import PlusIcon from '../Icons/PlusIcon';
+import MoreIcon from '../Icons/MoreIcon';
+import RenameIcon from '../Icons/RenameIcon';
+import DuplicateIcon from '../Icons/DuplicateIcon';
+import BinIcon from '../Icons/BinIcon';
 
-export default function Section() {
+const maxLength = 35;
+
+export default function Section({ title }: any) {
+  const truncatedText =
+    title?.length > maxLength ? `${title.substring(0, maxLength)}...` : title;
+  const showTooltip = title?.length > maxLength;
+
   return (
-    <View width="100%">
+    <View width='100%'>
       <MenuItem
-        className="group"
+        className='group'
         roundedCorners={true}
         endSlot={
-          <DropdownMenu position="bottom-end">
+          <DropdownMenu position='bottom-end'>
             <DropdownMenu.Trigger>
               {(attributes) => (
                 <Button
                   icon={<MoreIcon />}
-                  size="small"
-                  variant="ghost"
+                  size='small'
+                  variant='ghost'
                   rounded
                   attributes={attributes}
-                  className="opacity-0 group-hover:opacity-100 transform transition-all duration-300"
+                  className='opacity-0 group-hover:opacity-100 transform transition-all duration-300'
                 ></Button>
               )}
             </DropdownMenu.Trigger>
@@ -64,7 +71,14 @@ export default function Section() {
           </DropdownMenu>
         }
       >
-        Section 1
+        {showTooltip && (
+          <Tooltip text={title}>
+            {(attributes) => (
+              <Text attributes={attributes}>{truncatedText}</Text>
+            )}
+          </Tooltip>
+        )}
+        {!showTooltip && title}
       </MenuItem>
     </View>
   );

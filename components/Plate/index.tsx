@@ -23,7 +23,14 @@ import {
   LinkToolbarButton,
   createLinkPlugin,
   createTablePlugin,
+  createImagePlugin,
+  ImageToolbarButton,
+  createListPlugin,
+  createTodoListPlugin,
+  ListToolbarButton,
 } from '@udecode/plate';
+import { Image } from '@styled-icons/material/Image';
+import { FormatListBulleted } from '@styled-icons/material/FormatListBulleted';
 import { Link } from '@styled-icons/material/Link';
 
 import './styles.css';
@@ -67,6 +74,9 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createFontColorPlugin(),
     createLinkPlugin(linkPlugin),
     createTablePlugin(),
+    createImagePlugin(),
+    createListPlugin(),
+    createTodoListPlugin(),
   ],
   { components: plateUI }
 );
@@ -78,20 +88,17 @@ export interface PlateEditorProps {
 
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   return (
-    <PlateProvider<MyValue>
-      plugins={plugins}
-      onChange={onChange}
-    >
+    <PlateProvider<MyValue> plugins={plugins} onChange={onChange}>
       <Toolbar>
         <BasicElementToolbarButtons />
+        <ImageToolbarButton icon={<Image />} />
         <LinkToolbarButton icon={<Link />} />
+        <ListToolbarButton type='bullet' icon={<FormatListBulleted />} />
+
         <TableToolbarButtons />
       </Toolbar>
 
-      <Plate<MyValue>
-        editableProps={editableProps}
-        value={value}
-      >
+      <Plate<MyValue> editableProps={editableProps} value={value}>
         <MarkBalloonToolbar />
       </Plate>
     </PlateProvider>
