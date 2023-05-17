@@ -7,7 +7,7 @@ const page = () => {
     <>
       <View direction="row" paddingInline={6} paddingTop={16} width="100%">
         <View.Item columns={2}>
-          <View>
+          <View position="sticky" insetTop={4} width="100%">
             <FileNavigation />
           </View>
         </View.Item>

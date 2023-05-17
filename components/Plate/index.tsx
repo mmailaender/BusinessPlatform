@@ -77,7 +77,7 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
 export default function PlateEditor() {
   return (
     <PlateProvider<MyValue> plugins={plugins}>
-      <View>
+      <View position="sticky" insetTop={4} width="100%">
         <Toolbar>
           <BasicElementToolbarButtons />
           <LinkToolbarButton
