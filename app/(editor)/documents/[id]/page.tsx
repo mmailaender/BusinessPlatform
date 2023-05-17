@@ -5,12 +5,7 @@ import { View } from "reshaped";
 const page = () => {
   return (
     <>
-      <View
-        direction='row'
-        paddingInline={6}
-        paddingTop={16}
-        width='100%'
-      >
+      <View direction="row" paddingInline={6} paddingTop={16} width="100%">
         <View.Item columns={2}>
           <View>
             <FileNavigation />

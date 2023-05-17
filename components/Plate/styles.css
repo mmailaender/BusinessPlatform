@@ -1,14 +1,16 @@
 [data-slate-editor] {
-  padding: 72px 0px;
+  padding: 16px 0px;
   position: relative;
 }
 
 .slate-HeadingToolbar {
   /* padding: 17px 60px !important; */
-  position: fixed !important;
+  /* position: fixed !important; */
   background: white !important;
   z-index: 1000;
   width: 100%;
+  padding: 0px 0px 12px 0px !important;
+  margin: 0px 0px !important;
 }
 
 .tippy-box[data-theme~="tomato"] {

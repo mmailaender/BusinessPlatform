@@ -42,6 +42,7 @@ import { softBreakPlugin } from "./plugins/softPlugin";
 import { exitBreakPlugin } from "./plugins/exitBreakPlugin";
 import LinkIcon from "../Icons/LinkIcon";
 import TextStyle from "../TextStyle";
+import { View } from "reshaped";
 
 const editableProps: TEditableProps<MyValue> = {
   placeholder: "Type...",
@@ -76,13 +77,15 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
 export default function PlateEditor() {
   return (
     <PlateProvider<MyValue> plugins={plugins}>
-      <Toolbar>
-        <BasicElementToolbarButtons />
-        <LinkToolbarButton
-          icon={<TextStyle label="Link" icon={<LinkIcon />} />}
-        />
-        <TableToolbarButtons />
-      </Toolbar>
+      <View>
+        <Toolbar>
+          <BasicElementToolbarButtons />
+          <LinkToolbarButton
+            icon={<TextStyle label="Link" icon={<LinkIcon />} />}
+          />
+          <TableToolbarButtons />
+        </Toolbar>
+      </View>
 
       <Plate<MyValue> editableProps={editableProps}>
         <MarkBalloonToolbar />

@@ -110,7 +110,7 @@ export const plateUI = createPlateUI({
         color: 'var(--rs-color-foreground-primary)',
         fontFamily: 'var(--rs-font-family-body-2)',
         lineHeight: 'var(--rs-line-height-body-2)',
-        fontWeight: 'var(--rs-font-weight-bold)',
+        fontWeight: 'var(--rs-font-weight-regular)',
         fontSize: 'var(--rs-font-size-body-2)',
       },
     } as Record<string, any>,
