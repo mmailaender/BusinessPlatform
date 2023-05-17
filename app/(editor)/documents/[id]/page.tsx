@@ -5,8 +5,8 @@ import { View } from "reshaped";
 const page = () => {
   return (
     <>
-      <View direction="row" paddingInline={6} paddingTop={16} width="100%" >
-        <View.Item columns={2} grow>
+      <View direction="row" paddingInline={6} paddingTop={16} width="100%">
+        <View.Item columns={2} className="sticky top-0">
           <View>
             <FileNavigation />
           </View>
