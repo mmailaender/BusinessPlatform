@@ -1,18 +1,11 @@
 [data-slate-editor] {
-  padding: 8px 0px;
+  padding: 8px 8px;
   position: relative;
-  z-index: 0;
 }
 
 .slate-HeadingToolbar {
-  /* padding: 17px 60px !important; */
-  /* position: fixed !important; */
-  background: white !important;
-  z-index: 2 !important;
   width: 100%;
-  padding: 0px 4px 12px 0px !important;
-  margin: 0px 0px !important;
-  border-bottom: 1px solid var(--rs-color-border-neutral-faded) !important;
+  padding: unset !important;
 }
 
 .tippy-box[data-theme~="tomato"] {

@@ -42,7 +42,7 @@ import { softBreakPlugin } from "./plugins/softPlugin";
 import { exitBreakPlugin } from "./plugins/exitBreakPlugin";
 import LinkIcon from "../Icons/LinkIcon";
 import TextStyle from "../TextStyle";
-import { View } from "reshaped";
+import { View, classNames } from "reshaped";
 
 const editableProps: TEditableProps<MyValue> = {
   placeholder: "Type...",
@@ -74,15 +74,42 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
   { components: plateUI }
 );
 
+import { useEffect, useState } from "react";
+
+export const useScrollPosition = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      setScrollPosition(window.pageYOffset);
+    };
+
+    window.addEventListener("scroll", updatePosition);
+
+    updatePosition();
+
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
+  return scrollPosition;
+};
+
 export default function PlateEditor() {
+  const scrollPosition = useScrollPosition();
+
   return (
     <PlateProvider<MyValue> plugins={plugins}>
-      <View position="sticky" insetTop={4} width="100%">
-        <Toolbar>
-          <BasicElementToolbarButtons />
+      <View position="sticky" insetTop={1} width="100%" zIndex={1} padding={0}>
+        <Toolbar
+          className={classNames(
+            scrollPosition > 135 ? "drop-shadow" : "drop-shadow-none",
+            "transition-shadow bg-page !rounded-md !border-0 !px-0 !py-0 !mx-0"
+          )}
+        >
+          {/* <BasicElementToolbarButtons />
           <LinkToolbarButton
             icon={<TextStyle label="Link" icon={<LinkIcon />} />}
-          />
+          /> */}
           <TableToolbarButtons />
         </Toolbar>
       </View>
