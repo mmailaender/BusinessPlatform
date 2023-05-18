@@ -30,10 +30,9 @@ import BinIcon from "../Icons/BinIcon";
 import TemplateType from "../TemplateType";
 
 export default function CreateFile() {
-  const { active, activate, deactivate } = useToggle(false);
   return (
     <>
-      <View width="100%" padding={6} className="group" onClick={activate}>
+      <View width="100%" padding={6} className="group">
         {/* File component */}
         <View gap={4}>
           <View
@@ -61,23 +60,6 @@ export default function CreateFile() {
           </View>
         </View>
       </View>
-
-      <Modal active={active} onClose={deactivate} padding={5}>
-        <View gap={3}>
-          <Dismissible onClose={deactivate}>
-            <Modal.Title>
-              <Text variant="body-1" weight="bold">
-                Create Business Plan based on:
-              </Text>
-            </Modal.Title>
-          </Dismissible>
-
-          <View gap={3} paddingTop={6}>
-            <TemplateType />
-            <TemplateType />
-          </View>
-        </View>
-      </Modal>
     </>
   );
 }
