@@ -44,7 +44,7 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   reshaped:
-    specifier: file:node_modules_offline/reshaped-react-v2.0.0-nightly.0.tgz
+    specifier: file:node_modules_offline/reshaped-react-v2.0.0-nightly.3.tgz
     version: file:node_modules_offline/reshaped-react-v2.0.0-nightly.0.tgz(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0)
   slate:
     specifier: 0.94.1

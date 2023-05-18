@@ -24,7 +24,7 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "reshaped": "file:node_modules_offline/reshaped-react-v2.0.0-nightly.0.tgz",
+    "reshaped": "file:node_modules_offline/reshaped-react-v2.0.0-nightly.3.tgz",
     "slate": "0.94.1",
     "slate-history": "0.93.0",
     "slate-hyperscript": "0.77.0",
