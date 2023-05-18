@@ -45,7 +45,7 @@ export default function CreateFile({
 
   return (
     <View width="100%" position="relative">
-      <View className="flex flex-row py-x4 px-x4  border-b-[1px] border-neutral-faded bg-page">
+      <View className="flex flex-row py-x4 px-x4  border-b-[1px] border-neutral-faded bg-page print:hidden">
         <View className="flex basis-4/12 ">
           <Button
             width="100%"
