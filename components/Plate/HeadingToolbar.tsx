@@ -17,8 +17,13 @@ import {
   MARK_ITALIC,
   MARK_UNDERLINE,
   MarkToolbarButton,
+  ELEMENT_OL,
+  ELEMENT_UL,
+  ListToolbarButton,
 } from '@udecode/plate';
 import { FormatStrikethrough } from '@styled-icons/material/FormatStrikethrough';
+import { FormatListBulleted } from '@styled-icons/material/FormatListBulleted';
+import { FormatListNumbered } from '@styled-icons/material/FormatListNumbered';
 import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
 import { FormatBold } from '@styled-icons/material/FormatBold';
 import { FormatItalic } from '@styled-icons/material/FormatItalic';
@@ -107,6 +112,16 @@ export const BasicElementToolbarButtons = () => {
         tooltip={tooltip('Block Quote (⌘+⇧+.)')}
         type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
         icon={<FormatQuote />}
+      />
+      <ListToolbarButton
+        tooltip={tooltip('Bullet List')}
+        type={getPluginType(editor, ELEMENT_UL)}
+        icon={<FormatListBulleted />}
+      />
+      <ListToolbarButton
+        tooltip={tooltip('Ordered List')}
+        type={getPluginType(editor, ELEMENT_OL)}
+        icon={<FormatListNumbered />}
       />
     </>
   );

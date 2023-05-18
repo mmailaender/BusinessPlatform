@@ -27,10 +27,12 @@ import {
   ImageToolbarButton,
   createListPlugin,
   createTodoListPlugin,
-  ListToolbarButton,
+  createNodeIdPlugin,
 } from '@udecode/plate';
+import { createDndPlugin } from '@udecode/plate-dnd';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Image } from '@styled-icons/material/Image';
-import { FormatListBulleted } from '@styled-icons/material/FormatListBulleted';
 import { Link } from '@styled-icons/material/Link';
 
 import './styles.css';
@@ -77,6 +79,8 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createImagePlugin(),
     createListPlugin(),
     createTodoListPlugin(),
+    createNodeIdPlugin(),
+    createDndPlugin({ options: { enableScroller: true } }),
   ],
   { components: plateUI }
 );
@@ -88,19 +92,19 @@ export interface PlateEditorProps {
 
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   return (
-    <PlateProvider<MyValue> plugins={plugins} onChange={onChange}>
-      <Toolbar>
-        <BasicElementToolbarButtons />
-        <ImageToolbarButton icon={<Image />} />
-        <LinkToolbarButton icon={<Link />} />
-        <ListToolbarButton type='bullet' icon={<FormatListBulleted />} />
+    <DndProvider backend={HTML5Backend}>
+      <PlateProvider<MyValue> plugins={plugins} onChange={onChange}>
+        <Toolbar>
+          <BasicElementToolbarButtons />
+          <ImageToolbarButton icon={<Image />} />
+          <LinkToolbarButton icon={<Link />} />
+          <TableToolbarButtons />
+        </Toolbar>
 
-        <TableToolbarButtons />
-      </Toolbar>
-
-      <Plate<MyValue> editableProps={editableProps} value={value}>
-        <MarkBalloonToolbar />
-      </Plate>
-    </PlateProvider>
+        <Plate<MyValue> editableProps={editableProps} value={value}>
+          <MarkBalloonToolbar />
+        </Plate>
+      </PlateProvider>
+    </DndProvider>
   );
 }
