@@ -1,9 +1,17 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { authMiddleware } from '@clerk/nextjs';
+import { NextResponse } from 'next/server';
 
 export default authMiddleware({
-  publicRoutes: ["/log-in", "/sign-up"],
+  publicRoutes: ['/sign-in', '/sign-up'],
+  afterAuth(auth, req, evt) {
+    // handle users who aren't authenticated
+    if (!auth.userId && !auth.isPublicRoute) {
+      const signInUrl = new URL('/sign-in', req.url);
+      return NextResponse.redirect(signInUrl);
+    }
+  },
 });
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };
