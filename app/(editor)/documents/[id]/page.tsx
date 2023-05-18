@@ -116,7 +116,9 @@ const page = () => {
             Mattis nunc sed blandit libero volutpat. Dapibus ultrices in iaculis
             nunc sed augue lacus
           </Text>
-          <Plate />
+          <View>
+            <Plate />
+          </View>
         </View>
       </View>
     </>
