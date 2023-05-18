@@ -33,6 +33,7 @@ export default function FileNavigation() {
         paddingBottom={6}
         paddingStart={4}
         paddingTop={4}
+        
       >
         <View.Item grow>
           <Text variant="body-3" weight="medium" color="neutral-faded">
