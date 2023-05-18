@@ -1,35 +1,14 @@
 'use client';
-import {
-  Button,
-  TextField,
-  TextFieldProps,
-  View,
-  Text,
-  ViewProps,
-  TextProps,
-  Icon,
-  IconProps,
-  FormControl,
-  useFormControl,
-  FormControlProps,
-  Divider,
-  DividerProps,
-  Accordion,
-  AccordionProps,
-  MenuItem,
-  Placeholder,
-  DropdownMenu,
-  DropdownMenuProps,
-} from 'reshaped';
+import { Button, View, Text, Divider, Accordion, DropdownMenu } from 'reshaped';
 
 import PlusIcon from '../Icons/PlusIcon';
-import MoreIcon from '../Icons/MoreIcon';
-import RenameIcon from '../Icons/RenameIcon';
-import DuplicateIcon from '../Icons/DuplicateIcon';
-import BinIcon from '../Icons/BinIcon';
 import Section from '../Section';
 
-export default function FileNavigation({ sections }) {
+interface FileNavigationProps {
+  sections: { [sectionName: string]: string[] };
+}
+
+export default function FileNavigation({ sections }: FileNavigationProps) {
   return (
     <View width='100%'>
       {/* Headline with add button */}
@@ -64,41 +43,45 @@ export default function FileNavigation({ sections }) {
       </View>
 
       {/* Sections */}
-      {Object.keys(sections).map((m: any, index: number) => {
-        return (
-          <View width='100%' key={index} paddingEnd={2}>
-            <Accordion defaultActive={false}>
-              <Accordion.Trigger>
-                <View paddingBottom={2}>
-                  <Section title={m} />
-                </View>
-              </Accordion.Trigger>
-              <Accordion.Content>
-                {/* List of subsection */}
-                {sections[m].map((s: string, index: number) => (
-                  <View gap={1} key={index} paddingBottom={3}>
-                    <View
-                      direction='row'
-                      align='center'
-                      gap={3}
-                      paddingStart={4}
-                      width='100%'
-                    >
-                      <View height={10} align='start'>
-                        <Divider vertical />
-                      </View>
-                      {/* subsection list */}
-                      <View.Item grow>
-                        <Section title={s} />
-                      </View.Item>
-                    </View>
+      {Object.keys(sections).map(
+        (sectionName: string, sectionIndex: number) => {
+          return (
+            <View width='100%' key={sectionIndex} paddingEnd={2}>
+              <Accordion defaultActive={false}>
+                <Accordion.Trigger>
+                  <View paddingBottom={2}>
+                    <Section title={sectionName} />
                   </View>
-                ))}
-              </Accordion.Content>
-            </Accordion>
-          </View>
-        );
-      })}
+                </Accordion.Trigger>
+                <Accordion.Content>
+                  {/* List of subsection */}
+                  {sections[sectionName].map(
+                    (subsection: string, index: number) => (
+                      <View gap={1} key={index} paddingBottom={3}>
+                        <View
+                          direction='row'
+                          align='center'
+                          gap={3}
+                          paddingStart={4}
+                          width='100%'
+                        >
+                          <View height={10} align='start'>
+                            <Divider vertical />
+                          </View>
+                          {/* subsection list */}
+                          <View.Item grow>
+                            <Section title={subsection} />
+                          </View.Item>
+                        </View>
+                      </View>
+                    )
+                  )}
+                </Accordion.Content>
+              </Accordion>
+            </View>
+          );
+        }
+      )}
     </View>
   );
 }

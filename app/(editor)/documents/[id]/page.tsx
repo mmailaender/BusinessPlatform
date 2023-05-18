@@ -37,32 +37,20 @@ const DocumentPage = () => {
     }, {} as { [key: string]: string[] });
   }, [document]);
 
-  console.log('============', document, sections);
-
   return (
-    <>
-      <View
-        direction='row'
-        paddingInline={6}
-        paddingTop={16}
-        width='100%'
-      >
-        <View.Item columns={2}>
-          <View>
-            <FileNavigation />
-          </View>
-        </View.Item>
-        <View.Item columns={1}></View.Item>
-        <View.Item columns={6}>
-          <View>
-            <Plate
-              value={document}
-              onChange={setDocument}
-            />
-          </View>
-        </View.Item>
-      </View>
-    </>
+    <View direction='row' paddingInline={6} paddingTop={16} width='100%'>
+      <View.Item columns={2}>
+        <View>
+          <FileNavigation sections={sections} />
+        </View>
+      </View.Item>
+      <View.Item columns={1}></View.Item>
+      <View.Item columns={6}>
+        <View>
+          <Plate value={document} onChange={setDocument} />
+        </View>
+      </View.Item>
+    </View>
   );
 };
 
