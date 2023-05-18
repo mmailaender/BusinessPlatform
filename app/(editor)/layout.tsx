@@ -44,15 +44,15 @@ export default function CreateFile({
   };
 
   return (
-    <View width="100%" position="relative">
-      <View className="flex flex-row py-x4 px-x4  border-b-[1px] border-neutral-faded bg-page print:hidden">
+    <View className="relative">
+      <View
+        position="fixed"
+        insetTop={0}
+        zIndex={1}
+        className=" flex flex-row py-x4 px-x4 w-full border-b-[1px] border-neutral-faded bg-page print:hidden"
+      >
         <View className="flex basis-4/12 ">
-          <Button
-            width="100%"
-            rounded
-            size="medium"
-            icon={<ArrowLeft />}
-          ></Button>
+          <Button rounded size="medium" icon={<ArrowLeft />}></Button>
         </View>
         <View className="flex basis-4/12 justify-center w-x2">
           {" "}
