@@ -99,7 +99,7 @@ export default function PlateEditor() {
 
   return (
     <PlateProvider<MyValue> plugins={plugins}>
-      <View position="sticky" insetTop={1} width="100%" zIndex={1} padding={0}>
+      <View position="sticky" insetTop={20} width="100%" zIndex={1} padding={0}>
         <Toolbar
           className={classNames(
             scrollPosition > 135 ? "drop-shadow" : "drop-shadow-none",

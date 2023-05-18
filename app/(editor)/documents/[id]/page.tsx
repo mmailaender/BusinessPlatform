@@ -4,22 +4,15 @@ import { View } from "reshaped";
 
 const page = () => {
   return (
-    <>
-      <View direction="row" paddingInline={6} paddingTop={16} width="100%">
-        <View.Item columns={2} className="sticky top-0">
-          <View>
-            <FileNavigation />
-          </View>
-        </View.Item>
-        <View.Item columns={1}></View.Item>
-        <View.Item columns={6}>
-          <View>
-            <Plate />
-          </View>
-        </View.Item>
-        <View.Item columns={3}></View.Item>
+    <View className="flex flex-row px-x6 pt-[64px]">
+      <View className="sticky inset-y-x8 basis-2/12 print:hidden">
+        <FileNavigation />
       </View>
-    </>
+      <View className="basis-1/12 print:hidden"></View>
+      <View className="basis-6/12">
+        <Plate />
+      </View>
+    </View>
   );
 };
 
