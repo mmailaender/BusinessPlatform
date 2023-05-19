@@ -7,23 +7,7 @@ import MoreIcon from "@/components/Icons/MoreIcon";
 import PrintIcon from "@/components/Icons/PrintIcon";
 import RenameIcon from "@/components/Icons/RenameIcon";
 import ShareIcon from "@/components/Icons/ShareIcon";
-import {
-  Button,
-  TextField,
-  TextFieldProps,
-  View,
-  Text,
-  ViewProps,
-  TextProps,
-  Icon,
-  IconProps,
-  FormControl,
-  useFormControl,
-  FormControlProps,
-  Divider,
-  DropdownMenu,
-  DropdownMenuProps,
-} from "reshaped";
+import { Button, View, Icon, useFormControl, DropdownMenu } from "reshaped";
 
 export default function CreateFile({
   children,
@@ -73,7 +57,7 @@ export default function CreateFile({
             </View>
           </View>
         </View>
-        <View className="flex basis-4/12 justify-end !gap-x-x3">
+        <div className="flex basis-4/12 justify-end gap-x-x3">
           <Button
             onClick={() => {
               window.print();
@@ -113,7 +97,7 @@ export default function CreateFile({
               </DropdownMenu.Section>
             </DropdownMenu.Content>
           </DropdownMenu>
-        </View>
+        </div>
       </View>
       {children}
     </View>
