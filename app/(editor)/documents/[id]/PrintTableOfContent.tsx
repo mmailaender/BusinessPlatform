@@ -1,10 +1,10 @@
 "use client";
 import { View, Text, Image, ImageProps, Icon, IconProps } from "reshaped";
 import React from "react";
-import Document from "../Icons/Document";
-import ContentLine from "../ContentLine";
+import Document from "@/components/Icons/Document";
+import ContentLine from "@/components/ContentLine";
 
-export default function ContentTemplate() {
+export default function PrintTableOfContent() {
   return (
     <View className="w-full " height={360} paddingInline={20} paddingTop={24}>
       <View gap={20}>

@@ -1,7 +1,7 @@
 "use client";
-import { View, Text, Image, ImageProps, Icon, IconProps } from "reshaped";
+import { View, Text } from "reshaped";
 import React from "react";
-import Document from "../Icons/Document";
+import Image from "next/image";
 
 export default function PrintCover() {
   return (
@@ -12,6 +12,14 @@ export default function PrintCover() {
       paddingBottom={40}
       paddingInline={20}
     >
+      <View width={80} height={80}>
+        <Image
+          alt="x-group logo"
+          src="/X-GROUP-logo.png"
+          width={300}
+          height={103}
+        />
+      </View>
       <View gap={64}>
         <Text variant="title-1"> Business Plan Title Example</Text>
         <View gap={20}>

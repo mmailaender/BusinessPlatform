@@ -1,8 +1,8 @@
 import FileNavigation from "@/components/FileNavigation";
 import Plate from "@/components/Plate";
 import { View } from "reshaped";
-import PrintCover from "@/components/PrintCover";
-import ContentTemplate from "@/components/ContentTemplate";
+import PrintCover from "./PrintCover";
+import ContentTemplate from "./PrintTableOfContent";
 
 const page = () => {
   return (
