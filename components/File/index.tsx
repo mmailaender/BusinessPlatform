@@ -16,6 +16,7 @@ import {
   Dismissible,
   DismissibleProps,
 } from "reshaped";
+import React, { useState } from "react";
 
 import CreateDocument from "@/components/Icons/CreateDocument";
 import Template from "../Icons/Template";
@@ -27,12 +28,46 @@ import PrintIcon from "../Icons/PrintIcon";
 import RenameIcon from "../Icons/RenameIcon";
 import DuplicateIcon from "../Icons/DuplicateIcon";
 import BinIcon from "../Icons/BinIcon";
-import TemplateType from "../TemplateType";
+import TemplateType, { TemplatetypeScratch } from "../TemplateType";
+
+interface ViewProps extends React.HTMLAttributes<HTMLDivElement> {
+  attributes?: Record<string, any>;
+}
+
+const ClickableDiv: React.FC<ViewProps> = ({
+  onClick,
+  children,
+  attributes,
+  ...rest
+}) => {
+  return (
+    <div onClick={onClick} {...attributes} {...rest}>
+      {children}
+    </div>
+  );
+};
 
 export default function CreateFile() {
+  const { active, activate, deactivate } = useToggle(false);
+
+  const [modalActive, setModalActive] = useState(false);
+
+  const handleClick = () => {
+    setModalActive(true);
+  };
+
+  const closeModal = () => {
+    setModalActive(false);
+  };
+
   return (
     <>
-      <View width="100%" padding={6} className="group">
+      <View
+        width="100%"
+        padding={6}
+        className="group cursor-pointer"
+        attributes={{ onClick: handleClick }}
+      >
         {/* File component */}
         <View gap={4}>
           <View
@@ -60,6 +95,27 @@ export default function CreateFile() {
           </View>
         </View>
       </View>
+
+      <Modal active={modalActive} onClose={closeModal} padding={5}>
+        <View gap={3}>
+          <Dismissible onClose={closeModal}>
+            <Modal.Title>
+              <Text variant="body-1" weight="bold">
+                Create Business Plan based on:
+              </Text>
+            </Modal.Title>
+          </Dismissible>
+
+          <View gap={3} paddingTop={6} className="overflow-y-auto h-[300px]">
+            <TemplatetypeScratch />
+            <TemplateType />
+            <TemplateType />
+            <TemplateType />
+            <TemplateType />
+            <TemplateType />
+          </View>
+        </View>
+      </Modal>
     </>
   );
 }
