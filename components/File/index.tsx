@@ -1,20 +1,12 @@
 "use client";
 import {
   Button,
-  Container,
   View,
   Text,
-  ViewProps,
-  TextProps,
-  Icon,
-  IconProps,
   DropdownMenu,
-  DropdownMenuProps,
   useToggle,
   Modal,
-  ModalProps,
   Dismissible,
-  DismissibleProps,
 } from "reshaped";
 import React, { useState } from "react";
 
@@ -22,7 +14,6 @@ import CreateDocument from "@/components/Icons/CreateDocument";
 import Template from "../Icons/Template";
 import Document from "../Icons/Document";
 import MoreIcon from "../Icons/MoreIcon";
-import DocsIcon from "../Icons/DocsIcon";
 import ShareIcon from "../Icons/ShareIcon";
 import PrintIcon from "../Icons/PrintIcon";
 import RenameIcon from "../Icons/RenameIcon";
@@ -30,35 +21,9 @@ import DuplicateIcon from "../Icons/DuplicateIcon";
 import BinIcon from "../Icons/BinIcon";
 import TemplateType, { TemplatetypeScratch } from "../TemplateType";
 
-interface ViewProps extends React.HTMLAttributes<HTMLDivElement> {
-  attributes?: Record<string, any>;
-}
-
-const ClickableDiv: React.FC<ViewProps> = ({
-  onClick,
-  children,
-  attributes,
-  ...rest
-}) => {
-  return (
-    <div onClick={onClick} {...attributes} {...rest}>
-      {children}
-    </div>
-  );
-};
 
 export default function CreateFile() {
   const { active, activate, deactivate } = useToggle(false);
-
-  const [modalActive, setModalActive] = useState(false);
-
-  const handleClick = () => {
-    setModalActive(true);
-  };
-
-  const closeModal = () => {
-    setModalActive(false);
-  };
 
   return (
     <>
@@ -66,7 +31,7 @@ export default function CreateFile() {
         width="100%"
         padding={6}
         className="group cursor-pointer"
-        attributes={{ onClick: handleClick }}
+        attributes={{ onClick: activate }}
       >
         {/* File component */}
         <View gap={4}>
@@ -96,9 +61,9 @@ export default function CreateFile() {
         </View>
       </View>
 
-      <Modal active={modalActive} onClose={closeModal} padding={5}>
+      <Modal active={active} onClose={deactivate} padding={5}>
         <View gap={3}>
-          <Dismissible onClose={closeModal}>
+          <Dismissible onClose={deactivate} closeAriaLabel="Close">
             <Modal.Title>
               <Text variant="body-1" weight="bold">
                 Create Business Plan based on:

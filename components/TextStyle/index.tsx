@@ -1,25 +1,17 @@
 "use client";
+import { ReactElement } from "react";
 import {
   View,
-  ViewProps,
   Button,
-  ButtonProps,
-  Text,
-  TextProps,
   Tooltip,
-  TooltipProps,
 } from "reshaped";
 
-import PlusIcon from "../Icons/PlusIcon";
-import DocsIcon from "../Icons/DocsIcon";
-import { string } from "slate";
-
-export type Props = {
+export interface TextStyleProps {
   label: string;
-  icon: object;
-};
+  icon: ReactElement;
+}
 
-export default function TextStyle({ label, icon }) {
+export default function TextStyle({ label, icon }: TextStyleProps) {
   return (
     <View>
       <Tooltip text={label}>
