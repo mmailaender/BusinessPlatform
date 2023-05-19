@@ -20,10 +20,8 @@ const page = () => {
           </View>
         </View>
         <View className="basis-1/12 print:hidden"></View>
-        <View className="basis-6/12 print:basis-full">
-          <View>
-            <Plate />
-          </View>
+        <View className="basis-6/12 print:basis-full min-w-0">
+          <Plate />
         </View>
       </View>
     </>
