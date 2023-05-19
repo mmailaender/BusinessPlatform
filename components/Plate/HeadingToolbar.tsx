@@ -48,7 +48,7 @@ export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
 
   return (
-    <View direction="row" align="center" gap={1}>
+    <View direction="row" align="center" gap={1} >
       <BlockToolbarButton
         tooltip={tooltip("Heading 1")}
         type={getPluginType(editor, ELEMENT_H1)}
