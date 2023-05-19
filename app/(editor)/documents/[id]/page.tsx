@@ -2,12 +2,16 @@ import FileNavigation from "@/components/FileNavigation";
 import Plate from "@/components/Plate";
 import { View, Text } from "reshaped";
 import PrintCover from "@/components/PrintCover";
+import ContentTemplate from "@/components/ContentTemplate";
 
 const page = () => {
   return (
     <>
       <View className="hidden print:block">
         <PrintCover />
+      </View>
+      <View className="hidden print:block">
+        <ContentTemplate />
       </View>
       <View className="flex flex-row px-x6 pt-[120px]">
         <View className="basis-2/12 print:hidden">
@@ -16,7 +20,7 @@ const page = () => {
           </View>
         </View>
         <View className="basis-1/12 print:hidden"></View>
-        <View className="basis-6/12">
+        <View className="basis-6/12 print:basis-full">
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
