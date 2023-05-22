@@ -1,9 +1,12 @@
 'use client';
 
+import { View } from 'reshaped';
+import PrintCover from './PrintCover';
+import ContentTemplate from './PrintTableOfContent';
+
 import { MyValue } from '@/components/Plate/interfaces/plateTypes';
 import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
-import { View } from 'reshaped';
 
 const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
 const FileNavigation = dynamic(() => import('@/components/FileNavigation'), {
@@ -38,19 +41,31 @@ const DocumentPage = () => {
   }, [document]);
 
   return (
-    <View direction='row' paddingInline={6} paddingTop={16} width='100%'>
-      <View.Item columns={2}>
-        <View>
-          <FileNavigation sections={sections} />
+    <>
+      <View className='hidden print:block'>
+        <PrintCover />
+      </View>
+      <View className='hidden print:block'>
+        <ContentTemplate />
+      </View>
+      <View className='flex flex-row px-x6 pt-x32'>
+        <View className='basis-2/12 print:hidden'>
+          <View
+            position='sticky'
+            insetTop={20}
+          >
+            <FileNavigation sections={sections} />
+          </View>
         </View>
-      </View.Item>
-      <View.Item columns={1}></View.Item>
-      <View.Item columns={6}>
-        <View>
-          <Plate value={document} onChange={setDocument} />
+        <View className='basis-1/12 print:hidden'></View>
+        <View className='basis-6/12 print:basis-full min-w-0'>
+          <Plate
+            value={document}
+            onChange={setDocument}
+          />
         </View>
-      </View.Item>
-    </View>
+      </View>
+    </>
   );
 };
 

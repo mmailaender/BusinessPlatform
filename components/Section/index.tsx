@@ -42,7 +42,7 @@ export default function Section({ title }: any) {
         className='group'
         roundedCorners={true}
         endSlot={
-          <DropdownMenu position='bottom-end'>
+          <DropdownMenu position='bottom-start'>
             <DropdownMenu.Trigger>
               {(attributes) => (
                 <Button

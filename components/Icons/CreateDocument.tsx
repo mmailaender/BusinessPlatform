@@ -12,7 +12,7 @@ const CreateDocument = () => {
         fill='#F4F5F7'
         stroke='#DFE2EA'
       />
-      <g clip-path='url(#clip0_328_14098)'>
+      <g clipPath='url(#clip0_328_14098)'>
         <path
           fillRule='evenodd'
           clipRule='evenodd'

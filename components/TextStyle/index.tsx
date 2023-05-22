@@ -1,31 +1,29 @@
 "use client";
+import { ReactElement } from "react";
 import {
   View,
-  ViewProps,
   Button,
-  ButtonProps,
-  Text,
-  TextProps,
+  Tooltip,
 } from "reshaped";
 
-import PlusIcon from "../Icons/PlusIcon";
-import DocsIcon from "../Icons/DocsIcon";
+export interface TextStyleProps {
+  label: string;
+  icon: ReactElement;
+}
 
-export default function TextStyle() {
+export default function TextStyle({ label, icon }: TextStyleProps) {
   return (
-    <View className="group w-fit" align="center">
-      <View
-        paddingInline={2}
-        paddingBlock={1}
-        backgroundColor="black"
-        borderRadius="small"
-        className=" w-fit opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transform transition-all duration-400"
-      >
-        <Text variant="body-3" weight="medium">
-          Bold
-        </Text>
-      </View>
-      <Button icon={<DocsIcon />} size="medium" variant="ghost"></Button>
+    <View>
+      <Tooltip text={label}>
+        {(attributes) => (
+          <Button
+            icon={icon}
+            attributes={attributes}
+            size="medium"
+            variant="ghost"
+          ></Button>
+        )}
+      </Tooltip>
     </View>
   );
 }

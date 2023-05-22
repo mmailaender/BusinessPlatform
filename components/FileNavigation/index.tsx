@@ -1,5 +1,19 @@
 'use client';
-import { Button, View, Text, Divider, Accordion, DropdownMenu } from 'reshaped';
+import {
+  Button,
+  View,
+  Text,
+  ViewProps,
+  TextProps,
+  Divider,
+  DividerProps,
+  Accordion,
+  AccordionProps,
+  MenuItem,
+  Placeholder,
+  DropdownMenu,
+  DropdownMenuProps,
+} from 'reshaped';
 
 import PlusIcon from '../Icons/PlusIcon';
 import Section from '../Section';
@@ -15,14 +29,20 @@ export default function FileNavigation({ sections }: FileNavigationProps) {
       <View
         direction='row'
         width='100%'
-        className='justify-between'
         align='center'
         paddingBottom={6}
         paddingStart={4}
+        paddingTop={4}
       >
-        <Text variant='body-3' weight='medium' color='neutral-faded'>
-          Sections
-        </Text>
+        <View.Item grow>
+          <Text
+            variant='body-3'
+            weight='medium'
+            color='neutral-faded'
+          >
+            Sections
+          </Text>
+        </View.Item>
         <DropdownMenu position='bottom'>
           <DropdownMenu.Trigger>
             {(attributes) => (
@@ -46,7 +66,11 @@ export default function FileNavigation({ sections }: FileNavigationProps) {
       {Object.keys(sections).map(
         (sectionName: string, sectionIndex: number) => {
           return (
-            <View width='100%' key={sectionIndex} paddingEnd={2}>
+            <View
+              width='100%'
+              key={sectionIndex}
+              paddingEnd={2}
+            >
               <Accordion defaultActive={false}>
                 <Accordion.Trigger>
                   <View paddingBottom={2}>
@@ -57,7 +81,11 @@ export default function FileNavigation({ sections }: FileNavigationProps) {
                   {/* List of subsection */}
                   {sections[sectionName].map(
                     (subsection: string, index: number) => (
-                      <View gap={1} key={index} paddingBottom={3}>
+                      <View
+                        gap={1}
+                        key={index}
+                        paddingBottom={3}
+                      >
                         <View
                           direction='row'
                           align='center'
@@ -65,7 +93,10 @@ export default function FileNavigation({ sections }: FileNavigationProps) {
                           paddingStart={4}
                           width='100%'
                         >
-                          <View height={10} align='start'>
+                          <View
+                            height={10}
+                            align='start'
+                          >
                             <Divider vertical />
                           </View>
                           {/* subsection list */}

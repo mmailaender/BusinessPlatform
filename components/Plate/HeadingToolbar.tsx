@@ -17,13 +17,12 @@ import {
   MARK_ITALIC,
   MARK_UNDERLINE,
   MarkToolbarButton,
+  ELEMENT_LINK,
   ELEMENT_OL,
   ELEMENT_UL,
   ListToolbarButton,
 } from '@udecode/plate';
 import { FormatStrikethrough } from '@styled-icons/material/FormatStrikethrough';
-import { FormatListBulleted } from '@styled-icons/material/FormatListBulleted';
-import { FormatListNumbered } from '@styled-icons/material/FormatListNumbered';
 import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
 import { FormatBold } from '@styled-icons/material/FormatBold';
 import { FormatItalic } from '@styled-icons/material/FormatItalic';
@@ -36,6 +35,15 @@ import { Looks5 } from '@styled-icons/material/Looks5';
 import { Looks6 } from '@styled-icons/material/Looks6';
 import { LooksOne } from '@styled-icons/material/LooksOne';
 import { LooksTwo } from '@styled-icons/material/LooksTwo';
+import TextStyle from '@/components/TextStyle';
+import BoldIcon from '@/components/Icons/BoldIcon';
+import ItalicIcon from '@/components/Icons/ItalicIcon';
+import UnderlineIcon from '@/components/Icons/UnderlineIcon';
+import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
+import LinkIcon from '@/components/Icons/LinkIcon';
+import { FormatListBulleted } from '@styled-icons/material/FormatListBulleted';
+import { FormatListNumbered } from '@styled-icons/material/FormatListNumbered';
+import { View } from 'reshaped';
 
 const tooltip = (content: string) => ({
   content,
@@ -45,7 +53,11 @@ export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
 
   return (
-    <>
+    <View
+      direction='row'
+      align='center'
+      gap={1}
+    >
       <BlockToolbarButton
         tooltip={tooltip('Heading 1')}
         type={getPluginType(editor, ELEMENT_H1)}
@@ -61,58 +73,82 @@ export const BasicElementToolbarButtons = () => {
         type={getPluginType(editor, ELEMENT_H3)}
         icon={<Looks3 />}
       />
-      <BlockToolbarButton
-        tooltip={tooltip('Heading 4')}
+
+      {/* <BlockToolbarButton
+        tooltip={tooltip("Heading 4")}
         type={getPluginType(editor, ELEMENT_H4)}
         icon={<Looks4 />}
       />
       <BlockToolbarButton
-        tooltip={tooltip('Heading 5')}
+        tooltip={tooltip("Heading 5")}
         type={getPluginType(editor, ELEMENT_H5)}
         icon={<Looks5 />}
       />
       <BlockToolbarButton
-        tooltip={tooltip('Heading 6')}
+        tooltip={tooltip("Heading 6")}
         type={getPluginType(editor, ELEMENT_H6)}
         icon={<Looks6 />}
-      />
+      /> */}
+
       <MarkToolbarButton
-        tooltip={tooltip('Bold (⌘+B)')}
+        tooltip={tooltip('')}
         type={getPluginType(editor, MARK_BOLD)}
-        icon={<FormatBold />}
+        icon={
+          <TextStyle
+            label='Bold'
+            icon={<BoldIcon />}
+          />
+        }
       />
       <MarkToolbarButton
-        tooltip={tooltip('Italic (⌘+I)')}
+        tooltip={tooltip('')}
         type={getPluginType(editor, MARK_ITALIC)}
-        icon={<FormatItalic />}
+        icon={
+          <TextStyle
+            label='Italic'
+            icon={<ItalicIcon />}
+          />
+        }
       />
       <MarkToolbarButton
-        tooltip={tooltip('Underline (⌘+U)')}
+        tooltip={tooltip('')}
         type={getPluginType(editor, MARK_UNDERLINE)}
-        icon={<FormatUnderlined />}
+        icon={
+          <TextStyle
+            label='Underline'
+            icon={<UnderlineIcon />}
+          />
+        }
       />
       <MarkToolbarButton
-        tooltip={tooltip('Strikethrough (⌘+⇧+M)')}
+        tooltip={tooltip('')}
         type={getPluginType(editor, MARK_STRIKETHROUGH)}
-        icon={<FormatStrikethrough />}
+        icon={
+          <TextStyle
+            label='Strikethrough'
+            icon={<StrikethroughIcon />}
+          />
+        }
       />
-      <MarkToolbarButton
-        tooltip={tooltip('Superscript (⌘+,)')}
+
+      {/* <MarkToolbarButton
+        tooltip={tooltip("Superscript (⌘+,)")}
         type={getPluginType(editor, MARK_SUPERSCRIPT)}
         clear={getPluginType(editor, MARK_SUBSCRIPT)}
         icon={<Superscript />}
       />
       <MarkToolbarButton
-        tooltip={tooltip('Subscript (⌘+.)')}
+        tooltip={tooltip("Subscript (⌘+.)")}
         type={getPluginType(editor, MARK_SUBSCRIPT)}
         clear={getPluginType(editor, MARK_SUPERSCRIPT)}
         icon={<Subscript />}
       />
       <BlockToolbarButton
-        tooltip={tooltip('Block Quote (⌘+⇧+.)')}
+        tooltip={tooltip("Block Quote (⌘+⇧+.)")}
         type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
         icon={<FormatQuote />}
-      />
+      /> */}
+
       <ListToolbarButton
         tooltip={tooltip('Bullet List')}
         type={getPluginType(editor, ELEMENT_UL)}
@@ -123,6 +159,6 @@ export const BasicElementToolbarButtons = () => {
         type={getPluginType(editor, ELEMENT_OL)}
         icon={<FormatListNumbered />}
       />
-    </>
+    </View>
   );
 };

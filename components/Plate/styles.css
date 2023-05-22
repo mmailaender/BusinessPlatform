@@ -1,17 +1,14 @@
 [data-slate-editor] {
-  padding: 84px 50px 50px;
+  padding: 8px 8px;
   position: relative;
 }
 
 .slate-HeadingToolbar {
-  padding: 17px 60px !important;
-  position: fixed !important;
-  background: white !important;
-  z-index: 1000;
   width: 100%;
+  padding: unset !important;
 }
 
-.tippy-box[data-theme~='tomato'] {
+.tippy-box[data-theme~="tomato"] {
   background-color: tomato;
   color: yellow;
 }
