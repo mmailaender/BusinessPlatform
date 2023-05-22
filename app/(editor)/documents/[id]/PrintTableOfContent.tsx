@@ -2,7 +2,7 @@
 import { View, Text, Image, ImageProps, Icon, IconProps } from "reshaped";
 import React from "react";
 import Document from "@/components/Icons/Document";
-import ContentLine from "@/components/ContentLine";
+import ContentLine, { SecondaryContentLine } from "@/components/ContentLine";
 
 export default function PrintTableOfContent() {
   return (
@@ -11,7 +11,14 @@ export default function PrintTableOfContent() {
         <Text variant="title-4"> Content</Text>
         <View gap={2}>
           <ContentLine />
+          <SecondaryContentLine />
+          <SecondaryContentLine />
           <ContentLine />
+          <SecondaryContentLine />
+          <SecondaryContentLine />
+          <SecondaryContentLine />
+          <SecondaryContentLine />
+          <SecondaryContentLine />
         </View>
       </View>
     </View>
