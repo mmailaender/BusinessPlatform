@@ -56,21 +56,21 @@ export const BasicElementToolbarButtons = () => {
 
   return (
     <View direction="row" align="center">
-      {/* <BlockToolbarButton
-        tooltip={tooltip('Heading 1')}
+      <BlockToolbarButton
+        tooltip={tooltip("Heading 1")}
         type={getPluginType(editor, ELEMENT_H1)}
         icon={<LooksOne />}
       />
       <BlockToolbarButton
-        tooltip={tooltip('Heading 2')}
+        tooltip={tooltip("Heading 2")}
         type={getPluginType(editor, ELEMENT_H2)}
         icon={<LooksTwo />}
       />
       <BlockToolbarButton
-        tooltip={tooltip('Heading 3')}
+        tooltip={tooltip("Heading 3")}
         type={getPluginType(editor, ELEMENT_H3)}
         icon={<Looks3 />}
-      /> */}
+      />
 
       {/* <BlockToolbarButton
         tooltip={tooltip("Heading 4")}

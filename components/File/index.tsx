@@ -237,3 +237,38 @@ export function DocumentFile() {
     </View>
   );
 }
+
+export function CreateTemplate() {
+  return (
+    <>
+      <View width="100%" padding={6} className="group cursor-pointer">
+        {/* File component */}
+        <View gap={4}>
+          <View
+            borderColor="neutral-faded"
+            aspectRatio={1 / 1}
+            borderRadius="small"
+            className="border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
+            justify="center"
+            align="center"
+            padding={{ xl: 12, l: 14, m: 10, s: 10 }}
+          >
+            <CreateDocument />
+          </View>
+          {/* Label */}
+          <View align="center" paddingBottom={6}>
+            <Text
+              variant="body-2"
+              weight="medium"
+              align="center"
+              color="primary"
+              className="group-hover:opacity-90"
+            >
+              Create New Template
+            </Text>
+          </View>
+        </View>
+      </View>
+    </>
+  );
+}
