@@ -35,6 +35,14 @@
   font-size: 18px !important;
 }
 
+ul {
+  list-style: disc !important;
+}
+
+ol {
+  list-style: decimal !important;
+}
+
 /* .slate-code_block {
   background-color: #111827 !important;
 }
