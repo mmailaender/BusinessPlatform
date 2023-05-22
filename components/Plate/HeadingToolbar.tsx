@@ -21,29 +21,31 @@ import {
   ELEMENT_OL,
   ELEMENT_UL,
   ListToolbarButton,
-} from '@udecode/plate';
-import { FormatStrikethrough } from '@styled-icons/material/FormatStrikethrough';
-import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
-import { FormatBold } from '@styled-icons/material/FormatBold';
-import { FormatItalic } from '@styled-icons/material/FormatItalic';
-import { FormatQuote } from '@styled-icons/material/FormatQuote';
-import { Subscript } from '@styled-icons/material/Subscript';
-import { Superscript } from '@styled-icons/material/Superscript';
-import { Looks3 } from '@styled-icons/material/Looks3';
-import { Looks4 } from '@styled-icons/material/Looks4';
-import { Looks5 } from '@styled-icons/material/Looks5';
-import { Looks6 } from '@styled-icons/material/Looks6';
-import { LooksOne } from '@styled-icons/material/LooksOne';
-import { LooksTwo } from '@styled-icons/material/LooksTwo';
-import TextStyle from '@/components/TextStyle';
-import BoldIcon from '@/components/Icons/BoldIcon';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
-import LinkIcon from '@/components/Icons/LinkIcon';
-import { FormatListBulleted } from '@styled-icons/material/FormatListBulleted';
-import { FormatListNumbered } from '@styled-icons/material/FormatListNumbered';
-import { View } from 'reshaped';
+} from "@udecode/plate";
+import { FormatStrikethrough } from "@styled-icons/material/FormatStrikethrough";
+import { FormatUnderlined } from "@styled-icons/material/FormatUnderlined";
+import { FormatBold } from "@styled-icons/material/FormatBold";
+import { FormatItalic } from "@styled-icons/material/FormatItalic";
+import { FormatQuote } from "@styled-icons/material/FormatQuote";
+import { Subscript } from "@styled-icons/material/Subscript";
+import { Superscript } from "@styled-icons/material/Superscript";
+import { Looks3 } from "@styled-icons/material/Looks3";
+import { Looks4 } from "@styled-icons/material/Looks4";
+import { Looks5 } from "@styled-icons/material/Looks5";
+import { Looks6 } from "@styled-icons/material/Looks6";
+import { LooksOne } from "@styled-icons/material/LooksOne";
+import { LooksTwo } from "@styled-icons/material/LooksTwo";
+import TextStyle from "@/components/TextStyle";
+import BoldIcon from "@/components/Icons/BoldIcon";
+import ItalicIcon from "@/components/Icons/ItalicIcon";
+import UnderlineIcon from "@/components/Icons/UnderlineIcon";
+import StrikethroughIcon from "@/components/Icons/StrikethroughIcon";
+import LinkIcon from "@/components/Icons/LinkIcon";
+import { FormatListBulleted } from "@styled-icons/material/FormatListBulleted";
+import { FormatListNumbered } from "@styled-icons/material/FormatListNumbered";
+import { View } from "reshaped";
+import BulletlistIcon from "../Icons/BulletlistIcon";
+import OrderlistIcon from "../Icons/OrderlistIcon";
 
 const tooltip = (content: string) => ({
   content,
@@ -53,12 +55,8 @@ export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
 
   return (
-    <View
-      direction='row'
-      align='center'
-      gap={1}
-    >
-      <BlockToolbarButton
+    <View direction="row" align="center">
+      {/* <BlockToolbarButton
         tooltip={tooltip('Heading 1')}
         type={getPluginType(editor, ELEMENT_H1)}
         icon={<LooksOne />}
@@ -72,7 +70,7 @@ export const BasicElementToolbarButtons = () => {
         tooltip={tooltip('Heading 3')}
         type={getPluginType(editor, ELEMENT_H3)}
         icon={<Looks3 />}
-      />
+      /> */}
 
       {/* <BlockToolbarButton
         tooltip={tooltip("Heading 4")}
@@ -90,7 +88,7 @@ export const BasicElementToolbarButtons = () => {
         icon={<Looks6 />}
       /> */}
 
-      <MarkToolbarButton
+      {/* <MarkToolbarButton
         tooltip={tooltip('')}
         type={getPluginType(editor, MARK_BOLD)}
         icon={
@@ -109,8 +107,8 @@ export const BasicElementToolbarButtons = () => {
             icon={<ItalicIcon />}
           />
         }
-      />
-      <MarkToolbarButton
+      /> */}
+      {/* <MarkToolbarButton
         tooltip={tooltip('')}
         type={getPluginType(editor, MARK_UNDERLINE)}
         icon={
@@ -129,7 +127,7 @@ export const BasicElementToolbarButtons = () => {
             icon={<StrikethroughIcon />}
           />
         }
-      />
+      /> */}
 
       {/* <MarkToolbarButton
         tooltip={tooltip("Superscript (⌘+,)")}
@@ -150,14 +148,14 @@ export const BasicElementToolbarButtons = () => {
       /> */}
 
       <ListToolbarButton
-        tooltip={tooltip('Bullet List')}
+        tooltip={tooltip("")}
         type={getPluginType(editor, ELEMENT_UL)}
-        icon={<FormatListBulleted />}
+        icon={<TextStyle label="Bullet List" icon={<BulletlistIcon />} />}
       />
       <ListToolbarButton
-        tooltip={tooltip('Ordered List')}
+        tooltip={tooltip("")}
         type={getPluginType(editor, ELEMENT_OL)}
-        icon={<FormatListNumbered />}
+        icon={<TextStyle label="Ordered List" icon={<OrderlistIcon />} />}
       />
     </View>
   );
