@@ -148,12 +148,12 @@ export const BasicElementToolbarButtons = () => {
       /> */}
 
       <ListToolbarButton
-        tooltip={tooltip("")}
+        
         type={getPluginType(editor, ELEMENT_UL)}
         icon={<TextStyle label="Bullet List" icon={<BulletlistIcon />} />}
       />
       <ListToolbarButton
-        tooltip={tooltip("")}
+        
         type={getPluginType(editor, ELEMENT_OL)}
         icon={<TextStyle label="Ordered List" icon={<OrderlistIcon />} />}
       />

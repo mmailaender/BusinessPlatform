@@ -16,6 +16,9 @@ import {
   MarkToolbarButton,
   WithPartial,
   LinkToolbarButton,
+  ListToolbarButton,
+  ELEMENT_UL,
+  ELEMENT_OL,
 } from "@udecode/plate";
 import { useMyPlateEditorRef } from "./interfaces/plateTypes";
 import { Select, View, ViewProps, SelectProps } from "reshaped";
@@ -27,6 +30,8 @@ import StrikethroughIcon from "@/components/Icons/StrikethroughIcon";
 import LinkIcon from "@/components/Icons/LinkIcon";
 import TextIcon from "@/components/Icons/TextIcon";
 import TableIcon from "@/components/Icons/TableIcon";
+import BulletlistIcon from "../Icons/BulletlistIcon";
+import OrderlistIcon from "../Icons/OrderlistIcon";
 
 export const markTooltip: TippyProps = {
   arrow: true,
@@ -55,6 +60,10 @@ export const MarkBalloonToolbar = (
   };
   const strikethroughTooltip: TippyProps = { content: "", ...markTooltip };
   const linkTooltip: TippyProps = { content: "", ...markTooltip };
+
+  function tooltip(arg0: string) {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <BalloonToolbar theme={theme} arrow={arrow} {...balloonToolbarProps}>
@@ -102,6 +111,16 @@ export const MarkBalloonToolbar = (
           />
         </View>
         <View direction="row" align="center">
+          <ListToolbarButton
+            type={getPluginType(editor, ELEMENT_UL)}
+            icon={<TextStyle label="Bullet List" icon={<BulletlistIcon />} />}
+          />
+          <ListToolbarButton
+            type={getPluginType(editor, ELEMENT_OL)}
+            icon={<TextStyle label="Ordered List" icon={<OrderlistIcon />} />}
+          />
+        </View>
+        <View direction="row" align="center" paddingEnd={1}>
           <LinkToolbarButton
             icon={<TextStyle label="Link" icon={<LinkIcon />} />}
           />
