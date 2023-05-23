@@ -19,26 +19,33 @@ const DocumentPage = () => {
   const sections = useMemo(() => {
     let section = '';
 
-    return document.reduce((prev: { [key: string]: string[] }, curr) => {
-      const elementType = curr?.type;
-      const text: string = curr?.children?.[0]?.text as string;
+    return document.reduce(
+      (prev: { [key: string]: { id: string; [key: string]: any } }, curr) => {
+        const elementType = curr?.type;
+        const text: string = curr?.children?.[0]?.text as string;
+        const id = curr?.id || 'jagh2';
 
-      if (elementType === 'h1') {
-        section = text;
-        prev[section] = [];
+        if (elementType === 'h1') {
+          section = text;
+          prev[section] = { id, [section]: [] };
+
+          return prev;
+        }
+
+        if (elementType === 'h2' && prev?.[section]) {
+          prev[section][section] = [...prev[section][section], text];
+
+          return prev;
+        }
 
         return prev;
-      }
-
-      if (elementType === 'h2' && prev?.[section]) {
-        prev[section] = [...prev[section], text];
-
-        return prev;
-      }
-
-      return prev;
-    }, {} as { [key: string]: string[] });
+      },
+      {} as { [key: string]: { id: string; [key: string]: any } }
+    );
   }, [document]);
+
+  console.log('document', document);
+  console.log('sections', sections);
 
   return (
     <>
@@ -50,19 +57,13 @@ const DocumentPage = () => {
       </View>
       <View className='flex flex-row px-x6 pt-x32'>
         <View className='basis-2/12 print:hidden'>
-          <View
-            position='sticky'
-            insetTop={20}
-          >
+          <View position='sticky' insetTop={20}>
             <FileNavigation sections={sections} />
           </View>
         </View>
         <View className='basis-1/12 print:hidden'></View>
         <View className='basis-6/12 print:basis-full min-w-0'>
-          <Plate
-            value={document}
-            onChange={setDocument}
-          />
+          <Plate value={document} onChange={setDocument} />
         </View>
       </View>
     </>
