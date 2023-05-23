@@ -29,7 +29,6 @@ import {
   createListPlugin,
   createTodoListPlugin,
   createNodeIdPlugin,
-  ELEMENT_H2,
 } from '@udecode/plate';
 import { Link } from '@styled-icons/material/Link';
 import { createDndPlugin } from '@udecode/plate-dnd';
@@ -55,45 +54,13 @@ import LinkIcon from '../Icons/LinkIcon';
 import TextStyle from '../TextStyle';
 import { View, classNames } from 'reshaped';
 
-const renderElement = (props: any) => {
-  console.log('element.type', props?.element?.type);
-  const { attributes, children, element } = props;
-
-  switch (element?.type) {
-    case 'h1': {
-      console.log('element.type', element.type);
-      return (
-        <h1
-          {...attributes}
-          id={`${Math.random()}`}
-        >
-          {children}
-        </h1>
-      );
-    }
-    default:
-      return <p {...attributes}>{children}</p>;
-  }
-};
-
 const plugins: MyPlatePlugin[] = createMyPlugins(
   [
-    // createParagraphPlugin(),
-    // createBasicElementsPlugin({ isElement: true, type: 'h1' }),
+    createParagraphPlugin(),
     createBlockquotePlugin(),
     createCodeBlockPlugin(),
-    // createHeadingPlugin({
-    //   isElement: true,
-    //   type: 'h1',
-    //   // key: 'h1',
-    //   // deserializeHtml: {
-    //   //   rules: [
-    //   //     {
-    //   //       validNodeName: `h1`,
-    //   //     },
-    //   //   ],
-    //   // },
-    // }),
+    createHeadingPlugin(),
+
     createBoldPlugin(),
     createCodePlugin(),
     createItalicPlugin(),
@@ -150,11 +117,7 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <PlateProvider<MyValue>
-        plugins={plugins}
-        onChange={onChange}
-        renderElement={renderElement}
-      >
+      <PlateProvider<MyValue> onChange={onChange} plugins={plugins}>
         <View
           position='sticky'
           insetTop={20}
@@ -179,10 +142,7 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
           </Toolbar>
         </View>
 
-        <Plate<MyValue>
-          editableProps={editableProps}
-          value={value}
-        >
+        <Plate<MyValue> editableProps={editableProps} value={value}>
           <MarkBalloonToolbar />
         </Plate>
       </PlateProvider>

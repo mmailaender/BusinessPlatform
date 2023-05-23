@@ -25,6 +25,9 @@ import {
   withProps,
 } from '@udecode/plate';
 import { withStyledDraggables } from './withStyledDraggables';
+import { H1Element } from './H1Element';
+import { H2Element } from './H2Element';
+import { H3Element } from './H3Element';
 
 export const plateUI = withStyledDraggables(
   createPlateUI({
@@ -64,45 +67,11 @@ export const plateUI = withStyledDraggables(
       } as Record<string, any>,
       prefixClassNames: 'p',
     }),
-    [ELEMENT_H1]: withProps(StyledElement, {
-      as: 'h1',
-      styles: {
-        root: {
-          marginTop: 8,
-          padding: '4px 0',
-          fontFamily: 'var(--rs-font-family-featured-1)',
-          lineHeight: 'var(--rs-line-height-featured-1)',
-          fontWeight: 'var(--rs-font-weight-heavy)',
-          fontSize: 'var(--rs-font-size-featured-1)',
-        },
-      } as Record<string, any>,
-    }),
-    [ELEMENT_H2]: withProps(StyledElement, {
-      as: 'h2',
-      styles: {
-        root: {
-          marginTop: 8,
-          padding: '4px 0',
-          fontFamily: 'var(--rs-font-family-featured-2)',
-          lineHeight: 'var(--rs-line-height-featured-2)',
-          fontWeight: 'var(--rs-font-weight-heavy)',
-          fontSize: 'var(--rs-font-size-featured-2)',
-        },
-      } as Record<string, any>,
-    }),
-    [ELEMENT_H3]: withProps(StyledElement, {
-      as: 'h3',
-      styles: {
-        root: {
-          marginTop: 8,
-          padding: '4px 0',
-          fontFamily: 'var(--rs-font-family-featured-3)',
-          lineHeight: 'var(--rs-line-height-featured-3)',
-          fontWeight: 'var(--rs-font-weight-heavy)',
-          fontSize: 'var(--rs-font-size-featured-3)',
-        },
-      } as Record<string, any>,
-    }),
+
+    [ELEMENT_H1]: H1Element,
+    [ELEMENT_H2]: H2Element,
+    [ELEMENT_H3]: H3Element,
+
     [ELEMENT_LINK]: withProps(StyledElement, {
       as: 'a',
       styles: {
