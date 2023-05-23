@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import {
   Plate,
   PlateProvider,
@@ -28,6 +29,7 @@ import {
   createListPlugin,
   createTodoListPlugin,
   createNodeIdPlugin,
+  ELEMENT_H2,
 } from '@udecode/plate';
 import { Link } from '@styled-icons/material/Link';
 import { createDndPlugin } from '@udecode/plate-dnd';
@@ -53,19 +55,45 @@ import LinkIcon from '../Icons/LinkIcon';
 import TextStyle from '../TextStyle';
 import { View, classNames } from 'reshaped';
 
-const editableProps: TEditableProps<MyValue> = {
-  placeholder: 'Type...',
-  spellCheck: false,
-  autoFocus: false,
+const renderElement = (props: any) => {
+  console.log('element.type', props?.element?.type);
+  const { attributes, children, element } = props;
+
+  switch (element?.type) {
+    case 'h1': {
+      console.log('element.type', element.type);
+      return (
+        <h1
+          {...attributes}
+          id={`${Math.random()}`}
+        >
+          {children}
+        </h1>
+      );
+    }
+    default:
+      return <p {...attributes}>{children}</p>;
+  }
 };
 
 const plugins: MyPlatePlugin[] = createMyPlugins(
   [
-    createParagraphPlugin(),
-    createBasicElementsPlugin(),
+    // createParagraphPlugin(),
+    // createBasicElementsPlugin({ isElement: true, type: 'h1' }),
     createBlockquotePlugin(),
     createCodeBlockPlugin(),
-    createHeadingPlugin(),
+    // createHeadingPlugin({
+    //   isElement: true,
+    //   type: 'h1',
+    //   // key: 'h1',
+    //   // deserializeHtml: {
+    //   //   rules: [
+    //   //     {
+    //   //       validNodeName: `h1`,
+    //   //     },
+    //   //   ],
+    //   // },
+    // }),
     createBoldPlugin(),
     createCodePlugin(),
     createItalicPlugin(),
@@ -93,8 +121,6 @@ export interface PlateEditorProps {
   onChange(value: MyValue): void;
 }
 
-import { useEffect, useState } from 'react';
-
 export const useScrollPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -116,11 +142,18 @@ export const useScrollPosition = () => {
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   const scrollPosition = useScrollPosition();
 
+  const editableProps: TEditableProps<MyValue> = {
+    placeholder: 'Type...',
+    spellCheck: false,
+    autoFocus: false,
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <PlateProvider<MyValue>
         plugins={plugins}
         onChange={onChange}
+        renderElement={renderElement}
       >
         <View
           position='sticky'
