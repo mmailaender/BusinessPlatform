@@ -12,7 +12,6 @@ import {
   createCodeBlockPlugin,
   createHeadingPlugin,
   createParagraphPlugin,
-  createBasicElementsPlugin,
   createBoldPlugin,
   createCodePlugin,
   createItalicPlugin,
@@ -60,7 +59,6 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createBlockquotePlugin(),
     createCodeBlockPlugin(),
     createHeadingPlugin(),
-
     createBoldPlugin(),
     createCodePlugin(),
     createItalicPlugin(),
