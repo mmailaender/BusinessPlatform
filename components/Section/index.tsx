@@ -1,15 +1,34 @@
-"use client";
-import { Button, View, Text, MenuItem, DropdownMenu, Tooltip } from "reshaped";
-import React from "react";
+'use client';
+import { Button, View, Text, MenuItem, DropdownMenu, Tooltip } from 'reshaped';
+import React from 'react';
 
-import MoreIcon from "../Icons/MoreIcon";
-import RenameIcon from "../Icons/RenameIcon";
-import DuplicateIcon from "../Icons/DuplicateIcon";
-import BinIcon from "../Icons/BinIcon";
+import MoreIcon from '../Icons/MoreIcon';
+import RenameIcon from '../Icons/RenameIcon';
+import DuplicateIcon from '../Icons/DuplicateIcon';
+import BinIcon from '../Icons/BinIcon';
 
 const maxLength = 35;
 
-export default function Section({ title }: any) {
+const handleScroll = (sectionId: string) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    const rect = section.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    window.scrollTo({
+      top: rect.top + scrollTop - 150,
+      behavior: 'smooth',
+    });
+  } else {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+};
+
+export default function Section({ title, sectionId }: any) {
   const truncatedText =
     title?.length > maxLength ? `${title.substring(0, maxLength)}...` : title;
   const showTooltip = title?.length > maxLength;
@@ -22,22 +41,23 @@ export default function Section({ title }: any) {
   };
 
   return (
-    <View width="100%">
+    <View width='100%'>
       <MenuItem
-        className="group"
+        onClick={() => handleScroll(sectionId)}
+        className='group'
         roundedCorners={true}
         endSlot={
-          <DropdownMenu position="bottom-start">
+          <DropdownMenu position='bottom-start'>
             <DropdownMenu.Trigger>
               {(attributes) => (
                 <Button
                   onClick={handleMoreButtonClick}
                   icon={<MoreIcon />}
-                  size="small"
-                  variant="ghost"
+                  size='small'
+                  variant='ghost'
                   rounded
                   attributes={attributes}
-                  className="opacity-0 group-hover:opacity-100 transform transition-all duration-300"
+                  className='opacity-0 group-hover:opacity-100 transform transition-all duration-300'
                 ></Button>
               )}
             </DropdownMenu.Trigger>
@@ -71,7 +91,7 @@ export default function Section({ title }: any) {
             {(attributes) => (
               <Text
                 attributes={attributes}
-                className="text-ellipsis  break-words"
+                className='text-ellipsis  break-words'
               >
                 {truncatedText}
               </Text>
