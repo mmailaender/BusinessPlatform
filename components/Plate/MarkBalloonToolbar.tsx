@@ -40,8 +40,10 @@ export const markTooltip: TippyProps = {
 };
 
 const options = [
-  { value: 'bold', label: 'bold' },
-  { value: 'italic', label: 'italic' },
+  {
+    value: 'p',
+    label: 'p',
+  },
   {
     value: 'h1',
     label: 'h1',
@@ -54,21 +56,7 @@ const options = [
     value: 'h3',
     label: 'h3',
   },
-  {
-    value: 'h4',
-    label: 'h4',
-  },
-  {
-    value: 'h5',
-    label: 'h5',
-  },
-  {
-    value: 'h6',
-    label: 'h6',
-  },
 ];
-
-// const options = [{ label: 'h1', value: 'h1' }];
 
 export const MarkBalloonToolbar = (
   props: WithPartial<BalloonToolbarProps, 'children'>
@@ -89,11 +77,8 @@ export const MarkBalloonToolbar = (
   const strikethroughTooltip: TippyProps = { content: '', ...markTooltip };
   const linkTooltip: TippyProps = { content: '', ...markTooltip };
 
-  const handleOption = (selectedOption) => {
-    if (selectedOption.value === 'bold' || selectedOption.value === 'italic') {
-      editor.addMark(selectedOption.value, true);
-    } else
-      Transforms.setNodes(editor as any, { type: selectedOption.value } as any);
+  const handleOption = (selectedOption: any) => {
+    Transforms.setNodes(editor as any, { type: selectedOption.value } as any);
   };
 
   return (
