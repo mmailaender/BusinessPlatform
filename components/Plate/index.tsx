@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import {
   Plate,
   PlateProvider,
@@ -11,7 +12,6 @@ import {
   createCodeBlockPlugin,
   createHeadingPlugin,
   createParagraphPlugin,
-  createBasicElementsPlugin,
   createBoldPlugin,
   createCodePlugin,
   createItalicPlugin,
@@ -53,16 +53,9 @@ import LinkIcon from '../Icons/LinkIcon';
 import TextStyle from '../TextStyle';
 import { View, classNames } from 'reshaped';
 
-const editableProps: TEditableProps<MyValue> = {
-  placeholder: 'Type...',
-  spellCheck: false,
-  autoFocus: false,
-};
-
 const plugins: MyPlatePlugin[] = createMyPlugins(
   [
     createParagraphPlugin(),
-    createBasicElementsPlugin(),
     createBlockquotePlugin(),
     createCodeBlockPlugin(),
     createHeadingPlugin(),
@@ -93,8 +86,6 @@ export interface PlateEditorProps {
   onChange(value: MyValue): void;
 }
 
-import { useEffect, useState } from 'react';
-
 export const useScrollPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -116,12 +107,15 @@ export const useScrollPosition = () => {
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   const scrollPosition = useScrollPosition();
 
+  const editableProps: TEditableProps<MyValue> = {
+    placeholder: 'Type...',
+    spellCheck: false,
+    autoFocus: false,
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
-      <PlateProvider<MyValue>
-        plugins={plugins}
-        onChange={onChange}
-      >
+      <PlateProvider<MyValue> onChange={onChange} plugins={plugins}>
         <View
           position='sticky'
           insetTop={20}
@@ -146,10 +140,7 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
           </Toolbar>
         </View>
 
-        <Plate<MyValue>
-          editableProps={editableProps}
-          value={value}
-        >
+        <Plate<MyValue> editableProps={editableProps} value={value}>
           <MarkBalloonToolbar />
         </Plate>
       </PlateProvider>

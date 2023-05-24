@@ -31,7 +31,26 @@ import BinIcon from '../Icons/BinIcon';
 
 const maxLength = 35;
 
-export default function Section({ title }: any) {
+const handleScroll = (sectionId: string) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    const rect = section.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    window.scrollTo({
+      top: rect.top + scrollTop - 150,
+      behavior: 'smooth',
+    });
+  } else {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+};
+
+export default function Section({ title, sectionId }: any) {
   const truncatedText =
     title?.length > maxLength ? `${title.substring(0, maxLength)}...` : title;
   const showTooltip = title?.length > maxLength;
@@ -39,6 +58,7 @@ export default function Section({ title }: any) {
   return (
     <View width='100%'>
       <MenuItem
+        onClick={() => handleScroll(sectionId)}
         className='group'
         roundedCorners={true}
         endSlot={
