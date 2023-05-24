@@ -37,13 +37,18 @@ export default function Section({ title, sectionId }: any) {
   const showTooltip = title?.length > maxLength;
 
   const handleScroll = (sectionId: string) => {
-    const yOffset = -10;
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const scroll =
-        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-      window.scrollTo({ top: scroll, behavior: 'smooth' });
+      window.scrollTo({
+        top: rect.top + scrollTop - 150,
+        behavior: 'smooth',
+      });
+    } else {
+      window.scrollTo(0, 0);
     }
   };
 

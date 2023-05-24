@@ -44,9 +44,6 @@ const DocumentPage = () => {
     );
   }, [document]);
 
-  console.log('document', document);
-  console.log('sections', sections);
-
   return (
     <>
       <View className='hidden print:block'>
