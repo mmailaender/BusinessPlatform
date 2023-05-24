@@ -41,20 +41,20 @@ export const markTooltip: TippyProps = {
 
 const options = [
   {
-    value: 'p',
-    label: 'p',
-  },
-  {
     value: 'h1',
-    label: 'h1',
+    label: 'Heading 1',
   },
   {
     value: 'h2',
-    label: 'h2',
+    label: 'Heading 2',
   },
   {
     value: 'h3',
-    label: 'h3',
+    label: 'Heading 3',
+  },
+  {
+    value: 'p',
+    label: 'Paragraph',
   },
 ];
 
