@@ -69,7 +69,12 @@ export default function Section({ title }: any) {
         {showTooltip && (
           <Tooltip text={title}>
             {(attributes) => (
-              <Text attributes={attributes}>{truncatedText}</Text>
+              <Text
+                attributes={attributes}
+                className="text-ellipsis  break-words"
+              >
+                {truncatedText}
+              </Text>
             )}
           </Tooltip>
         )}

@@ -56,7 +56,7 @@ export const BasicElementToolbarButtons = () => {
 
   return (
     <View direction="row" align="center">
-      <BlockToolbarButton
+      {/* <BlockToolbarButton
         tooltip={tooltip("Heading 1")}
         type={getPluginType(editor, ELEMENT_H1)}
         icon={<LooksOne />}
@@ -70,7 +70,7 @@ export const BasicElementToolbarButtons = () => {
         tooltip={tooltip("Heading 3")}
         type={getPluginType(editor, ELEMENT_H3)}
         icon={<Looks3 />}
-      />
+      /> */}
 
       {/* <BlockToolbarButton
         tooltip={tooltip("Heading 4")}
@@ -148,12 +148,10 @@ export const BasicElementToolbarButtons = () => {
       /> */}
 
       <ListToolbarButton
-        
         type={getPluginType(editor, ELEMENT_UL)}
         icon={<TextStyle label="Bullet List" icon={<BulletlistIcon />} />}
       />
       <ListToolbarButton
-        
         type={getPluginType(editor, ELEMENT_OL)}
         icon={<TextStyle label="Ordered List" icon={<OrderlistIcon />} />}
       />
