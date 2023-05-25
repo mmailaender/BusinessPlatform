@@ -3,12 +3,18 @@ import { View, Text, Image, ImageProps, Icon, IconProps } from 'reshaped';
 import React from 'react';
 import Document from '../Icons/Document';
 
-export default function ContentLine({ title }: { title: string }) {
+export default function ContentLine({
+  title,
+  sectionNumber,
+}: {
+  title: string;
+  sectionNumber: number;
+}) {
   return (
     <View gap={2}>
       <View className=' flex flex-row justify-between'>
         <Text variant='body-2' weight='bold'>
-          {title}
+          {sectionNumber}. {title}
         </Text>
       </View>
     </View>
