@@ -83,6 +83,11 @@ export const withStyledDraggables = (components: any) => {
             </Tippy>
           );
         },
+        styles: {
+          block: {
+            overflow: "unset",
+          },
+        },
       },
     },
     {
@@ -172,7 +177,7 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: "12px 0 0",
+            padding: "12px 0 0 !important",
           },
         },
       },
