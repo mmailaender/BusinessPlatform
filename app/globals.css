@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slate-ToolbarButton-active {
+  color: var(--rs-color-foreground-primary) !important;
+}

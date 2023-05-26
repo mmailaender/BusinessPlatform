@@ -1,14 +1,8 @@
-import React from 'react';
-import { FormatBold } from '@styled-icons/material/FormatBold';
-import { FormatItalic } from '@styled-icons/material/FormatItalic';
-import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
+import React, { useMemo } from 'react';
 import { TippyProps } from '@tippyjs/react';
 import {
   BalloonToolbar,
   BalloonToolbarProps,
-  ELEMENT_LINK,
-  getPluginType,
-  ELEMENT_TABLE,
   MARK_BOLD,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
@@ -16,17 +10,24 @@ import {
   MarkToolbarButton,
   WithPartial,
   LinkToolbarButton,
+  getPluginType,
+  ELEMENT_H1,
+  someNode,
+  usePlateSelection,
+  ELEMENT_H2,
+  ELEMENT_H3,
+  ELEMENT_PARAGRAPH,
   ListToolbarButton,
   ELEMENT_UL,
   ELEMENT_OL,
   TComboboxItem,
 } from '@udecode/plate';
+import { FormatBold } from '@styled-icons/material/FormatBold';
 import { useMyPlateEditorRef } from './interfaces/plateTypes';
 import { Select, View, ViewProps, SelectProps } from 'reshaped';
 import TextStyle from '@/components/TextStyle';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import BoldIcon from '@/components/Icons/BoldIcon';
+import { FormatItalic } from '@styled-icons/material/FormatItalic';
+import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
 import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import LinkIcon from '@/components/Icons/LinkIcon';
 import TextIcon from '@/components/Icons/TextIcon';
@@ -69,6 +70,7 @@ export const MarkBalloonToolbar = (
   const { children, ...balloonToolbarProps } = props;
 
   const editor = useMyPlateEditorRef();
+  const isSelected = usePlateSelection();
 
   const arrow = false;
   const theme = 'light';
@@ -82,19 +84,42 @@ export const MarkBalloonToolbar = (
   const strikethroughTooltip: TippyProps = { content: '', ...markTooltip };
   const linkTooltip: TippyProps = { content: '', ...markTooltip };
 
-  const handleOption = (selectedOption: any) => {
-    Transforms.setNodes(editor as any, { type: selectedOption.value } as any);
+  const handleOption = (selected: any) => {
+    Transforms.setNodes(editor as any, { type: selected.value } as any);
   };
 
-  function tooltip(arg0: string) {
-    throw new Error('Function not implemented.');
-  }
+  const toolBarDropDownValue = useMemo(() => {
+    if (
+      someNode(editor, {
+        match: { type: getPluginType(editor, ELEMENT_H1) },
+      })
+    ) {
+      return ELEMENT_H1;
+    }
+    if (
+      someNode(editor, {
+        match: { type: getPluginType(editor, ELEMENT_H2) },
+      })
+    ) {
+      return ELEMENT_H2;
+    }
+    if (
+      someNode(editor, {
+        match: { type: getPluginType(editor, ELEMENT_H3) },
+      })
+    ) {
+      return ELEMENT_H3;
+    }
+    return ELEMENT_PARAGRAPH;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSelected]);
 
   return (
     <BalloonToolbar theme={theme} arrow={arrow} {...balloonToolbarProps}>
       <View direction='row' align='center' divided gap={1}>
         <View width='160px' maxWidth='100%' paddingInline={2}>
           <Select
+            defaultValue={toolBarDropDownValue}
             onChange={handleOption}
             options={options}
             name='sort'
@@ -105,21 +130,19 @@ export const MarkBalloonToolbar = (
         <View direction='row' align='center' gap={1}>
           <MarkToolbarButton
             type={getPluginType(editor, MARK_BOLD)}
-            icon={<TextStyle label='Bold (⌘+B)' icon={<BoldIcon />} />}
+            icon={<FormatBold />}
             tooltip={boldTooltip}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_ITALIC)}
-            icon={<TextStyle label='Italic (⌘+I)' icon={<ItalicIcon />} />}
+            icon={<FormatItalic />}
             tooltip={italicTooltip}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_UNDERLINE)}
-            icon={
-              <TextStyle label='Underline (⌘+U)' icon={<UnderlineIcon />} />
-            }
+            icon={<FormatUnderlined />}
             tooltip={underlineTooltip}
             actionHandler='onMouseDown'
           />
