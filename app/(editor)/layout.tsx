@@ -7,7 +7,16 @@ import MoreIcon from "@/components/Icons/MoreIcon";
 import PrintIcon from "@/components/Icons/PrintIcon";
 import RenameIcon from "@/components/Icons/RenameIcon";
 import ShareIcon from "@/components/Icons/ShareIcon";
-import { Button, View, Icon, useFormControl, DropdownMenu } from "reshaped";
+import {
+  Button,
+  View,
+  ViewProps,
+  Icon,
+  useFormControl,
+  DropdownMenu,
+  TextField,
+  TextFieldProps,
+} from "reshaped";
 
 export default function CreateFile({
   children,
@@ -44,16 +53,16 @@ export default function CreateFile({
             <View
               direction="row"
               borderRadius="small"
+              align="center"
               justify="center"
-              gap={2}
-              paddingInline={2}
-              paddingBlock={2}
-              className="w-fit transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
+              className="group-hover:bg-neutral-highlighted transition-all ease-in-out duration-200"
             >
-              <Icon svg={<DocsIcon />} size={6} />
-              <View>
-                <CustomInput />
-              </View>
+              <TextField
+                icon={<DocsIcon />}
+                name="name"
+                defaultValue="New Document"
+                variant="headless"
+              />
             </View>
           </View>
         </View>

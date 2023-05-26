@@ -17,6 +17,10 @@ import {
   ELEMENT_H2,
   ELEMENT_H3,
   ELEMENT_PARAGRAPH,
+  ListToolbarButton,
+  ELEMENT_UL,
+  ELEMENT_OL,
+  TComboboxItem,
 } from '@udecode/plate';
 import { FormatBold } from '@styled-icons/material/FormatBold';
 import { useMyPlateEditorRef } from './interfaces/plateTypes';
@@ -27,6 +31,9 @@ import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
 import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import LinkIcon from '@/components/Icons/LinkIcon';
 import TextIcon from '@/components/Icons/TextIcon';
+import TableIcon from '@/components/Icons/TableIcon';
+import BulletlistIcon from '../Icons/BulletlistIcon';
+import OrderlistIcon from '../Icons/OrderlistIcon';
 import { Transforms } from 'slate';
 
 export const markTooltip: TippyProps = {
@@ -149,9 +156,21 @@ export const MarkBalloonToolbar = (
           />
         </View>
         <View direction='row' align='center'>
-          <LinkToolbarButton
-            icon={<TextStyle label='Link' icon={<LinkIcon />} />}
+          <ListToolbarButton
+            type={getPluginType(editor, ELEMENT_UL)}
+            icon={<TextStyle label='Bullet List' icon={<BulletlistIcon />} />}
           />
+          <ListToolbarButton
+            type={getPluginType(editor, ELEMENT_OL)}
+            icon={<TextStyle label='Ordered List' icon={<OrderlistIcon />} />}
+          />
+        </View>
+        <View direction='row' align='center' paddingEnd={1}>
+          <View direction='row' align='center'>
+            <LinkToolbarButton
+              icon={<TextStyle label='Link' icon={<LinkIcon />} />}
+            />
+          </View>
         </View>
       </View>
       {children}

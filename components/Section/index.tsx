@@ -1,29 +1,7 @@
 'use client';
-import {
-  Button,
-  TextField,
-  TextFieldProps,
-  View,
-  Text,
-  ViewProps,
-  TextProps,
-  Icon,
-  IconProps,
-  FormControl,
-  useFormControl,
-  FormControlProps,
-  Divider,
-  DividerProps,
-  Accordion,
-  AccordionProps,
-  MenuItem,
-  Placeholder,
-  DropdownMenu,
-  DropdownMenuProps,
-  Tooltip,
-} from 'reshaped';
+import { Button, View, Text, MenuItem, DropdownMenu, Tooltip } from 'reshaped';
+import React from 'react';
 
-import PlusIcon from '../Icons/PlusIcon';
 import MoreIcon from '../Icons/MoreIcon';
 import RenameIcon from '../Icons/RenameIcon';
 import DuplicateIcon from '../Icons/DuplicateIcon';
@@ -55,6 +33,13 @@ export default function Section({ title, sectionId }: any) {
     title?.length > maxLength ? `${title.substring(0, maxLength)}...` : title;
   const showTooltip = title?.length > maxLength;
 
+  const handleMoreButtonClick = (
+    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
+  ) => {
+    event.stopPropagation(); // Stop the event from propagating to parent elements
+    // Perform rename action here
+  };
+
   return (
     <View width='100%'>
       <MenuItem
@@ -66,6 +51,7 @@ export default function Section({ title, sectionId }: any) {
             <DropdownMenu.Trigger>
               {(attributes) => (
                 <Button
+                  onClick={handleMoreButtonClick}
                   icon={<MoreIcon />}
                   size='small'
                   variant='ghost'
@@ -77,13 +63,22 @@ export default function Section({ title, sectionId }: any) {
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
               <DropdownMenu.Section>
-                <DropdownMenu.Item startSlot={<RenameIcon />}>
+                <DropdownMenu.Item
+                  onClick={handleMoreButtonClick}
+                  startSlot={<RenameIcon />}
+                >
                   Rename
                 </DropdownMenu.Item>
-                <DropdownMenu.Item startSlot={<DuplicateIcon />}>
+                <DropdownMenu.Item
+                  onClick={handleMoreButtonClick}
+                  startSlot={<DuplicateIcon />}
+                >
                   Duplicate
                 </DropdownMenu.Item>
-                <DropdownMenu.Item startSlot={<BinIcon />}>
+                <DropdownMenu.Item
+                  onClick={handleMoreButtonClick}
+                  startSlot={<BinIcon />}
+                >
                   Delete
                 </DropdownMenu.Item>
               </DropdownMenu.Section>
@@ -94,7 +89,12 @@ export default function Section({ title, sectionId }: any) {
         {showTooltip && (
           <Tooltip text={title}>
             {(attributes) => (
-              <Text attributes={attributes}>{truncatedText}</Text>
+              <Text
+                attributes={attributes}
+                className='text-ellipsis  break-words'
+              >
+                {truncatedText}
+              </Text>
             )}
           </Tooltip>
         )}
