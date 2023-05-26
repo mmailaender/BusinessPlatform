@@ -1,6 +1,6 @@
-import React from 'react';
-import { DragIndicator } from '@styled-icons/material/DragIndicator';
-import Tippy, { TippyProps } from '@tippyjs/react';
+import React from "react";
+import { DragIndicator } from "@styled-icons/material/DragIndicator";
+import Tippy, { TippyProps } from "@tippyjs/react";
 import {
   ELEMENT_BLOCKQUOTE,
   ELEMENT_CODE_BLOCK,
@@ -17,16 +17,16 @@ import {
   ELEMENT_TABLE,
   ELEMENT_TODO_LI,
   ELEMENT_UL,
-} from '@udecode/plate';
-import { withPlateDraggables } from '@udecode/plate-ui-dnd';
+} from "@udecode/plate";
+import { withPlateDraggables } from "@udecode/plate-ui-dnd";
 
 const styles = {
   grabber: { fontSize: 12 },
-  grabberText: { color: 'rgba(255, 255, 255, 0.45)' },
+  grabberText: { color: "rgba(255, 255, 255, 0.45)" },
   dragButton: {
     width: 18,
     height: 18,
-    color: 'rgba(55, 53, 47, 0.3)',
+    color: "rgba(55, 53, 47, 0.3)",
   },
 };
 
@@ -40,13 +40,13 @@ const GrabberTooltipContent = () => (
 
 export const grabberTooltipProps: TippyProps = {
   content: <GrabberTooltipContent />,
-  placement: 'bottom',
+  placement: "bottom",
   arrow: false,
   offset: [0, 0],
   delay: [300, 0],
   duration: [0, 0],
   hideOnClick: true,
-  theme: 'small',
+  theme: "small",
 };
 
 export const withStyledDraggables = (components: any) => {
@@ -77,7 +77,7 @@ export const withStyledDraggables = (components: any) => {
         onRenderDragHandle: () => {
           return (
             <Tippy {...grabberTooltipProps}>
-              <button type='button' className='drag-button'>
+              <button type="button" className="drag-button">
                 <DragIndicator style={styles.dragButton} />
               </button>
             </Tippy>
@@ -90,11 +90,11 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '2em 0 4px',
-            fontSize: '1.875em',
+            padding: "2em 0 4px",
+            fontSize: "1.875em",
           },
           blockToolbarWrapper: {
-            height: '1.3em',
+            height: "1.3em",
           },
         },
       },
@@ -104,11 +104,11 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '1.4em 0 1px',
-            fontSize: '1.5em',
+            padding: "1.4em 0 1px",
+            fontSize: "1.5em",
           },
           blockToolbarWrapper: {
-            height: '1.3em',
+            height: "1.3em",
           },
         },
       },
@@ -118,11 +118,11 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '1em 0 1px',
-            fontSize: '1.25em',
+            padding: "1em 0 1px",
+            fontSize: "1.25em",
           },
           blockToolbarWrapper: {
-            height: '1.3em',
+            height: "1.3em",
           },
         },
       },
@@ -132,11 +132,11 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '0.75em 0 0',
-            fontSize: '1.1em',
+            padding: "0.75em 0 0",
+            fontSize: "1.1em",
           },
           blockToolbarWrapper: {
-            height: '1.3em',
+            height: "1.3em",
           },
         },
       },
@@ -146,7 +146,13 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '4px 0 0',
+            padding: "4px 0 0",
+          },
+          root: {
+            fontFamily: "var(--rs-font-family-body-2)",
+            lineHeight: "var(--rs-line-height-body-2)",
+            fontWeight: "var(--rs-font-weight-regular)",
+            fontSize: "var(--rs-font-size-body-2)",
           },
         },
       },
@@ -156,7 +162,7 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '18px 0 0',
+            padding: "18px 0 0",
           },
         },
       },
@@ -166,7 +172,7 @@ export const withStyledDraggables = (components: any) => {
       draggableProps: {
         styles: {
           gutterLeft: {
-            padding: '12px 0 0',
+            padding: "12px 0 0",
           },
         },
       },

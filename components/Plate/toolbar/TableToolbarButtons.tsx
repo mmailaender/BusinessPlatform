@@ -1,5 +1,10 @@
 "use client";
 
+import AddCol from "@/components/Icons/AddCol";
+import AddRow from "@/components/Icons/AddRow";
+import RemoveCol from "@/components/Icons/RemoveCol";
+import RemoveRow from "@/components/Icons/RemoveRow";
+import RemoveTable from "@/components/Icons/RemoveTable";
 import TableIcon from "@/components/Icons/TableIcon";
 import TextStyle from "@/components/TextStyle";
 import { BorderAll } from "@styled-icons/material/BorderAll";
@@ -25,35 +30,29 @@ const tooltip = (content: string) => ({
 
 export const TableToolbarButtons = () => (
   <>
-    <View direction="row" gap={1} align="center">
+    <View direction="row" align="center">
       <TableToolbarButton
-        tooltip={tooltip("")}
         icon={<TextStyle label="Table" icon={<TableIcon />} />}
         transform={insertTable}
       />
       <TableToolbarButton
-        tooltip={tooltip("Remove Table")}
-        icon={<BorderClear />}
+        icon={<TextStyle label="Remove Table" icon={<RemoveTable />} />}
         transform={deleteTable}
       />
       <TableToolbarButton
-        tooltip={tooltip("Table Row")}
-        icon={<BorderBottom />}
+        icon={<TextStyle label="Add Table Row" icon={<AddRow />} />}
         transform={insertTableRow}
       />
       <TableToolbarButton
-        tooltip={tooltip("Remove Table Row")}
-        icon={<BorderTop />}
+        icon={<TextStyle label="Remove Table Row" icon={<RemoveRow />} />}
         transform={deleteRow}
       />
       <TableToolbarButton
-        tooltip={tooltip("Table Column")}
-        icon={<BorderLeft />}
+        icon={<TextStyle label="Add Table Column" icon={<AddCol />} />}
         transform={insertTableColumn}
       />
       <TableToolbarButton
-        tooltip={tooltip("Remove Table Column")}
-        icon={<BorderRight />}
+        icon={<TextStyle label="Remove Table Column" icon={<RemoveCol />} />}
         transform={deleteColumn}
       />
     </View>

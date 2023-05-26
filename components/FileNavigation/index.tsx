@@ -32,7 +32,7 @@ export default function FileNavigation({ sections }: FileNavigationProps) {
         align='center'
         paddingBottom={6}
         paddingStart={4}
-        paddingTop={4}
+        paddingTop={2}
       >
         <View.Item grow>
           <Text variant='body-3' weight='medium' color='neutral-faded'>

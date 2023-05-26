@@ -21,7 +21,6 @@ import DuplicateIcon from "../Icons/DuplicateIcon";
 import BinIcon from "../Icons/BinIcon";
 import TemplateType, { TemplatetypeScratch } from "../TemplateType";
 
-
 export default function CreateFile() {
   const { active, activate, deactivate } = useToggle(false);
 
@@ -42,7 +41,7 @@ export default function CreateFile() {
             className="border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
             justify="center"
             align="center"
-            padding={{ xl: 16, l: 14, m: 10, s: 10 }}
+            padding={{ xl: 12, l: 14, m: 10, s: 10 }}
           >
             <CreateDocument />
           </View>
@@ -97,7 +96,7 @@ export function TemplateFile() {
           justify="center"
           align="center"
           position="relative"
-          padding={{ xl: 16, l: 14, m: 10, s: 10 }}
+          padding={{ xl: 12, l: 14, m: 10, s: 10 }}
           className="transition ease-in-out duration-300 group-hover:bg-neutral-highlighted "
         >
           <View
@@ -174,7 +173,7 @@ export function DocumentFile() {
           justify="center"
           align="center"
           position="relative"
-          padding={{ xl: 16, l: 14, m: 10, s: 10 }}
+          padding={{ xl: 12, l: 14, m: 10, s: 10 }}
           className="transition ease-in-out duration-300 group-hover:bg-neutral-highlighted "
         >
           <View
@@ -236,5 +235,40 @@ export function DocumentFile() {
         </View>
       </View>
     </View>
+  );
+}
+
+export function CreateTemplate() {
+  return (
+    <>
+      <View width="100%" padding={6} className="group cursor-pointer">
+        {/* File component */}
+        <View gap={4}>
+          <View
+            borderColor="neutral-faded"
+            aspectRatio={1 / 1}
+            borderRadius="small"
+            className="border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
+            justify="center"
+            align="center"
+            padding={{ xl: 12, l: 14, m: 10, s: 10 }}
+          >
+            <CreateDocument />
+          </View>
+          {/* Label */}
+          <View align="center" paddingBottom={6}>
+            <Text
+              variant="body-2"
+              weight="medium"
+              align="center"
+              color="primary"
+              className="group-hover:opacity-90"
+            >
+              Create New Template
+            </Text>
+          </View>
+        </View>
+      </View>
+    </>
   );
 }

@@ -52,6 +52,13 @@ import { exitBreakPlugin } from './plugins/exitBreakPlugin';
 import LinkIcon from '../Icons/LinkIcon';
 import TextStyle from '../TextStyle';
 import { View, classNames } from 'reshaped';
+import ImageIcon from '../Icons/ImageIcon';
+
+const editableProps: TEditableProps<MyValue> = {
+  placeholder: 'Type...',
+  spellCheck: false,
+  autoFocus: false,
+};
 
 const plugins: MyPlatePlugin[] = createMyPlugins(
   [
@@ -107,15 +114,9 @@ export const useScrollPosition = () => {
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   const scrollPosition = useScrollPosition();
 
-  const editableProps: TEditableProps<MyValue> = {
-    placeholder: 'Type...',
-    spellCheck: false,
-    autoFocus: false,
-  };
-
   return (
     <DndProvider backend={HTML5Backend}>
-      <PlateProvider<MyValue> onChange={onChange} plugins={plugins}>
+      <PlateProvider<MyValue> plugins={plugins} onChange={onChange}>
         <View
           position='sticky'
           insetTop={20}
@@ -134,9 +135,13 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
           <LinkToolbarButton
             icon={<TextStyle label="Link" icon={<LinkIcon />} />}
           /> */}
-            <BasicElementToolbarButtons />
-            <TableToolbarButtons />
-            <ImageToolbarButton icon={<Image />} />
+            <View direction='row' align='center' divided gap={1}>
+              <BasicElementToolbarButtons />
+              <TableToolbarButtons />
+              <ImageToolbarButton
+                icon={<TextStyle label='Image' icon={<ImageIcon />} />}
+              />
+            </View>
           </Toolbar>
         </View>
 

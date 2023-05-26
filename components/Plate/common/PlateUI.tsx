@@ -23,6 +23,9 @@ import {
   MediaEmbedElement,
   StyledElement,
   withProps,
+  ELEMENT_UL,
+  ELEMENT_OL,
+  inline,
 } from '@udecode/plate';
 import { withStyledDraggables } from './withStyledDraggables';
 import { H1Element } from './H1Element';
@@ -53,6 +56,31 @@ export const plateUI = withStyledDraggables(
       } as Record<string, any>,
       prefixClassNames: 'p',
     }),
+    // [ELEMENT_UL]: withProps(StyledElement, {
+    //   // as: 'p',
+    //   styles: {
+    //     root: {
+    //       fontFamily: "var(--rs-font-family-body-2)",
+    //       lineHeight: "var(--rs-line-height-body-2)",
+    //       fontWeight: "var(--rs-font-weight-regular)",
+    //       fontSize: "var(--rs-font-size-body-2)",
+    //     },
+    //   } as Record<string, any>,
+    //   prefixClassNames: "p",
+    // }),
+    // [ELEMENT_OL]: withProps(StyledElement, {
+    //   // as: 'p',
+    //   styles: {
+    //     root: {
+    //       fontFamily: "var(--rs-font-family-body-2)",
+    //       lineHeight: "var(--rs-line-height-body-2)",
+    //       fontWeight: "var(--rs-font-weight-regular)",
+    //       fontSize: "var(--rs-font-size-body-2)",
+    //     },
+    //   } as Record<string, any>,
+    //   prefixClassNames: "p",
+    // }),
+
     [ELEMENT_TODO_LI]: withProps(StyledElement, {
       as: 'ToDo List',
       styles: {
