@@ -17,12 +17,12 @@ import {
   ELEMENT_H2,
   ELEMENT_H3,
 } from '@udecode/plate';
+import { FormatBold } from '@styled-icons/material/FormatBold';
 import { useMyPlateEditorRef } from './interfaces/plateTypes';
 import { Select, View, ViewProps, SelectProps } from 'reshaped';
 import TextStyle from '@/components/TextStyle';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import BoldIcon from '@/components/Icons/BoldIcon';
+import { FormatItalic } from '@styled-icons/material/FormatItalic';
+import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
 import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import LinkIcon from '@/components/Icons/LinkIcon';
 import TextIcon from '@/components/Icons/TextIcon';
@@ -122,21 +122,19 @@ export const MarkBalloonToolbar = (
         <View direction='row' align='center' gap={1}>
           <MarkToolbarButton
             type={getPluginType(editor, MARK_BOLD)}
-            icon={<TextStyle label='Bold (⌘+B)' icon={<BoldIcon />} />}
+            icon={<FormatBold />}
             tooltip={boldTooltip}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_ITALIC)}
-            icon={<TextStyle label='Italic (⌘+I)' icon={<ItalicIcon />} />}
+            icon={<FormatItalic />}
             tooltip={italicTooltip}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_UNDERLINE)}
-            icon={
-              <TextStyle label='Underline (⌘+U)' icon={<UnderlineIcon />} />
-            }
+            icon={<FormatUnderlined />}
             tooltip={underlineTooltip}
             actionHandler='onMouseDown'
           />
