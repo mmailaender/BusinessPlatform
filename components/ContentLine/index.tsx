@@ -21,12 +21,18 @@ export default function ContentLine({
   );
 }
 
-export function SecondaryContentLine({ subTitle }: { subTitle: string }) {
+export function SecondaryContentLine({
+  subTitle,
+  subSectionIndex,
+}: {
+  subTitle: string;
+  subSectionIndex: string;
+}) {
   return (
     <View gap={2} paddingStart={4}>
       <View className=' flex flex-row justify-between'>
         <Text variant='body-2' weight='regular'>
-          {subTitle}
+          {subSectionIndex} {subTitle}
         </Text>
       </View>
     </View>

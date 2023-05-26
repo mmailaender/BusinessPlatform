@@ -28,7 +28,11 @@ export default function PrintTableOfContent({
 
                   {sections[sectionName][sectionName].map(
                     (subsection: string, index: number) => (
-                      <SecondaryContentLine key={index} subTitle={subsection} />
+                      <SecondaryContentLine
+                        key={index}
+                        subSectionIndex={`${sectionIndex + 1}.${index + 1}`}
+                        subTitle={subsection}
+                      />
                     )
                   )}
                 </React.Fragment>
