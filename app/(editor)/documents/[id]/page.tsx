@@ -50,7 +50,7 @@ const DocumentPage = () => {
         <PrintCover />
       </View>
       <View className='hidden print:block'>
-        <ContentTemplate />
+        <ContentTemplate sections={sections} />
       </View>
       <View className='flex flex-row px-x6 pt-x32'>
         <View className='basis-2/12 print:hidden min-w-0'>
