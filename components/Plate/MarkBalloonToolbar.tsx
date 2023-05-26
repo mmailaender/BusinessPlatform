@@ -16,6 +16,7 @@ import {
   usePlateSelection,
   ELEMENT_H2,
   ELEMENT_H3,
+  ELEMENT_PARAGRAPH,
 } from '@udecode/plate';
 import { FormatBold } from '@styled-icons/material/FormatBold';
 import { useMyPlateEditorRef } from './interfaces/plateTypes';
@@ -86,23 +87,23 @@ export const MarkBalloonToolbar = (
         match: { type: getPluginType(editor, ELEMENT_H1) },
       })
     ) {
-      return 'h1';
+      return ELEMENT_H1;
     }
     if (
       someNode(editor, {
         match: { type: getPluginType(editor, ELEMENT_H2) },
       })
     ) {
-      return 'h2';
+      return ELEMENT_H2;
     }
     if (
       someNode(editor, {
         match: { type: getPluginType(editor, ELEMENT_H3) },
       })
     ) {
-      return 'h3';
+      return ELEMENT_H3;
     }
-    return 'p';
+    return ELEMENT_PARAGRAPH;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSelected]);
 
