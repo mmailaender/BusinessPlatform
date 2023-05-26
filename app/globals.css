@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .slate-ToolbarButton-active {
-  color: #06c;
+  color: var(--rs-color-foreground-primary) !important;
 }
