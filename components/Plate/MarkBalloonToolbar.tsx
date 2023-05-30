@@ -3,6 +3,7 @@ import { TippyProps } from '@tippyjs/react';
 import {
   BalloonToolbar,
   BalloonToolbarProps,
+  getPluginType,
   MARK_BOLD,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
@@ -10,7 +11,6 @@ import {
   MarkToolbarButton,
   WithPartial,
   LinkToolbarButton,
-  getPluginType,
   ELEMENT_H1,
   someNode,
   usePlateSelection,
@@ -20,18 +20,16 @@ import {
   ListToolbarButton,
   ELEMENT_UL,
   ELEMENT_OL,
-  TComboboxItem,
 } from '@udecode/plate';
-import { FormatBold } from '@styled-icons/material/FormatBold';
 import { useMyPlateEditorRef } from './interfaces/plateTypes';
-import { Select, View, ViewProps, SelectProps } from 'reshaped';
+import { Select, View } from 'reshaped';
 import TextStyle from '@/components/TextStyle';
-import { FormatItalic } from '@styled-icons/material/FormatItalic';
-import { FormatUnderlined } from '@styled-icons/material/FormatUnderlined';
+import ItalicIcon from '@/components/Icons/ItalicIcon';
+import UnderlineIcon from '@/components/Icons/UnderlineIcon';
+import BoldIcon from '@/components/Icons/BoldIcon';
 import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import LinkIcon from '@/components/Icons/LinkIcon';
 import TextIcon from '@/components/Icons/TextIcon';
-import TableIcon from '@/components/Icons/TableIcon';
 import BulletlistIcon from '../Icons/BulletlistIcon';
 import OrderlistIcon from '../Icons/OrderlistIcon';
 import { Transforms } from 'slate';
@@ -130,19 +128,21 @@ export const MarkBalloonToolbar = (
         <View direction='row' align='center' gap={1}>
           <MarkToolbarButton
             type={getPluginType(editor, MARK_BOLD)}
-            icon={<FormatBold />}
+            icon={<TextStyle label='Bold (⌘+B)' icon={<BoldIcon />} />}
             tooltip={boldTooltip}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_ITALIC)}
-            icon={<FormatItalic />}
+            icon={<TextStyle label='Italic (⌘+I)' icon={<ItalicIcon />} />}
             tooltip={italicTooltip}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_UNDERLINE)}
-            icon={<FormatUnderlined />}
+            icon={
+              <TextStyle label='Underline (⌘+U)' icon={<UnderlineIcon />} />
+            }
             tooltip={underlineTooltip}
             actionHandler='onMouseDown'
           />
