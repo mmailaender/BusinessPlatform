@@ -50,18 +50,20 @@ const DocumentPage = () => {
       <View className="hidden print:block">
         <PrintCover />
       </View>
-      <View className="hidden print:block fixed bottom-0"><Watermark/></View>
+      <View className="hidden print:block fixed bottom-0">
+        <Watermark />
+      </View>
       <View className="hidden print:block">
         <ContentTemplate sections={sections} />
       </View>
       <View className="flex flex-row px-x6 pt-x32">
-        <View className="basis-2/12 print:hidden min-w-0">
+        <View className="basis-2/12 print:hidden  min-w-0">
           <View position="sticky" insetTop={20}>
             <FileNavigation sections={sections} />
           </View>
         </View>
         <View className="basis-1/12 print:hidden"></View>
-        <View className="basis-6/12 print:basis-full min-w-0">
+        <View className="basis-6/12 print:basis-full print:px-x12 min-w-0">
           <Plate value={document} onChange={setDocument} />
         </View>
       </View>

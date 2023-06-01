@@ -7,7 +7,7 @@ import XGroup from "@/components/Icons/XGroup";
 
 export default function Watermark() {
   return (
-    <View justify="end" paddingStart={20}>
+    <View justify="end" paddingStart={19}>
       <View
         className="w-full border border-neutral-faded "
         direction="row"
