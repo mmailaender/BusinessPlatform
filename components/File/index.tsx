@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Button,
   View,
@@ -7,19 +7,23 @@ import {
   useToggle,
   Modal,
   Dismissible,
-} from "reshaped";
-import React, { useState } from "react";
+  Actionable,
+} from 'reshaped';
+import React, { useState } from 'react';
 
-import CreateDocument from "@/components/Icons/CreateDocument";
-import Template from "../Icons/Template";
-import Document from "../Icons/Document";
-import MoreIcon from "../Icons/MoreIcon";
-import ShareIcon from "../Icons/ShareIcon";
-import PrintIcon from "../Icons/PrintIcon";
-import RenameIcon from "../Icons/RenameIcon";
-import DuplicateIcon from "../Icons/DuplicateIcon";
-import BinIcon from "../Icons/BinIcon";
-import TemplateType, { TemplatetypeScratch } from "../TemplateType";
+import CreateDocument from '@/components/Icons/CreateDocument';
+import Template from '../Icons/Template';
+import Document from '../Icons/Document';
+import MoreIcon from '../Icons/MoreIcon';
+import ShareIcon from '../Icons/ShareIcon';
+import PrintIcon from '../Icons/PrintIcon';
+import RenameIcon from '../Icons/RenameIcon';
+import DuplicateIcon from '../Icons/DuplicateIcon';
+import BinIcon from '../Icons/BinIcon';
+import TemplateType, { TemplatetypeScratch } from '../TemplateType';
+import { useQuery } from 'fqlx-client';
+import { Query } from '@/fqlx-generated/typedefs';
+import { useRouter } from 'next/navigation';
 
 export default function CreateFile() {
   const { active, activate, deactivate } = useToggle(false);
@@ -27,32 +31,32 @@ export default function CreateFile() {
   return (
     <>
       <View
-        width="100%"
+        width='100%'
         padding={6}
-        className="group cursor-pointer"
+        className='group cursor-pointer'
         attributes={{ onClick: activate }}
       >
         {/* File component */}
         <View gap={4}>
           <View
-            borderColor="neutral-faded"
+            borderColor='neutral-faded'
             aspectRatio={1 / 1}
-            borderRadius="small"
-            className="border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
-            justify="center"
-            align="center"
+            borderRadius='small'
+            className='border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted'
+            justify='center'
+            align='center'
             padding={{ xl: 12, l: 14, m: 10, s: 10 }}
           >
             <CreateDocument />
           </View>
           {/* Label */}
-          <View align="center" paddingBottom={6}>
+          <View align='center' paddingBottom={6}>
             <Text
-              variant="body-2"
-              weight="medium"
-              align="center"
-              color="primary"
-              className="group-hover:opacity-90"
+              variant='body-2'
+              weight='medium'
+              align='center'
+              color='primary'
+              className='group-hover:opacity-90'
             >
               Create New Document
             </Text>
@@ -62,15 +66,15 @@ export default function CreateFile() {
 
       <Modal active={active} onClose={deactivate} padding={5}>
         <View gap={3}>
-          <Dismissible onClose={deactivate} closeAriaLabel="Close">
+          <Dismissible onClose={deactivate} closeAriaLabel='Close'>
             <Modal.Title>
-              <Text variant="body-1" weight="bold">
+              <Text variant='body-1' weight='bold'>
                 Create Business Plan based on:
               </Text>
             </Modal.Title>
           </Dismissible>
 
-          <View gap={3} paddingTop={6} className="overflow-y-auto h-[300px]">
+          <View gap={3} paddingTop={6} className='overflow-y-auto h-[300px]'>
             <TemplatetypeScratch />
             <TemplateType />
             <TemplateType />
@@ -86,33 +90,33 @@ export default function CreateFile() {
 
 export function TemplateFile() {
   return (
-    <View width="100%" padding={6} className="group">
+    <View width='100%' padding={6} className='group'>
       {/* File component */}
       <View gap={4}>
         <View
-          backgroundColor="neutral-faded"
+          backgroundColor='neutral-faded'
           aspectRatio={1 / 1}
-          borderRadius="small"
-          justify="center"
-          align="center"
-          position="relative"
+          borderRadius='small'
+          justify='center'
+          align='center'
+          position='relative'
           padding={{ xl: 12, l: 14, m: 10, s: 10 }}
-          className="transition ease-in-out duration-300 group-hover:bg-neutral-highlighted "
+          className='transition ease-in-out duration-300 group-hover:bg-neutral-highlighted '
         >
           <View
-            position="absolute"
+            position='absolute'
             insetTop={2}
             insetEnd={2}
-            className="transition ease-in-out duration-300 opacity-0 group-hover:opacity-100"
+            className='transition ease-in-out duration-300 opacity-0 group-hover:opacity-100'
           >
-            <DropdownMenu position="bottom-end">
+            <DropdownMenu position='bottom-end'>
               <DropdownMenu.Trigger>
                 {(attributes) => (
                   <Button
                     rounded={true}
                     elevated={true}
                     icon={<MoreIcon />}
-                    color="white"
+                    color='white'
                     attributes={attributes}
                   ></Button>
                 )}
@@ -143,16 +147,16 @@ export function TemplateFile() {
           <Template />
         </View>
         {/* Label */}
-        <View align="center" paddingBottom={6} gap={1}>
+        <View align='center' paddingBottom={6} gap={1}>
           <Text
-            variant="body-2"
-            weight="medium"
-            align="center"
-            className="group-hover:text-neutral-faded"
+            variant='body-2'
+            weight='medium'
+            align='center'
+            className='group-hover:text-neutral-faded'
           >
             Financial Business Plan Template
           </Text>
-          <Text variant="caption-1" align="center" color="neutral-faded">
+          <Text variant='caption-1' align='center' color='neutral-faded'>
             Today
           </Text>
         </View>
@@ -163,33 +167,33 @@ export function TemplateFile() {
 
 export function DocumentFile() {
   return (
-    <View width="100%" padding={6} className="group">
+    <View width='100%' padding={6} className='group'>
       {/* File component */}
       <View gap={4}>
         <View
-          backgroundColor="neutral-faded"
+          backgroundColor='neutral-faded'
           aspectRatio={1 / 1}
-          borderRadius="small"
-          justify="center"
-          align="center"
-          position="relative"
+          borderRadius='small'
+          justify='center'
+          align='center'
+          position='relative'
           padding={{ xl: 12, l: 14, m: 10, s: 10 }}
-          className="transition ease-in-out duration-300 group-hover:bg-neutral-highlighted "
+          className='transition ease-in-out duration-300 group-hover:bg-neutral-highlighted '
         >
           <View
-            position="absolute"
+            position='absolute'
             insetTop={2}
             insetEnd={2}
-            className="transition ease-in-out duration-300 opacity-0 group-hover:opacity-100"
+            className='transition ease-in-out duration-300 opacity-0 group-hover:opacity-100'
           >
-            <DropdownMenu position="bottom-end">
+            <DropdownMenu position='bottom-end'>
               <DropdownMenu.Trigger>
                 {(attributes) => (
                   <Button
                     rounded={true}
                     elevated={true}
                     icon={<MoreIcon />}
-                    color="white"
+                    color='white'
                     attributes={attributes}
                   ></Button>
                 )}
@@ -220,16 +224,16 @@ export function DocumentFile() {
           <Document />
         </View>
         {/* Label */}
-        <View align="center" paddingBottom={6} gap={1}>
+        <View align='center' paddingBottom={6} gap={1}>
           <Text
-            variant="body-2"
-            weight="medium"
-            align="center"
-            className="group-hover:text-neutral-faded"
+            variant='body-2'
+            weight='medium'
+            align='center'
+            className='group-hover:text-neutral-faded'
           >
             Financial Business Plan
           </Text>
-          <Text variant="caption-1" align="center" color="neutral-faded">
+          <Text variant='caption-1' align='center' color='neutral-faded'>
             Today
           </Text>
         </View>
@@ -239,35 +243,51 @@ export function DocumentFile() {
 }
 
 export function CreateTemplate() {
+  const query = useQuery<Query>();
+  const router = useRouter();
+
+  const createTemplate = async () => {
+    const res = await query.Template.create({
+      name: 'Untitled',
+      blocks: [],
+    }).exec();
+
+    if (res?.id) {
+      router.push(`/templates/${res.id}`);
+    }
+  };
+
   return (
     <>
-      <View width="100%" padding={6} className="group cursor-pointer">
+      <View width='100%' padding={6} className='group cursor-pointer'>
         {/* File component */}
-        <View gap={4}>
-          <View
-            borderColor="neutral-faded"
-            aspectRatio={1 / 1}
-            borderRadius="small"
-            className="border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted"
-            justify="center"
-            align="center"
-            padding={{ xl: 12, l: 14, m: 10, s: 10 }}
-          >
-            <CreateDocument />
-          </View>
-          {/* Label */}
-          <View align="center" paddingBottom={6}>
-            <Text
-              variant="body-2"
-              weight="medium"
-              align="center"
-              color="primary"
-              className="group-hover:opacity-90"
+        <Actionable onClick={createTemplate}>
+          <View gap={4}>
+            <View
+              borderColor='neutral-faded'
+              aspectRatio={1 / 1}
+              borderRadius='small'
+              className='border-dashed transition ease-in-out duration-300 group-hover:bg-neutral-highlighted'
+              justify='center'
+              align='center'
+              padding={{ xl: 12, l: 14, m: 10, s: 10 }}
             >
-              Create New Template
-            </Text>
+              <CreateDocument />
+            </View>
+            {/* Label */}
+            <View align='center' paddingBottom={6}>
+              <Text
+                variant='body-2'
+                weight='medium'
+                align='center'
+                color='primary'
+                className='group-hover:opacity-90'
+              >
+                Create New Template
+              </Text>
+            </View>
           </View>
-        </View>
+        </Actionable>
       </View>
     </>
   );

@@ -20,7 +20,6 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin,
   createFontColorPlugin,
-  LinkToolbarButton,
   createLinkPlugin,
   createTablePlugin,
   createImagePlugin,
@@ -38,6 +37,7 @@ import { Image } from '@styled-icons/material/Image';
 import './styles.css';
 import {
   MyPlatePlugin,
+  MyRootBlock,
   MyValue,
   createMyPlugins,
 } from './interfaces/plateTypes';
@@ -113,10 +113,18 @@ export const useScrollPosition = () => {
 
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   const scrollPosition = useScrollPosition();
+  const elementIds = value?.reduce((acc: MyRootBlock[], curr: MyRootBlock) => {
+    return [...acc, curr?.id];
+  }, []);
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <PlateProvider<MyValue> plugins={plugins} onChange={onChange}>
+      <PlateProvider<MyValue>
+        key={JSON.stringify(elementIds)}
+        plugins={plugins}
+        onChange={onChange}
+        initialValue={value?.length ? value : undefined}
+      >
         <View
           position='sticky'
           insetTop={20}
@@ -145,7 +153,10 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
           </Toolbar>
         </View>
 
-        <Plate<MyValue> editableProps={editableProps} value={value}>
+        <Plate<MyValue>
+          editableProps={editableProps}
+          value={value?.length ? value : undefined}
+        >
           <MarkBalloonToolbar />
         </Plate>
       </PlateProvider>
