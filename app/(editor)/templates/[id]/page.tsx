@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { MyValue } from "@/components/Plate/interfaces/plateTypes";
-import { Block, Query, TemplateInput } from "@/fqlx-generated/typedefs";
-import { debounce } from "radash";
-import { useQuery } from "fqlx-client";
-import dynamic from "next/dynamic";
-import { useMemo, useState, useCallback, useEffect } from "react";
-import { View } from "reshaped";
-import { blocks } from "./utils/getMappedBlocks";
-import { getSections } from "./utils/getSections";
+import { MyValue } from '@/components/Plate/interfaces/plateTypes';
+import { Block, Query, TemplateInput } from '@/fqlx-generated/typedefs';
+import { debounce } from 'radash';
+import { useQuery } from 'fqlx-client';
+import dynamic from 'next/dynamic';
+import { useMemo, useState, useCallback, useEffect } from 'react';
+import { View } from 'reshaped';
+import { blocks } from './utils/getMappedBlocks';
+import { getSections } from './utils/getSections';
 
-const Plate = dynamic(() => import("@/components/Plate"), { ssr: false });
-const FileNavigation = dynamic(() => import("@/components/FileNavigation"), {
+const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
+const FileNavigation = dynamic(() => import('@/components/FileNavigation'), {
   ssr: false,
 });
 
@@ -21,7 +21,7 @@ interface PageProps {
   };
 }
 
-const page = ({ params }: PageProps) => {
+export default function TemplateByIdPage({ params }: PageProps) {
   const [template, setTemplate] = useState<MyValue>([]);
   const [blocksId, setBlocksId] = useState<Block[]>([]);
 
@@ -97,7 +97,7 @@ const page = ({ params }: PageProps) => {
             } as TemplateInput)
             .exec();
 
-          console.log("Updated", { templateRes });
+          console.log('Updated', { templateRes });
         } catch (e) {
           console.log({ e });
         }
@@ -140,21 +140,19 @@ const page = ({ params }: PageProps) => {
 
   return (
     <View>
-      <View className="relative top-0 h-[69px]" />
+      <View className='relative top-0 h-[69px]' />
 
-      <View className="flex flex-row px-x6 pt-x16">
-        <View className="basis-2/12 print:hidden min-w-0">
-          <View position="sticky" insetTop={20}>
+      <View className='flex flex-row px-x6 pt-x16'>
+        <View className='basis-2/12 print:hidden min-w-0'>
+          <View position='sticky' insetTop={20}>
             <FileNavigation sections={sections} />
           </View>
         </View>
-        <View className="basis-1/12 print:hidden"></View>
-        <View className="basis-6/12 print:basis-full min-w-0">
+        <View className='basis-1/12 print:hidden'></View>
+        <View className='basis-6/12 print:basis-full min-w-0'>
           <Plate value={template} onChange={handleTemplateChange} />
         </View>
       </View>
     </View>
   );
-};
-
-export default page;
+}

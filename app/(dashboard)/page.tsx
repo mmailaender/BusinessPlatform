@@ -1,9 +1,9 @@
 'use client';
 import CreateFile, { DocumentFile } from '@/components/File';
 
-import { View, useToast, Button, Tabs } from 'reshaped';
+import { View, useToast } from 'reshaped';
 
-const page = () => {
+export default function Page() {
   const toast = useToast();
   return (
     <View direction='row'>
@@ -15,6 +15,4 @@ const page = () => {
       </View.Item>
     </View>
   );
-};
-
-export default page;
+}

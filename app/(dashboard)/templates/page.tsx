@@ -6,7 +6,7 @@ import { useQuery } from 'fqlx-client';
 
 import { View } from 'reshaped';
 
-const page = () => {
+export default function TemplatePage() {
   const query = useQuery<Query>();
   const templates = query.Template.all().exec();
 
@@ -23,6 +23,4 @@ const page = () => {
       ))}
     </View>
   );
-};
-
-export default page;
+}

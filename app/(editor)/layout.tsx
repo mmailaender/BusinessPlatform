@@ -6,7 +6,6 @@ import DuplicateIcon from "@/components/Icons/DuplicateIcon";
 import MoreIcon from "@/components/Icons/MoreIcon";
 import PrintIcon from "@/components/Icons/PrintIcon";
 import RenameIcon from "@/components/Icons/RenameIcon";
-import ShareIcon from "@/components/Icons/ShareIcon";
 import { useRouter, useParams, usePathname } from "next/navigation";
 import {
   Button,
