@@ -369,6 +369,10 @@ export interface Template {
  */
  name: string;
 /**
+ * category for the Block
+ */
+ category: string;
+/**
  * content for the Block
  */
  content: string;
@@ -393,6 +397,10 @@ export interface Template {
  * name for the Block
  */
  name: string;
+/**
+ * category for the Block
+ */
+ category: string;
 /**
  * content for the Block
  */
@@ -424,6 +432,7 @@ export interface Template {
 * @param { Organization } input.ownerOrg OwnerOrg for the Block
 * @param { string } input.type Type for the Block
 * @param { string } input.name Name for the Block
+* @param { string } input.category Category for the Block
 * @param { string } input.content Content for the Block
        *
        * @returns {CreateMethods<Block>} return new document.
@@ -434,6 +443,7 @@ export interface Template {
  * ownerOrg: "Value of the ownerOrg"   
  * type: "Value of the type"   
  * name: "Value of the name"   
+ * category: "Value of the category"   
  * content: "Value of the content"   
        * }).exec()
        * 

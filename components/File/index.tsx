@@ -8,6 +8,7 @@ import {
   Modal,
   Dismissible,
   Actionable,
+  Card,
 } from 'reshaped';
 import React, { useState } from 'react';
 
@@ -22,7 +23,11 @@ import DuplicateIcon from '../Icons/DuplicateIcon';
 import BinIcon from '../Icons/BinIcon';
 import TemplateType, { TemplatetypeScratch } from '../TemplateType';
 import { useQuery } from 'fqlx-client';
-import { Query } from '@/fqlx-generated/typedefs';
+import {
+  Block,
+  Query,
+  Template as TypeTemplate,
+} from '@/fqlx-generated/typedefs';
 import { useRouter } from 'next/navigation';
 
 export default function CreateFile() {
@@ -88,7 +93,59 @@ export default function CreateFile() {
   );
 }
 
-export function TemplateFile() {
+type TemplateFileProp = {
+  template: TypeTemplate;
+};
+
+export function TemplateFile({ template }: TemplateFileProp) {
+  const query = useQuery<Query>();
+  const router = useRouter();
+
+  const handleTemplateDelete = async (id: string) => {
+    const res = await query.Template.byId(id).delete().exec();
+    console.log('response', res);
+    localStorage.removeItem('fauna-react');
+  };
+
+  const handleCreateDuplicate = async () => {
+    const blocksPromises: Promise<Block>[] = [];
+
+    template.blocks.forEach((m) => {
+      blocksPromises.push(query.Block.byId(m as unknown as string).exec());
+    });
+
+    const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
+
+    let blocks: string[] = [];
+
+    for (const resolvedBlock of resolvedBlocks) {
+      if (
+        resolvedBlock.category === 'Section' ||
+        resolvedBlock.category === 'SubSection'
+      ) {
+        const res = await query.Block.create({
+          content: resolvedBlock.content,
+        } as Block).exec();
+
+        blocks.push(res.id);
+      } else {
+        blocks.push(resolvedBlock.id);
+      }
+    }
+
+    if (blocks.length > 0) {
+      const res = await query.Template.create({
+        name: `${template.name} (Copy)`,
+        blocks: blocks as unknown as Block[],
+      }).exec();
+      console.log('response', res);
+    }
+  };
+
+  const handleTemplateSelect = () => {
+    router.push(`/templates/${template.id}`);
+  };
+
   return (
     <View width='100%' padding={6} className='group'>
       {/* File component */}
@@ -123,28 +180,30 @@ export function TemplateFile() {
               </DropdownMenu.Trigger>
               <DropdownMenu.Content>
                 <DropdownMenu.Section>
-                  <DropdownMenu.Item startSlot={<ShareIcon />}>
-                    Share
-                  </DropdownMenu.Item>
                   <DropdownMenu.Item startSlot={<PrintIcon />}>
                     Print
                   </DropdownMenu.Item>
                 </DropdownMenu.Section>
                 <DropdownMenu.Section>
-                  <DropdownMenu.Item startSlot={<RenameIcon />}>
-                    Rename
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item startSlot={<DuplicateIcon />}>
+                  <DropdownMenu.Item
+                    onClick={handleCreateDuplicate}
+                    startSlot={<DuplicateIcon />}
+                  >
                     Duplicate
                   </DropdownMenu.Item>
-                  <DropdownMenu.Item startSlot={<BinIcon />}>
+                  <DropdownMenu.Item
+                    onClick={() => handleTemplateDelete(template.id)}
+                    startSlot={<BinIcon />}
+                  >
                     Delete
                   </DropdownMenu.Item>
                 </DropdownMenu.Section>
               </DropdownMenu.Content>
             </DropdownMenu>
           </View>
-          <Template />
+          <Card onClick={handleTemplateSelect}>
+            <Template />
+          </Card>
         </View>
         {/* Label */}
         <View align='center' paddingBottom={6} gap={1}>
@@ -154,7 +213,7 @@ export function TemplateFile() {
             align='center'
             className='group-hover:text-neutral-faded'
           >
-            Financial Business Plan Template
+            {template.name}
           </Text>
           <Text variant='caption-1' align='center' color='neutral-faded'>
             Today
@@ -200,17 +259,11 @@ export function DocumentFile() {
               </DropdownMenu.Trigger>
               <DropdownMenu.Content>
                 <DropdownMenu.Section>
-                  <DropdownMenu.Item startSlot={<ShareIcon />}>
-                    Share
-                  </DropdownMenu.Item>
                   <DropdownMenu.Item startSlot={<PrintIcon />}>
                     Print
                   </DropdownMenu.Item>
                 </DropdownMenu.Section>
                 <DropdownMenu.Section>
-                  <DropdownMenu.Item startSlot={<RenameIcon />}>
-                    Rename
-                  </DropdownMenu.Item>
                   <DropdownMenu.Item startSlot={<DuplicateIcon />}>
                     Duplicate
                   </DropdownMenu.Item>

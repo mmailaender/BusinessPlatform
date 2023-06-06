@@ -7,7 +7,8 @@
     "dev": "doppler run -- next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fqlx:generate": "ts-node node_modules/fqlx-client/src/converter.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "4.18.2",
