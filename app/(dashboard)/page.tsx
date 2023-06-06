@@ -1,9 +1,10 @@
 "use client";
 import CreateFile, { DocumentFile } from "@/components/File";
 
-import { View } from "reshaped";
+import { View, useToast, Button, Tabs } from "reshaped";
 
 const page = () => {
+  const toast = useToast();
   return (
     <View direction="row">
       <View.Item columns={{ xl: 2, l: 3, m: 4, s: 6 }}>
@@ -11,6 +12,15 @@ const page = () => {
       </View.Item>
       <View.Item columns={{ xl: 2, l: 3, m: 4, s: 6 }}>
         <DocumentFile />
+      </View.Item>
+      <View.Item columns={{ xl: 2, l: 3, m: 4, s: 6 }}>
+        <Button
+          onClick={() =>
+            toast.show({ text: "Account created", position: "bottom" })
+          }
+        >
+          Create an account
+        </Button>
       </View.Item>
     </View>
   );
