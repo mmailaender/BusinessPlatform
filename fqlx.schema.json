@@ -1,0 +1,43 @@
+{
+  "Template": {
+    "fields": {
+      "id": "string",
+      "name": "string",
+      "blocks": "Block[]"
+    }
+  },
+  "Document": {
+    "fields": {
+      "id": "string",
+      "owner": "User",
+      "ownerOrg": "Organization",
+      "name": "string",
+      "blocks": "Block[]"
+    }
+  },
+  "User": {
+    "fields": {
+      "id": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "clerkId": "string",
+      "email": "string"
+    }
+  },
+  "Block": {
+    "fields": {
+      "id": "string",
+      "owner": "User",
+      "ownerOrg": "Organization",
+      "type": "string",
+      "name": "string",
+      "category": "string",
+      "content": "string"
+    }
+  },
+  "Organization": {
+    "fields": {
+      "id": "string"
+    }
+  }
+}

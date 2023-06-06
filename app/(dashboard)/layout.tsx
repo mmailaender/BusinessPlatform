@@ -53,6 +53,7 @@ export default function DashboardLayout({
               </Tabs.List>
             </Tabs>
           </View>
+
           <Divider blank />
         </View>
       </section>

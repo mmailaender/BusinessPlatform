@@ -3,6 +3,7 @@ import { Reshaped } from 'reshaped';
 import '@/app/globals.css';
 import 'reshaped/themes/reshaped/theme.css';
 import { ClerkProvider } from '@clerk/nextjs/app-beta';
+import FqlxClientProvider from '@/components/FqlxClientProvider';
 
 export const metadata = {
   title: 'Business Planner',
@@ -18,7 +19,13 @@ export default function RootLayout({
     <html lang='en'>
       <ClerkProvider>
         <body>
-          <Reshaped theme='reshaped'>{children}</Reshaped>
+          <Reshaped theme='reshaped'>
+            <FqlxClientProvider
+              fqlxSecret={process.env.FAUNA_ADMIN_TOKEN as string}
+            >
+              {children}
+            </FqlxClientProvider>
+          </Reshaped>
         </body>
       </ClerkProvider>
     </html>
