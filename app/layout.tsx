@@ -2,7 +2,7 @@ import { Reshaped } from 'reshaped';
 
 import '@/app/globals.css';
 import 'reshaped/themes/reshaped/theme.css';
-import { ClerkProvider } from '@clerk/nextjs/app-beta';
+import { ClerkProvider } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs';
 import FqlxClientProvider from '@/components/FqlxClientProvider';
 
