@@ -26,6 +26,7 @@ import {
   ELEMENT_UL,
   ELEMENT_OL,
   inline,
+  RenderFunction,
 } from '@udecode/plate';
 import { withStyledDraggables } from './withStyledDraggables';
 import { H1Element } from './H1Element';
@@ -40,7 +41,7 @@ export const plateUI = withStyledDraggables(
           theme: 'dark',
         },
       },
-    }),
+    }) as RenderFunction<any>,
     [ELEMENT_CODE_BLOCK]: CodeBlockElement,
     [ELEMENT_PARAGRAPH]: withProps(StyledElement, {
       // as: 'p',
@@ -55,7 +56,7 @@ export const plateUI = withStyledDraggables(
         },
       } as Record<string, any>,
       prefixClassNames: 'p',
-    }),
+    }) as RenderFunction<any>,
     // [ELEMENT_UL]: withProps(StyledElement, {
     //   // as: 'p',
     //   styles: {
@@ -94,7 +95,7 @@ export const plateUI = withStyledDraggables(
         },
       } as Record<string, any>,
       prefixClassNames: 'p',
-    }),
+    }) as RenderFunction<any>,
 
     [ELEMENT_H1]: H1Element,
     [ELEMENT_H2]: H2Element,
@@ -114,6 +115,6 @@ export const plateUI = withStyledDraggables(
         },
       } as Record<string, any>,
       prefixClassNames: 'p',
-    }),
+    }) as RenderFunction<any>,
   })
 );
