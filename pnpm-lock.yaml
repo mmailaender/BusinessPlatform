@@ -39,7 +39,7 @@ dependencies:
     version: 13.4.4(eslint@8.42.0)(typescript@5.1.3)
   fqlx-client:
     specifier: github:mmailaender/Fauna-React
-    version: github.com/mmailaender/Fauna-React/33a7f33c914aee34297b7026f18ece12696b1278(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3)
+    version: github.com/mmailaender/Fauna-React/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3)
   next:
     specifier: 13.4.4
     version: 13.4.4(react-dom@18.2.0)(react@18.2.0)
@@ -9193,9 +9193,9 @@ packages:
     requiresBuild: true
     dev: false
 
-  github.com/mmailaender/Fauna-React/33a7f33c914aee34297b7026f18ece12696b1278(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3):
-    resolution: {tarball: https://codeload.github.com/mmailaender/Fauna-React/tar.gz/33a7f33c914aee34297b7026f18ece12696b1278}
-    id: github.com/mmailaender/Fauna-React/33a7f33c914aee34297b7026f18ece12696b1278
+  github.com/mmailaender/Fauna-React/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3):
+    resolution: {tarball: https://codeload.github.com/mmailaender/Fauna-React/tar.gz/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2}
+    id: github.com/mmailaender/Fauna-React/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2
     name: fqlx-client
     version: 0.1.0
     engines: {node: '>=10'}

@@ -16,13 +16,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { getToken } = auth();
-  const token = await getToken({ template: 'fauna' });
-
-  if (!token) {
-    return null;
-  }
-
   return (
     <html lang='en'>
       <ClerkProvider>
