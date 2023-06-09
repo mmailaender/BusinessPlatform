@@ -20,11 +20,7 @@ export default function RootLayout({
       <ClerkProvider>
         <body>
           <Reshaped theme='reshaped'>
-            <FqlxClientProvider
-              fqlxSecret={process.env.FAUNA_ADMIN_TOKEN as string}
-            >
-              {children}
-            </FqlxClientProvider>
+            <FqlxClientProvider>{children}</FqlxClientProvider>
           </Reshaped>
         </body>
       </ClerkProvider>
