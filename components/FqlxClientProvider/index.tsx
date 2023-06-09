@@ -22,7 +22,6 @@ export default function FqlxClientProvider({
   };
 
   setInterval(() => {
-    console.log('interval');
     fetchToken();
   }, 60000);
 
