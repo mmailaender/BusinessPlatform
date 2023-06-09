@@ -28,9 +28,7 @@ export default async function RootLayout({
       <ClerkProvider>
         <body>
           <Reshaped theme='reshaped'>
-            <FqlxClientProvider fqlxSecret={token}>
-              {children}
-            </FqlxClientProvider>
+            <FqlxClientProvider>{children}</FqlxClientProvider>
           </Reshaped>
         </body>
       </ClerkProvider>

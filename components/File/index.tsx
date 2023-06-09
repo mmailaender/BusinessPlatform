@@ -104,7 +104,6 @@ export function TemplateFile({ template }: TemplateFileProp) {
   const handleTemplateDelete = async (id: string) => {
     const res = await query.Template.byId(id).delete().exec();
     console.log('response', res);
-    localStorage.removeItem('fauna-react');
   };
 
   const handleCreateDuplicate = async () => {
@@ -307,7 +306,7 @@ export function CreateTemplate() {
       blocks: [],
     }).exec();
 
-    if (res?.id) {
+    if (res.id) {
       router.push(`/templates/${res.id}`);
     }
   };
