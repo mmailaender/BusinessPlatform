@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs/app-beta";
+import { SignIn } from "@clerk/nextjs";
 import { View } from "reshaped";
 
 const page = () => {
