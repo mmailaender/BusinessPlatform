@@ -9,6 +9,8 @@ import { useMemo, useState, useCallback, useEffect } from 'react';
 import { View } from 'reshaped';
 import { blocks } from './utils/getMappedBlocks';
 import { getSections } from './utils/getSections';
+import { editorRef } from '@/components/Plate/HeadingToolbar';
+import { focusEditor, getPointFromLocation } from '@udecode/plate';
 
 const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
 const FileNavigation = dynamic(() => import('@/components/FileNavigation'), {
@@ -74,12 +76,12 @@ const page = ({ params }: PageProps) => {
         });
 
         const resolvedBlocks = await Promise.all(blockPromises);
-        const template: any[] = [];
+        const templateArray: any[] = [];
 
         const resolvedBlocksId = resolvedBlocks.map((block) => {
           const blockData = JSON.parse(block.content);
 
-          template.push(
+          templateArray.push(
             { ...blockData[0], id: block.id },
             ...blockData.slice(1)
           );
@@ -87,22 +89,27 @@ const page = ({ params }: PageProps) => {
           return block.id;
         });
 
-        setTemplate(template);
+        setTemplate(templateArray);
         setBlocksId(resolvedBlocksId as unknown as Block[]);
 
         try {
-          const templateRes = await query.Template.byId(templateId)
-            .update({
-              blocks: resolvedBlocksId as unknown as Block[],
-            } as TemplateInput)
-            .exec();
+          if (JSON.stringify(templateArray) !== JSON.stringify(template)) {
+            const pos = getPointFromLocation(editorRef);
+            const templateRes = await query.Template.byId(templateId)
+              .update({
+                blocks: resolvedBlocksId as unknown as Block[],
+              } as TemplateInput)
+              .exec();
 
-          console.log('Updated', { templateRes });
+            console.log('Updated', { templateRes });
+
+            focusEditor(editorRef, pos);
+          }
         } catch (e) {
           console.log({ e });
         }
       },
-      [blocksId]
+      [blocksId, editorRef]
     )
   );
 

@@ -10,6 +10,12 @@ import {
   ELEMENT_OL,
   ELEMENT_UL,
   ListToolbarButton,
+  ELEMENT_H1,
+  ELEMENT_H2,
+  ELEMENT_H3,
+  ELEMENT_PARAGRAPH,
+  someNode,
+  usePlateSelection,
 } from '@udecode/plate';
 import BoldIcon from '@/components/Icons/BoldIcon';
 import ItalicIcon from '@/components/Icons/ItalicIcon';
@@ -23,6 +29,7 @@ import { TippyProps } from '@tippyjs/react';
 import { Transforms } from 'slate';
 import TextStyle from '@/components/TextStyle';
 import { markTooltip } from './MarkBalloonToolbar';
+import { useEffect, useMemo } from 'react';
 
 const options = [
   {
@@ -43,8 +50,11 @@ const options = [
   },
 ];
 
+export let editorRef: any;
 export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
+  editorRef = editor;
+  const isSelected = usePlateSelection();
 
   const arrow = false;
   const theme = 'light';
@@ -58,18 +68,44 @@ export const BasicElementToolbarButtons = () => {
   const strikethroughTooltip: TippyProps = { content: '', ...markTooltip };
   const linkTooltip: TippyProps = { content: '', ...markTooltip };
 
-  const handleOption = (selectedOption: any) => {
-    Transforms.setNodes(editor as any, { type: selectedOption.value } as any);
-  };
-
   function tooltip(arg0: string) {
     throw new Error('Function not implemented.');
   }
+  const handleOption = (selected: any) => {
+    Transforms.setNodes(editor as any, { type: selected.value } as any);
+  };
+
+  const toolBarDropDownValue = useMemo(() => {
+    if (
+      someNode(editor, {
+        match: { type: getPluginType(editor, ELEMENT_H1) },
+      })
+    ) {
+      return ELEMENT_H1;
+    }
+    if (
+      someNode(editor, {
+        match: { type: getPluginType(editor, ELEMENT_H2) },
+      })
+    ) {
+      return ELEMENT_H2;
+    }
+    if (
+      someNode(editor, {
+        match: { type: getPluginType(editor, ELEMENT_H3) },
+      })
+    ) {
+      return ELEMENT_H3;
+    }
+    return ELEMENT_PARAGRAPH;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSelected]);
 
   return (
     <View direction='row' align='center' divided gap={1}>
       <View width='160px' maxWidth='100%' paddingInline={2}>
         <Select
+          value={toolBarDropDownValue}
           onChange={handleOption}
           options={options}
           name='sort'
