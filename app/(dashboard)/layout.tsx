@@ -1,5 +1,5 @@
 import { UserButton } from '@clerk/nextjs/app-beta';
-import { View, Text, Button, Tabs, Divider } from 'reshaped';
+import { View, Text, Button, Divider } from 'reshaped';
 
 import { TabComponent } from '@/components/Tab';
 
