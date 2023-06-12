@@ -1,26 +1,20 @@
 'use client';
 import { View, Tabs } from 'reshaped';
+import Link from 'next/link';
 
 import Docs from '@/components/Icons/DocsIcon';
 import Template from '@/components/Icons/TemplateIcon';
-import { useRouter } from 'next/navigation';
 
 export function TabComponent() {
-  const router = useRouter();
-
-  const handleTabClick = (location: string) => {
-    router.push(location);
-  };
-
   return (
     <View paddingBlock={0} paddingInline={6}>
       <Tabs variant='borderless'>
         <Tabs.List>
           <Tabs.Item value='0' icon={<Docs />}>
-            <div onClick={() => handleTabClick('/')}>Documents</div>
+            <Link href='/'>Documents</Link>
           </Tabs.Item>
           <Tabs.Item value='1' icon={<Template />}>
-            <div onClick={() => handleTabClick('/templates')}>Templates</div>
+            <Link href='/templates'>Templates</Link>
           </Tabs.Item>
         </Tabs.List>
       </Tabs>

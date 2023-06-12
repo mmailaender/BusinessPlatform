@@ -16,9 +16,7 @@ import CreateDocument from '@/components/Icons/CreateDocument';
 import Template from '../Icons/Template';
 import Document from '../Icons/Document';
 import MoreIcon from '../Icons/MoreIcon';
-import ShareIcon from '../Icons/ShareIcon';
 import PrintIcon from '../Icons/PrintIcon';
-import RenameIcon from '../Icons/RenameIcon';
 import DuplicateIcon from '../Icons/DuplicateIcon';
 import BinIcon from '../Icons/BinIcon';
 import TemplateType, { TemplatetypeScratch } from '../TemplateType';
@@ -29,6 +27,7 @@ import {
   Template as TypeTemplate,
 } from '@/fqlx-generated/typedefs';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function CreateFile() {
   const { active, activate, deactivate } = useToggle(false);
@@ -99,7 +98,6 @@ type TemplateFileProp = {
 
 export function TemplateFile({ template }: TemplateFileProp) {
   const query = useQuery<Query>();
-  const router = useRouter();
 
   const handleTemplateDelete = async (id: string) => {
     const res = await query.Template.byId(id).delete().exec();
@@ -139,10 +137,6 @@ export function TemplateFile({ template }: TemplateFileProp) {
       }).exec();
       console.log('response', res);
     }
-  };
-
-  const handleTemplateSelect = () => {
-    router.push(`/templates/${template.id}`);
   };
 
   return (
@@ -200,11 +194,13 @@ export function TemplateFile({ template }: TemplateFileProp) {
               </DropdownMenu.Content>
             </DropdownMenu>
           </View>
-          <Card onClick={handleTemplateSelect}>
-            <View className='w-full' aspectRatio={1 / 1}>
-              <Template />
-            </View>
-          </Card>
+          <Link href={`/templates/${template.id}`}>
+            <Card>
+              <View className='w-full' aspectRatio={1 / 1}>
+                <Template />
+              </View>
+            </Card>
+          </Link>
         </View>
         {/* Label */}
         <View align='center' paddingBottom={6} gap={1}>
