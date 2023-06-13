@@ -1,6 +1,6 @@
 'use client';
 
-import { CreateTemplate, TemplateFile } from '@/components/File';
+import { CreateTemplate, TemplateFile } from '@/app/(dashboard)/File';
 import { Query } from '@/fqlx-generated/typedefs';
 import { useQuery } from 'fqlx-client';
 

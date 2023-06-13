@@ -17,16 +17,30 @@ export default function FqlxClientProvider({
 
   const fetchToken = async () => {
     const localToken = await getToken({ template: 'fauna' });
-    console.log('new token ', localToken);
-    setToken(localToken || 'failed');
+    if (localToken !== token) {
+      console.log('new token ', localToken);
+      setToken(localToken || 'failed');
+    }
   };
 
-  setInterval(() => {
-    fetchToken();
-  }, 60000);
-
   useEffect(() => {
+    let intervalId: any = null;
+
+    const startInterval = () => {
+      intervalId = setInterval(fetchToken, 60000);
+    };
+
+    const stopInterval = () => {
+      clearInterval(intervalId);
+    };
+
     fetchToken();
+
+    startInterval();
+
+    return () => {
+      stopInterval();
+    };
   }, []);
 
   return (

@@ -13,13 +13,13 @@ import {
 import React, { useState } from 'react';
 
 import CreateDocument from '@/components/Icons/CreateDocument';
-import Template from '../Icons/Template';
-import Document from '../Icons/Document';
-import MoreIcon from '../Icons/MoreIcon';
-import PrintIcon from '../Icons/PrintIcon';
-import DuplicateIcon from '../Icons/DuplicateIcon';
-import BinIcon from '../Icons/BinIcon';
-import TemplateType, { TemplatetypeScratch } from '../TemplateType';
+import Template from '../../components/Icons/Template';
+import Document from '../../components/Icons/Document';
+import MoreIcon from '../../components/Icons/MoreIcon';
+import PrintIcon from '../../components/Icons/PrintIcon';
+import DuplicateIcon from '../../components/Icons/DuplicateIcon';
+import BinIcon from '../../components/Icons/BinIcon';
+import TemplateType, { TemplatetypeScratch } from './TemplateType';
 import { useQuery } from 'fqlx-client';
 import {
   Block,

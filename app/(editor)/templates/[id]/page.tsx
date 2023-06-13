@@ -13,7 +13,7 @@ import { editorRef } from '@/components/Plate/HeadingToolbar';
 import { focusEditor, getPointFromLocation } from '@udecode/plate';
 
 const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
-const FileNavigation = dynamic(() => import('@/components/FileNavigation'), {
+const FileNavigation = dynamic(() => import('@/app/(editor)/FileNavigation'), {
   ssr: false,
 });
 
@@ -143,7 +143,7 @@ export default function TemplateByIdPage({ params }: PageProps) {
 
   useEffect(() => {
     fetchTemplate();
-  }, [templateId]);
+  }, []);
 
   return (
     <View>

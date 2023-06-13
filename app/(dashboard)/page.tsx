@@ -1,5 +1,5 @@
 'use client';
-import CreateFile, { DocumentFile } from '@/components/File';
+import CreateFile, { DocumentFile } from '@/app/(dashboard)/File';
 
 import { View, useToast } from 'reshaped';
 
