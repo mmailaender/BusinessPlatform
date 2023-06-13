@@ -1,7 +1,7 @@
 import { UserButton } from '@clerk/nextjs/app-beta';
 import { View, Text, Button, Divider } from 'reshaped';
 
-import { TabComponent } from '@/components/Tab';
+import { Tabs } from './tabs';
 
 export default function DashboardLayout({
   children,
@@ -34,7 +34,7 @@ export default function DashboardLayout({
           <Divider />
 
           {/* Lower part */}
-          <TabComponent />
+          <Tabs />
 
           <Divider blank />
         </View>

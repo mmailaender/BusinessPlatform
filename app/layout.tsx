@@ -4,7 +4,7 @@ import '@/app/globals.css';
 import 'reshaped/themes/reshaped/theme.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs';
-import FqlxClientProvider from '@/components/FqlxClientProvider';
+import FqlxClientProvider from './FqlxClientProvider';
 
 export const metadata = {
   title: 'Business Planner',

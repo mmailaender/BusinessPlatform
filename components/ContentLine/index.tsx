@@ -1,7 +1,6 @@
 'use client';
-import { View, Text, Image, ImageProps, Icon, IconProps } from 'reshaped';
+import { View, Text } from 'reshaped';
 import React from 'react';
-import Document from '../Icons/Document';
 
 export default function ContentLine({
   title,
