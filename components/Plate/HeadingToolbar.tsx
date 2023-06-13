@@ -16,6 +16,12 @@ import {
   ELEMENT_PARAGRAPH,
   someNode,
   usePlateSelection,
+  ColorPickerToolbarDropdown,
+  MARK_BG_COLOR,
+  MARK_COLOR,
+  ELEMENT_BLOCKQUOTE,
+  CodeBlockToolbarButton,
+  AlignToolbarButton,
 } from '@udecode/plate';
 import BoldIcon from '@/components/Icons/BoldIcon';
 import ItalicIcon from '@/components/Icons/ItalicIcon';
@@ -29,7 +35,18 @@ import { TippyProps } from '@tippyjs/react';
 import { Transforms } from 'slate';
 import TextStyle from '@/components/TextStyle';
 import { markTooltip } from './MarkBalloonToolbar';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
+import {
+  FormatColorText,
+  Check,
+  FontDownload,
+  FormatQuote,
+  Code,
+  FormatAlignCenter,
+  FormatAlignJustify,
+  FormatAlignLeft,
+  FormatAlignRight,
+} from '@styled-icons/material';
 
 const options = [
   {
@@ -51,22 +68,18 @@ const options = [
 ];
 
 export let editorRef: any;
+
+const tooltip = (content: string) => ({
+  content,
+});
+
 export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
   editorRef = editor;
   const isSelected = usePlateSelection();
 
-  const arrow = false;
-  const theme = 'light';
-
-  const boldTooltip: TippyProps = { content: '', ...markTooltip };
-  const italicTooltip: TippyProps = { content: '', ...markTooltip };
-  const underlineTooltip: TippyProps = {
-    content: '',
-    ...markTooltip,
-  };
-  const strikethroughTooltip: TippyProps = { content: '', ...markTooltip };
-  const linkTooltip: TippyProps = { content: '', ...markTooltip };
+  const colorTooltip: TippyProps = { content: 'Color', ...markTooltip };
+  const bgColorTooltip: TippyProps = { content: 'BgColor', ...markTooltip };
 
   function tooltip(arg0: string) {
     throw new Error('Function not implemented.');
@@ -152,6 +165,28 @@ export const BasicElementToolbarButtons = () => {
           }
           actionHandler='onMouseDown'
         />
+        <MarkToolbarButton
+          actionHandler='onMouseDown'
+          type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
+          icon={<TextStyle label='Quote' icon={<FormatQuote />} />}
+        />
+        <CodeBlockToolbarButton icon={<Code />} />
+        <ColorPickerToolbarDropdown
+          pluginKey={MARK_COLOR}
+          icon={<FormatColorText />}
+          selectedIcon={<Check />}
+          tooltip={colorTooltip}
+        />
+        <ColorPickerToolbarDropdown
+          pluginKey={MARK_BG_COLOR}
+          icon={<FontDownload />}
+          selectedIcon={<Check />}
+          tooltip={bgColorTooltip}
+        />
+        <AlignToolbarButton value='left' icon={<FormatAlignLeft />} />
+        <AlignToolbarButton value='center' icon={<FormatAlignCenter />} />
+        <AlignToolbarButton value='right' icon={<FormatAlignRight />} />
+        <AlignToolbarButton value='justify' icon={<FormatAlignJustify />} />
       </View>
       <View direction='row' align='center'>
         <ListToolbarButton

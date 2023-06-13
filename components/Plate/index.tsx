@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import {
   Plate,
   PlateProvider,
+  createDeserializeDocxPlugin,
   TEditableProps,
   createBlockquotePlugin,
   createExitBreakPlugin,
@@ -27,12 +28,13 @@ import {
   createListPlugin,
   createTodoListPlugin,
   createNodeIdPlugin,
+  createFontBackgroundColorPlugin,
+  createFontSizePlugin,
+  createAlignPlugin,
 } from '@udecode/plate';
-import { Link } from '@styled-icons/material/Link';
 import { createDndPlugin } from '@udecode/plate-dnd';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { Image } from '@styled-icons/material/Image';
 
 import './styles.css';
 import {
@@ -49,7 +51,6 @@ import { linkPlugin } from './plugins/linkPlugin';
 import { TableToolbarButtons } from './toolbar/TableToolbarButtons';
 import { softBreakPlugin } from './plugins/softPlugin';
 import { exitBreakPlugin } from './plugins/exitBreakPlugin';
-import LinkIcon from '../Icons/LinkIcon';
 import TextStyle from '../TextStyle';
 import { View, classNames } from 'reshaped';
 import ImageIcon from '../Icons/ImageIcon';
@@ -62,6 +63,7 @@ const editableProps: TEditableProps<MyValue> = {
 
 const plugins: MyPlatePlugin[] = createMyPlugins(
   [
+    createDeserializeDocxPlugin(),
     createParagraphPlugin(),
     createBlockquotePlugin(),
     createCodeBlockPlugin(),
@@ -84,6 +86,9 @@ const plugins: MyPlatePlugin[] = createMyPlugins(
     createTodoListPlugin(),
     createNodeIdPlugin(),
     createDndPlugin({ options: { enableScroller: true } }),
+    createFontBackgroundColorPlugin(),
+    createFontSizePlugin(),
+    createAlignPlugin(),
   ],
   { components: plateUI }
 );
