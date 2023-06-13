@@ -10,7 +10,7 @@ import {
   Actionable,
   Card,
 } from 'reshaped';
-import React, { useState } from 'react';
+import React from 'react';
 
 import CreateDocument from '@/components/Icons/CreateDocument';
 import Template from '../../components/Icons/Template';
@@ -20,14 +20,9 @@ import PrintIcon from '../../components/Icons/PrintIcon';
 import DuplicateIcon from '../../components/Icons/DuplicateIcon';
 import BinIcon from '../../components/Icons/BinIcon';
 import TemplateType, { TemplatetypeScratch } from './TemplateType';
-import { useQuery } from 'fqlx-client';
-import {
-  Block,
-  Query,
-  Template as TypeTemplate,
-} from '@/fqlx-generated/typedefs';
-import { useRouter } from 'next/navigation';
+import { Template as TypeTemplate } from '@/fqlx-generated/typedefs';
 import Link from 'next/link';
+import useTemplate from '@/hooks/useTemplate';
 
 export default function CreateFile() {
   const { active, activate, deactivate } = useToggle(false);
@@ -67,7 +62,7 @@ export default function CreateFile() {
           </View>
         </View>
       </View>
-
+      {/* update name active=>fileModalActive */}
       <Modal active={active} onClose={deactivate} padding={5}>
         <View gap={3}>
           <Dismissible onClose={deactivate} closeAriaLabel='Close'>
@@ -97,46 +92,14 @@ type TemplateFileProp = {
 };
 
 export function TemplateFile({ template }: TemplateFileProp) {
-  const query = useQuery<Query>();
+  const { deleteTemplate, duplicateTemplate } = useTemplate();
 
   const handleTemplateDelete = async (id: string) => {
-    const res = await query.Template.byId(id).delete().exec();
-    console.log('response', res);
+    deleteTemplate(id);
   };
 
   const handleCreateDuplicate = async () => {
-    const blocksPromises: Promise<Block>[] = [];
-
-    template.blocks.forEach((m) => {
-      blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-    });
-
-    const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
-
-    let blocks: string[] = [];
-
-    for (const resolvedBlock of resolvedBlocks) {
-      if (
-        resolvedBlock.category === 'Section' ||
-        resolvedBlock.category === 'SubSection'
-      ) {
-        const res = await query.Block.create({
-          content: resolvedBlock.content,
-        } as Block).exec();
-
-        blocks.push(res.id);
-      } else {
-        blocks.push(resolvedBlock.id);
-      }
-    }
-
-    if (blocks.length > 0) {
-      const res = await query.Template.create({
-        name: `${template.name} (Copy)`,
-        blocks: blocks as unknown as Block[],
-      }).exec();
-      console.log('response', res);
-    }
+    duplicateTemplate(template);
   };
 
   return (
@@ -293,19 +256,7 @@ export function DocumentFile() {
 }
 
 export function CreateTemplate() {
-  const query = useQuery<Query>();
-  const router = useRouter();
-
-  const createTemplate = async () => {
-    const res = await query.Template.create({
-      name: 'Untitled',
-      blocks: [],
-    }).exec();
-
-    if (res.id) {
-      router.push(`/templates/${res.id}`);
-    }
-  };
+  const { createTemplate } = useTemplate();
 
   return (
     <>

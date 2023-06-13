@@ -22,6 +22,7 @@ import {
   TemplateInput,
 } from '@/fqlx-generated/typedefs';
 import { useEffect, useState, useCallback } from 'react';
+import useTemplate from '@/hooks/useTemplate';
 
 export default function CreateFile({
   children,
@@ -34,6 +35,12 @@ export default function CreateFile({
   const isTemplate = path.includes('templates');
   const query = useQuery<Query>();
   const [fileName, setFileName] = useState('New Document');
+  const {
+    deleteTemplate,
+    fetchTemplateName,
+    updateTemplateName,
+    duplicateTemplate,
+  } = useTemplate();
 
   const CustomInput = () => {
     const { attributes } = useFormControl();
@@ -50,9 +57,7 @@ export default function CreateFile({
 
   useEffect(() => {
     if (isTemplate) {
-      query.Template.byId(param.id)
-        .exec()
-        .then((data) => setFileName(data.name));
+      fetchTemplateName(param.id).then((name) => setFileName(name as string));
     } else {
       query.Document.byId(param.id)
         .exec()
@@ -62,11 +67,7 @@ export default function CreateFile({
 
   const updateFileNameToFqlx = debounce({ delay: 1000 }, (value: string) => {
     if (isTemplate) {
-      query.Template.byId(param.id)
-        .update({
-          name: value,
-        } as TemplateInput)
-        .exec();
+      updateTemplateName(param.id, value);
     } else {
       query.Document.byId(param.id)
         .update({
@@ -83,8 +84,7 @@ export default function CreateFile({
 
   const handleDelete = async () => {
     if (isTemplate) {
-      const res = await query.Template.byId(param.id).delete().exec();
-      console.log('response', res);
+      deleteTemplate(param.id);
       router.push('../templates');
     } else {
       const res = await query.Document.byId(param.id).delete().exec();
@@ -94,57 +94,11 @@ export default function CreateFile({
   };
 
   const handleCreateDuplicate = async () => {
-    const blocksPromises: Promise<Block>[] = [];
-
     if (isTemplate) {
       const template = await query.Template.byId(param.id).exec();
-
-      template.blocks.forEach((m) => {
-        blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-      });
+      duplicateTemplate(template);
     } else {
-      const document = await query.Document.byId(param.id).exec();
-
-      document.blocks.forEach((m) => {
-        blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-      });
-    }
-
-    const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
-
-    let blocks: string[] = [];
-
-    for (const resolvedBlock of resolvedBlocks) {
-      if (
-        resolvedBlock.category === 'Section' ||
-        resolvedBlock.category === 'SubSection'
-      ) {
-        const res = await query.Block.create({
-          content: resolvedBlock.content,
-        } as Block).exec();
-
-        blocks.push(res.id);
-      } else {
-        blocks.push(resolvedBlock.id);
-      }
-    }
-
-    if (blocks.length > 0) {
-      if (isTemplate) {
-        const res = await query.Template.create({
-          name: `${fileName} (Copy)`,
-          blocks: blocks as unknown as Block[],
-        }).exec();
-        console.log('response', res);
-        router.push(`../templates/${res.id}`);
-      } else {
-        const res = await query.Document.create({
-          name: `${fileName} (Copy)`,
-          blocks: blocks as unknown as Block[],
-        } as DocumentInput).exec();
-        console.log('response', res);
-        router.push(`../documents/${res.id}`);
-      }
+      console.log('Document');
     }
   };
 

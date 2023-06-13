@@ -11,6 +11,7 @@ import { blocks } from './utils/getMappedBlocks';
 import { getSections } from './utils/getSections';
 import { editorRef } from '@/components/Plate/HeadingToolbar';
 import { focusEditor, getPointFromLocation } from '@udecode/plate';
+import useTemplate from '@/hooks/useTemplate';
 
 const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
 const FileNavigation = dynamic(() => import('@/app/(editor)/FileNavigation'), {
@@ -24,6 +25,7 @@ interface PageProps {
 }
 
 export default function TemplateByIdPage({ params }: PageProps) {
+  const { fetchTemplate } = useTemplate();
   const [template, setTemplate] = useState<MyValue>([]);
   const [blocksId, setBlocksId] = useState<Block[]>([]);
 
@@ -120,29 +122,11 @@ export default function TemplateByIdPage({ params }: PageProps) {
     [template]
   );
 
-  const fetchTemplate = async () => {
-    const templateRes = await query.Template.byId(templateId).exec();
-    const template: any[] = [];
-
-    const blocksPromises: Promise<Block>[] = [];
-
-    templateRes.blocks.forEach((m) => {
-      blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-    });
-
-    const resolvedBlocks = await Promise.all(blocksPromises);
-
-    resolvedBlocks.forEach((block) => {
-      const blockData = JSON.parse(block.content);
-      template.push({ ...blockData[0], id: block.id }, ...blockData.slice(1));
-    });
-
-    setTemplate(template);
-    setBlocksId(templateRes.blocks);
-  };
-
   useEffect(() => {
-    fetchTemplate();
+    fetchTemplate(templateId).then((data) => {
+      setTemplate(data?.template as any);
+      setBlocksId(data?.blocks as any);
+    });
   }, []);
 
   return (
