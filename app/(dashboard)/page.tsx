@@ -1,10 +1,10 @@
 'use client';
-import CreateFile, { DocumentFile } from '@/app/(dashboard)/File';
 
-import { View, useToast } from 'reshaped';
+import CreateFile from '@/app/(dashboard)/CreateFile';
+import { View } from 'reshaped';
+import { DocumentFile } from './DocumentFile';
 
-export default function Page() {
-  const toast = useToast();
+export default function DashBoard() {
   return (
     <View direction='row'>
       <View.Item columns={{ xl: 2, l: 3, m: 4, s: 6 }}>

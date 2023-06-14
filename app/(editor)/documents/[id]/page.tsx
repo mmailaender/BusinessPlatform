@@ -1,13 +1,12 @@
 'use client';
 
+import { useMemo, useState } from 'react';
 import { View } from 'reshaped';
+import dynamic from 'next/dynamic';
+import { MyValue } from '@/components/Plate/interfaces/plateTypes';
 import PrintCover from './PrintCover';
 import ContentTemplate from './PrintTableOfContent';
 import Watermark from './Watermark';
-
-import { MyValue } from '@/components/Plate/interfaces/plateTypes';
-import dynamic from 'next/dynamic';
-import { useMemo, useState } from 'react';
 
 const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
 const FileNavigation = dynamic(() => import('@/app/(editor)/FileNavigation'), {

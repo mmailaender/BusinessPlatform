@@ -1,11 +1,6 @@
 'use client';
-import ArrowLeft from '@/components/Icons/ArrowLeft';
-import BinIcon from '@/components/Icons/BinIcon';
-import DocsIcon from '@/components/Icons/DocsIcon';
-import DuplicateIcon from '@/components/Icons/DuplicateIcon';
-import MoreIcon from '@/components/Icons/MoreIcon';
-import PrintIcon from '@/components/Icons/PrintIcon';
-import { useRouter, useParams, usePathname } from 'next/navigation';
+
+import { useEffect, useState, useCallback } from 'react';
 import {
   Button,
   View,
@@ -15,13 +10,19 @@ import {
 } from 'reshaped';
 import { debounce } from 'radash';
 import { useQuery } from 'fqlx-client';
+import { useRouter, useParams, usePathname } from 'next/navigation';
+import ArrowLeft from '@/components/Icons/ArrowLeft';
+import BinIcon from '@/components/Icons/BinIcon';
+import DocsIcon from '@/components/Icons/DocsIcon';
+import DuplicateIcon from '@/components/Icons/DuplicateIcon';
+import MoreIcon from '@/components/Icons/MoreIcon';
+import PrintIcon from '@/components/Icons/PrintIcon';
 import {
   Block,
   DocumentInput,
   Query,
   TemplateInput,
 } from '@/fqlx-generated/typedefs';
-import { useEffect, useState, useCallback } from 'react';
 
 export default function CreateFile({
   children,

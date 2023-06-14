@@ -1,8 +1,8 @@
 'use client';
-import { Button, View, Text, Divider, Accordion, DropdownMenu } from 'reshaped';
 
-import PlusIcon from '../../components/Icons/PlusIcon';
-import Section from '../../components/Section';
+import { Button, View, Text, Divider, Accordion, DropdownMenu } from 'reshaped';
+import PlusIcon from '@/components/Icons/PlusIcon';
+import Section from '@/components/Section';
 
 interface FileNavigationProps {
   sections: { [sectionName: string]: { id: string; [key: string]: any } };

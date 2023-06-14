@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   getPluginType,
   useEventPlateId,
@@ -23,19 +24,6 @@ import {
   CodeBlockToolbarButton,
   AlignToolbarButton,
 } from '@udecode/plate';
-import BoldIcon from '@/components/Icons/BoldIcon';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
-import { View, Select } from 'reshaped';
-import BulletlistIcon from '../Icons/BulletlistIcon';
-import OrderlistIcon from '../Icons/OrderlistIcon';
-import TextIcon from '@/components/Icons/TextIcon';
-import { TippyProps } from '@tippyjs/react';
-import { Transforms } from 'slate';
-import TextStyle from '@/components/TextStyle';
-import { markTooltip } from './MarkBalloonToolbar';
-import { useMemo } from 'react';
 import {
   FormatColorText,
   Check,
@@ -47,6 +35,18 @@ import {
   FormatAlignLeft,
   FormatAlignRight,
 } from '@styled-icons/material';
+import { View, Select } from 'reshaped';
+import { TippyProps } from '@tippyjs/react';
+import { Transforms } from 'slate';
+import BoldIcon from '@/components/Icons/BoldIcon';
+import ItalicIcon from '@/components/Icons/ItalicIcon';
+import UnderlineIcon from '@/components/Icons/UnderlineIcon';
+import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
+import TextIcon from '@/components/Icons/TextIcon';
+import TextStyle from '@/components/TextStyle';
+import BulletlistIcon from '../Icons/BulletlistIcon';
+import OrderlistIcon from '../Icons/OrderlistIcon';
+import { markTooltip } from './MarkBalloonToolbar';
 
 const options = [
   {
@@ -175,13 +175,11 @@ export const BasicElementToolbarButtons = () => {
           pluginKey={MARK_COLOR}
           icon={<FormatColorText />}
           selectedIcon={<Check />}
-          tooltip={colorTooltip}
         />
         <ColorPickerToolbarDropdown
           pluginKey={MARK_BG_COLOR}
           icon={<FontDownload />}
           selectedIcon={<Check />}
-          tooltip={bgColorTooltip}
         />
         <AlignToolbarButton value='left' icon={<FormatAlignLeft />} />
         <AlignToolbarButton value='center' icon={<FormatAlignCenter />} />

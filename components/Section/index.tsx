@@ -1,7 +1,7 @@
 'use client';
+
 import { Button, View, Text, MenuItem, DropdownMenu, Tooltip } from 'reshaped';
 import React from 'react';
-
 import MoreIcon from '../Icons/MoreIcon';
 import RenameIcon from '../Icons/RenameIcon';
 import DuplicateIcon from '../Icons/DuplicateIcon';

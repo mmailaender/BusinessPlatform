@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Plate,
   PlateProvider,
@@ -32,11 +32,10 @@ import {
   createFontSizePlugin,
   createAlignPlugin,
 } from '@udecode/plate';
+import { View, classNames } from 'reshaped';
 import { createDndPlugin } from '@udecode/plate-dnd';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-
-import './styles.css';
 import {
   MyPlatePlugin,
   MyRootBlock,
@@ -52,8 +51,8 @@ import { TableToolbarButtons } from './toolbar/TableToolbarButtons';
 import { softBreakPlugin } from './plugins/softPlugin';
 import { exitBreakPlugin } from './plugins/exitBreakPlugin';
 import TextStyle from '../TextStyle';
-import { View, classNames } from 'reshaped';
 import ImageIcon from '../Icons/ImageIcon';
+import './styles.css';
 
 const editableProps: TEditableProps<MyValue> = {
   placeholder: 'Type...',
@@ -118,53 +117,79 @@ export const useScrollPosition = () => {
 
 export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   const scrollPosition = useScrollPosition();
+  const [isClickedOutsideEditor, setisClickedOutsideEditor] =
+    useState<boolean>(false);
+
   const elementIds = value?.reduce((acc: MyRootBlock[], curr: MyRootBlock) => {
     return [...acc, curr?.id];
   }, []);
+  const divRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (divRef.current && !divRef.current.contains(event.target as Node)) {
+      setisClickedOutsideEditor(true);
+    } else {
+      setisClickedOutsideEditor(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      handleClickOutside(event);
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, []);
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <PlateProvider<MyValue>
-        key={JSON.stringify(elementIds)}
-        plugins={plugins}
-        onChange={onChange}
-        initialValue={value?.length ? value : undefined}
-      >
-        <View
-          position='sticky'
-          insetTop={20}
-          width='100%'
-          zIndex={1}
-          padding={0}
-          className='print:hidden'
+    <div ref={divRef}>
+      <DndProvider backend={HTML5Backend}>
+        <PlateProvider<MyValue>
+          key={JSON.stringify(elementIds)}
+          plugins={plugins}
+          onChange={onChange}
+          initialValue={value?.length ? value : undefined}
         >
-          <Toolbar
-            className={classNames(
-              scrollPosition > 135 ? 'drop-shadow' : 'drop-shadow-none',
-              'transition-shadow bg-page !rounded-md !border-0 !px-0 !py-0 !mx-0'
-            )}
+          <View
+            position='sticky'
+            insetTop={20}
+            width='100%'
+            zIndex={1}
+            padding={0}
+            className='print:hidden'
           >
-            {/* <BasicElementToolbarButtons />
+            <Toolbar
+              className={classNames(
+                scrollPosition > 135 ? 'drop-shadow' : 'drop-shadow-none',
+                'transition-shadow bg-page !rounded-md !border-0 !px-0 !py-0 !mx-0'
+              )}
+            >
+              {/* <BasicElementToolbarButtons />
           <LinkToolbarButton
             icon={<TextStyle label="Link" icon={<LinkIcon />} />}
           /> */}
-            <View direction='row' align='center' divided gap={1}>
-              <BasicElementToolbarButtons />
-              <TableToolbarButtons />
-              <ImageToolbarButton
-                icon={<TextStyle label='Image' icon={<ImageIcon />} />}
-              />
-            </View>
-          </Toolbar>
-        </View>
+              <View direction='row' align='center' divided gap={1}>
+                <BasicElementToolbarButtons />
+                <TableToolbarButtons />
+                <ImageToolbarButton
+                  icon={<TextStyle label='Image' icon={<ImageIcon />} />}
+                />
+              </View>
+            </Toolbar>
+          </View>
 
-        <Plate<MyValue>
-          editableProps={editableProps}
-          value={value?.length ? value : undefined}
-        >
-          <MarkBalloonToolbar />
-        </Plate>
-      </PlateProvider>
-    </DndProvider>
+          <Plate<MyValue>
+            editableProps={editableProps}
+            value={value?.length ? value : undefined}
+          >
+            {!isClickedOutsideEditor && <MarkBalloonToolbar />}
+          </Plate>
+        </PlateProvider>
+      </DndProvider>
+    </div>
   );
 }

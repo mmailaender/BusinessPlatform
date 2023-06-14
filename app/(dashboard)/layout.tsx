@@ -1,7 +1,6 @@
 import { UserButton } from '@clerk/nextjs/app-beta';
 import { View, Text, Button, Divider } from 'reshaped';
-
-import { Tabs } from './tabs';
+import { Tabs } from './Tabs';
 
 export default function DashboardLayout({
   children,
