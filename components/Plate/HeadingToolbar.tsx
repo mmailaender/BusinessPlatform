@@ -20,16 +20,12 @@ import {
   ColorPickerToolbarDropdown,
   MARK_BG_COLOR,
   MARK_COLOR,
-  ELEMENT_BLOCKQUOTE,
-  CodeBlockToolbarButton,
   AlignToolbarButton,
 } from '@udecode/plate';
 import {
   FormatColorText,
   Check,
   FontDownload,
-  FormatQuote,
-  Code,
   FormatAlignCenter,
   FormatAlignJustify,
   FormatAlignLeft,
@@ -68,10 +64,6 @@ const options = [
 ];
 
 export let editorRef: any;
-
-const tooltip = (content: string) => ({
-  content,
-});
 
 export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
@@ -165,12 +157,6 @@ export const BasicElementToolbarButtons = () => {
           }
           actionHandler='onMouseDown'
         />
-        <MarkToolbarButton
-          actionHandler='onMouseDown'
-          type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
-          icon={<TextStyle label='Quote' icon={<FormatQuote />} />}
-        />
-        <CodeBlockToolbarButton icon={<Code />} />
         <ColorPickerToolbarDropdown
           pluginKey={MARK_COLOR}
           icon={<FormatColorText />}
