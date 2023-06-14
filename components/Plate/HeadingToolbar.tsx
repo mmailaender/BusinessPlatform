@@ -30,19 +30,18 @@ import {
   FormatAlignJustify,
   FormatAlignLeft,
   FormatAlignRight,
+  FormatItalic,
+  FormatBold,
+  FormatUnderlined,
+  FormatStrikethrough,
 } from '@styled-icons/material';
 import { View, Select } from 'reshaped';
 import { TippyProps } from '@tippyjs/react';
 import { Transforms } from 'slate';
-import BoldIcon from '@/components/Icons/BoldIcon';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import TextIcon from '@/components/Icons/TextIcon';
 import TextStyle from '@/components/TextStyle';
 import BulletlistIcon from '../Icons/BulletlistIcon';
 import OrderlistIcon from '../Icons/OrderlistIcon';
-import { markTooltip } from './MarkBalloonToolbar';
 
 const options = [
   {
@@ -69,9 +68,6 @@ export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
   editorRef = editor;
   const isSelected = usePlateSelection();
-
-  const colorTooltip: TippyProps = { content: 'Color', ...markTooltip };
-  const bgColorTooltip: TippyProps = { content: 'BgColor', ...markTooltip };
 
   function tooltip(arg0: string) {
     throw new Error('Function not implemented.');
@@ -137,24 +133,22 @@ export const BasicElementToolbarButtons = () => {
       <View direction='row' align='center' gap={1}>
         <MarkToolbarButton
           type={getPluginType(editor, MARK_BOLD)}
-          icon={<TextStyle label='Bold (⌘+B)' icon={<BoldIcon />} />}
+          icon={<FormatBold />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_ITALIC)}
-          icon={<TextStyle label='Italic (⌘+I)' icon={<ItalicIcon />} />}
+          icon={<FormatItalic />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_UNDERLINE)}
-          icon={<TextStyle label='Underline (⌘+U)' icon={<UnderlineIcon />} />}
+          icon={<FormatUnderlined />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_STRIKETHROUGH)}
-          icon={
-            <TextStyle label='Strikethrough' icon={<StrikethroughIcon />} />
-          }
+          icon={<FormatStrikethrough />}
           actionHandler='onMouseDown'
         />
         <ColorPickerToolbarDropdown
