@@ -21,18 +21,20 @@ import {
   ELEMENT_UL,
   ELEMENT_OL,
 } from '@udecode/plate';
-import { useMyPlateEditorRef } from './interfaces/plateTypes';
+import { Transforms } from 'slate';
+import {
+  FormatBold,
+  FormatItalic,
+  FormatStrikethrough,
+  FormatUnderlined,
+} from '@styled-icons/material';
 import { Select, View } from 'reshaped';
 import TextStyle from '@/components/TextStyle';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import BoldIcon from '@/components/Icons/BoldIcon';
-import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import LinkIcon from '@/components/Icons/LinkIcon';
 import TextIcon from '@/components/Icons/TextIcon';
 import BulletlistIcon from '../Icons/BulletlistIcon';
 import OrderlistIcon from '../Icons/OrderlistIcon';
-import { Transforms } from 'slate';
+import { useMyPlateEditorRef } from './interfaces/plateTypes';
 
 export const markTooltip: TippyProps = {
   arrow: true,
@@ -72,15 +74,6 @@ export const MarkBalloonToolbar = (
 
   const arrow = false;
   const theme = 'light';
-
-  const boldTooltip: TippyProps = { content: '', ...markTooltip };
-  const italicTooltip: TippyProps = { content: '', ...markTooltip };
-  const underlineTooltip: TippyProps = {
-    content: '',
-    ...markTooltip,
-  };
-  const strikethroughTooltip: TippyProps = { content: '', ...markTooltip };
-  const linkTooltip: TippyProps = { content: '', ...markTooltip };
 
   const handleOption = (selected: any) => {
     Transforms.setNodes(editor as any, { type: selected.value } as any);
@@ -128,30 +121,22 @@ export const MarkBalloonToolbar = (
         <View direction='row' align='center' gap={1}>
           <MarkToolbarButton
             type={getPluginType(editor, MARK_BOLD)}
-            icon={<TextStyle label='Bold (⌘+B)' icon={<BoldIcon />} />}
-            tooltip={boldTooltip}
+            icon={<FormatBold />}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_ITALIC)}
-            icon={<TextStyle label='Italic (⌘+I)' icon={<ItalicIcon />} />}
-            tooltip={italicTooltip}
+            icon={<FormatItalic />}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
             type={getPluginType(editor, MARK_UNDERLINE)}
-            icon={
-              <TextStyle label='Underline (⌘+U)' icon={<UnderlineIcon />} />
-            }
-            tooltip={underlineTooltip}
+            icon={<FormatUnderlined />}
             actionHandler='onMouseDown'
           />
           <MarkToolbarButton
-            tooltip={strikethroughTooltip}
             type={getPluginType(editor, MARK_STRIKETHROUGH)}
-            icon={
-              <TextStyle label='Strikethrough' icon={<StrikethroughIcon />} />
-            }
+            icon={<FormatStrikethrough />}
             actionHandler='onMouseDown'
           />
         </View>

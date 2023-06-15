@@ -1,10 +1,10 @@
 'use client';
 
-import { CreateTemplate, TemplateFile } from '@/app/(dashboard)/File';
-import { Query } from '@/fqlx-generated/typedefs';
-import { useQuery } from 'fqlx-client';
-
 import { View } from 'reshaped';
+import { useQuery } from 'fqlx-client';
+import { Query } from '@/fqlx-generated/typedefs';
+import { TemplateFile } from '../TemplateFile';
+import { CreateTemplate } from '../CreateTemplate';
 
 export default function TemplatePage() {
   const query = useQuery<Query>();

@@ -1,10 +1,7 @@
-"use client";
-import { ReactElement } from "react";
-import {
-  View,
-  Button,
-  Tooltip,
-} from "reshaped";
+'use client';
+
+import { ReactElement } from 'react';
+import { View, Button, Tooltip } from 'reshaped';
 
 export interface TextStyleProps {
   label: string;
@@ -19,8 +16,8 @@ export default function TextStyle({ label, icon }: TextStyleProps) {
           <Button
             icon={icon}
             attributes={attributes}
-            size="medium"
-            variant="ghost"
+            size='medium'
+            variant='ghost'
           ></Button>
         )}
       </Tooltip>

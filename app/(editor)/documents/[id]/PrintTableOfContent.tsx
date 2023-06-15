@@ -1,4 +1,5 @@
 'use client';
+
 import { View, Text } from 'reshaped';
 import React from 'react';
 import ContentLine, { SecondaryContentLine } from '@/components/ContentLine';

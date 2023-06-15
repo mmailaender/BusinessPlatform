@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   getPluginType,
   useEventPlateId,
@@ -19,34 +20,26 @@ import {
   ColorPickerToolbarDropdown,
   MARK_BG_COLOR,
   MARK_COLOR,
-  ELEMENT_BLOCKQUOTE,
-  CodeBlockToolbarButton,
   AlignToolbarButton,
 } from '@udecode/plate';
-import BoldIcon from '@/components/Icons/BoldIcon';
-import ItalicIcon from '@/components/Icons/ItalicIcon';
-import UnderlineIcon from '@/components/Icons/UnderlineIcon';
-import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
-import { View, Select } from 'reshaped';
-import BulletlistIcon from '../Icons/BulletlistIcon';
-import OrderlistIcon from '../Icons/OrderlistIcon';
-import TextIcon from '@/components/Icons/TextIcon';
-import { TippyProps } from '@tippyjs/react';
-import { Transforms } from 'slate';
-import TextStyle from '@/components/TextStyle';
-import { markTooltip } from './MarkBalloonToolbar';
-import { useMemo } from 'react';
 import {
   FormatColorText,
   Check,
   FontDownload,
-  FormatQuote,
-  Code,
   FormatAlignCenter,
   FormatAlignJustify,
   FormatAlignLeft,
   FormatAlignRight,
+  FormatItalic,
+  FormatBold,
+  FormatUnderlined,
+  FormatStrikethrough,
+  FormatListNumbered,
+  FormatListBulleted,
 } from '@styled-icons/material';
+import { View, Select } from 'reshaped';
+import { Transforms } from 'slate';
+import TextIcon from '@/components/Icons/TextIcon';
 
 const options = [
   {
@@ -69,17 +62,10 @@ const options = [
 
 export let editorRef: any;
 
-const tooltip = (content: string) => ({
-  content,
-});
-
 export const BasicElementToolbarButtons = () => {
   const editor = usePlateEditorRef(useEventPlateId());
   editorRef = editor;
   const isSelected = usePlateSelection();
-
-  const colorTooltip: TippyProps = { content: 'Color', ...markTooltip };
-  const bgColorTooltip: TippyProps = { content: 'BgColor', ...markTooltip };
 
   function tooltip(arg0: string) {
     throw new Error('Function not implemented.');
@@ -145,43 +131,33 @@ export const BasicElementToolbarButtons = () => {
       <View direction='row' align='center' gap={1}>
         <MarkToolbarButton
           type={getPluginType(editor, MARK_BOLD)}
-          icon={<TextStyle label='Bold (⌘+B)' icon={<BoldIcon />} />}
+          icon={<FormatBold />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_ITALIC)}
-          icon={<TextStyle label='Italic (⌘+I)' icon={<ItalicIcon />} />}
+          icon={<FormatItalic />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_UNDERLINE)}
-          icon={<TextStyle label='Underline (⌘+U)' icon={<UnderlineIcon />} />}
+          icon={<FormatUnderlined />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_STRIKETHROUGH)}
-          icon={
-            <TextStyle label='Strikethrough' icon={<StrikethroughIcon />} />
-          }
+          icon={<FormatStrikethrough />}
           actionHandler='onMouseDown'
         />
-        <MarkToolbarButton
-          actionHandler='onMouseDown'
-          type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
-          icon={<TextStyle label='Quote' icon={<FormatQuote />} />}
-        />
-        <CodeBlockToolbarButton icon={<Code />} />
         <ColorPickerToolbarDropdown
           pluginKey={MARK_COLOR}
           icon={<FormatColorText />}
           selectedIcon={<Check />}
-          tooltip={colorTooltip}
         />
         <ColorPickerToolbarDropdown
           pluginKey={MARK_BG_COLOR}
           icon={<FontDownload />}
           selectedIcon={<Check />}
-          tooltip={bgColorTooltip}
         />
         <AlignToolbarButton value='left' icon={<FormatAlignLeft />} />
         <AlignToolbarButton value='center' icon={<FormatAlignCenter />} />
@@ -191,11 +167,13 @@ export const BasicElementToolbarButtons = () => {
       <View direction='row' align='center'>
         <ListToolbarButton
           type={getPluginType(editor, ELEMENT_UL)}
-          icon={<TextStyle label='Bullet List' icon={<BulletlistIcon />} />}
+          icon={<FormatListBulleted />}
+          actionHandler='onMouseDown'
         />
         <ListToolbarButton
           type={getPluginType(editor, ELEMENT_OL)}
-          icon={<TextStyle label='Ordered List' icon={<OrderlistIcon />} />}
+          icon={<FormatListNumbered />}
+          actionHandler='onMouseDown'
         />
       </View>
     </View>

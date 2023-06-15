@@ -1,16 +1,16 @@
 'use client';
 
-import { MyValue } from '@/components/Plate/interfaces/plateTypes';
-import { Block, Query, TemplateInput } from '@/fqlx-generated/typedefs';
+import { useMemo, useState, useCallback, useEffect } from 'react';
 import { debounce } from 'radash';
+import { View } from 'reshaped';
 import { useQuery } from 'fqlx-client';
 import dynamic from 'next/dynamic';
-import { useMemo, useState, useCallback, useEffect } from 'react';
-import { View } from 'reshaped';
+import { focusEditor, getPointFromLocation } from '@udecode/plate';
+import { MyValue } from '@/components/Plate/interfaces/plateTypes';
+import { Block, Query, TemplateInput } from '@/fqlx-generated/typedefs';
+import { editorRef } from '@/components/Plate/HeadingToolbar';
 import { blocks } from './utils/getMappedBlocks';
 import { getSections } from './utils/getSections';
-import { editorRef } from '@/components/Plate/HeadingToolbar';
-import { focusEditor, getPointFromLocation } from '@udecode/plate';
 
 const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
 const FileNavigation = dynamic(() => import('@/app/(editor)/FileNavigation'), {
