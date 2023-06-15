@@ -131,7 +131,6 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
       !divElement.contains(event.target as Node) &&
       !excludedDivElement.contains(event.target as Node)
     ) {
-      console.log('Clicked outside the div');
       setisClickedOutsideEditor(true);
     } else {
       setisClickedOutsideEditor(false);
