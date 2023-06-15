@@ -7,7 +7,11 @@ import TemplateType from './TemplateType';
 import { TemplatetypeScratch } from './TemplatetypeScratch';
 
 export default function CreateFile() {
-  const { active, activate, deactivate } = useToggle(false);
+  const {
+    active: activeModal,
+    activate: activateModal,
+    deactivate: deactivateModal,
+  } = useToggle(false);
 
   return (
     <>
@@ -15,7 +19,7 @@ export default function CreateFile() {
         width='100%'
         padding={6}
         className='group cursor-pointer'
-        attributes={{ onClick: activate }}
+        attributes={{ onClick: activateModal }}
       >
         {/* File component */}
         <View gap={4}>
@@ -45,9 +49,9 @@ export default function CreateFile() {
         </View>
       </View>
 
-      <Modal active={active} onClose={deactivate} padding={5}>
+      <Modal active={activeModal} onClose={deactivateModal} padding={5}>
         <View gap={3}>
-          <Dismissible onClose={deactivate} closeAriaLabel='Close'>
+          <Dismissible onClose={deactivateModal} closeAriaLabel='Close'>
             <Modal.Title>
               <Text variant='body-1' weight='bold'>
                 Create Business Plan based on:

@@ -34,14 +34,12 @@ import {
   FormatBold,
   FormatUnderlined,
   FormatStrikethrough,
+  FormatListNumbered,
+  FormatListBulleted,
 } from '@styled-icons/material';
 import { View, Select } from 'reshaped';
-import { TippyProps } from '@tippyjs/react';
 import { Transforms } from 'slate';
 import TextIcon from '@/components/Icons/TextIcon';
-import TextStyle from '@/components/TextStyle';
-import BulletlistIcon from '../Icons/BulletlistIcon';
-import OrderlistIcon from '../Icons/OrderlistIcon';
 
 const options = [
   {
@@ -169,11 +167,13 @@ export const BasicElementToolbarButtons = () => {
       <View direction='row' align='center'>
         <ListToolbarButton
           type={getPluginType(editor, ELEMENT_UL)}
-          icon={<TextStyle label='Bullet List' icon={<BulletlistIcon />} />}
+          icon={<FormatListBulleted />}
+          actionHandler='onMouseDown'
         />
         <ListToolbarButton
           type={getPluginType(editor, ELEMENT_OL)}
-          icon={<TextStyle label='Ordered List' icon={<OrderlistIcon />} />}
+          icon={<FormatListNumbered />}
+          actionHandler='onMouseDown'
         />
       </View>
     </View>
