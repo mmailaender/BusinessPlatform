@@ -122,7 +122,16 @@ export default function PlateEditor({ value, onChange }: PlateEditorProps) {
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (divRef.current && !divRef.current.contains(event.target as Node)) {
+    const divElement = divRef.current;
+    const excludedDivElement = document.getElementById('selectToolbar');
+
+    if (
+      divElement &&
+      excludedDivElement &&
+      !divElement.contains(event.target as Node) &&
+      !excludedDivElement.contains(event.target as Node)
+    ) {
+      console.log('Clicked outside the div');
       setisClickedOutsideEditor(true);
     } else {
       setisClickedOutsideEditor(false);
