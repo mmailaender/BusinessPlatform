@@ -40,6 +40,7 @@ import {
 import { View, Select } from 'reshaped';
 import { Transforms } from 'slate';
 import TextIcon from '@/components/Icons/TextIcon';
+import { DEFAULT_COLORS, DEFAULT_CUSTOM_COLORS } from './constants/colors';
 
 const options = [
   {
@@ -150,11 +151,15 @@ export const BasicElementToolbarButtons = () => {
           actionHandler='onMouseDown'
         />
         <ColorPickerToolbarDropdown
+          customColors={DEFAULT_CUSTOM_COLORS as any}
+          colors={DEFAULT_COLORS as any}
           pluginKey={MARK_COLOR}
           icon={<FormatColorText />}
           selectedIcon={<Check />}
         />
         <ColorPickerToolbarDropdown
+          colors={DEFAULT_COLORS as any}
+          customColors={DEFAULT_CUSTOM_COLORS as any}
           pluginKey={MARK_BG_COLOR}
           icon={<FontDownload />}
           selectedIcon={<Check />}
