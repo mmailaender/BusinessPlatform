@@ -39,18 +39,20 @@ export function TemplateFile({ template }: TemplateFileProp) {
     let blocks: string[] = [];
 
     for (const resolvedBlock of resolvedBlocks) {
-      if (
-        resolvedBlock.category === 'Section' ||
-        resolvedBlock.category === 'SubSection'
-      ) {
-        const res = await query.Block.create({
-          content: resolvedBlock.content,
-        } as Block).exec();
+      blocks.push(resolvedBlock.id);
 
-        blocks.push(res.id);
-      } else {
-        blocks.push(resolvedBlock.id);
-      }
+      // if (
+      //   resolvedBlock.category === 'Section' ||
+      //   resolvedBlock.category === 'SubSection'
+      // ) {
+      //   const res = await query.Block.create({
+      //     content: resolvedBlock.content,
+      //   } as Block).exec();
+
+      //   blocks.push(res.id);
+      // } else {
+      //   blocks.push(resolvedBlock.id);
+      // }
     }
 
     if (blocks.length > 0) {
