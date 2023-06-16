@@ -30,16 +30,17 @@ import {
   FormatAlignJustify,
   FormatAlignLeft,
   FormatAlignRight,
-  FormatItalic,
-  FormatBold,
-  FormatUnderlined,
-  FormatStrikethrough,
   FormatListNumbered,
   FormatListBulleted,
 } from '@styled-icons/material';
 import { View, Select } from 'reshaped';
 import { Transforms } from 'slate';
+import ItalicIcon from '@/components/Icons/ItalicIcon';
+import UnderlineIcon from '@/components/Icons/UnderlineIcon';
+import StrikethroughIcon from '@/components/Icons/StrikethroughIcon';
 import TextIcon from '@/components/Icons/TextIcon';
+import BoldIcon from '@/components/Icons/BoldIcon';
+import { fontColors, fontCustomColors } from './constants/colors';
 
 const options = [
   {
@@ -131,30 +132,34 @@ export const BasicElementToolbarButtons = () => {
       <View direction='row' align='center' gap={1}>
         <MarkToolbarButton
           type={getPluginType(editor, MARK_BOLD)}
-          icon={<FormatBold />}
+          icon={<BoldIcon />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_ITALIC)}
-          icon={<FormatItalic />}
+          icon={<ItalicIcon />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_UNDERLINE)}
-          icon={<FormatUnderlined />}
+          icon={<UnderlineIcon />}
           actionHandler='onMouseDown'
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_STRIKETHROUGH)}
-          icon={<FormatStrikethrough />}
+          icon={<StrikethroughIcon />}
           actionHandler='onMouseDown'
         />
         <ColorPickerToolbarDropdown
+          colors={fontColors as any}
+          customColors={fontCustomColors as any}
           pluginKey={MARK_COLOR}
           icon={<FormatColorText />}
           selectedIcon={<Check />}
         />
         <ColorPickerToolbarDropdown
+          colors={fontColors as any}
+          customColors={fontCustomColors as any}
           pluginKey={MARK_BG_COLOR}
           icon={<FontDownload />}
           selectedIcon={<Check />}
@@ -176,6 +181,8 @@ export const BasicElementToolbarButtons = () => {
           actionHandler='onMouseDown'
         />
       </View>
+      {/* <FormatListNumbered />
+      <FormatListBulleted /> */}
     </View>
   );
 };
