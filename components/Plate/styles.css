@@ -1,6 +1,6 @@
 @media print {
   .slate-BalloonToolbar {
-    display: none !important;
+    display: none;
   }
 }
 
