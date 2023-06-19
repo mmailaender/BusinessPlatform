@@ -157,7 +157,9 @@ export default function TemplateByIdPage({ params }: PageProps) {
         </View>
         <View className='basis-1/12 print:hidden'></View>
         <View className='basis-6/12 print:basis-full min-w-0'>
-          <Plate value={template} onChange={handleTemplateChange} />
+          <div>
+            <Plate value={template} onChange={handleTemplateChange} />
+          </div>
         </View>
       </View>
     </View>
