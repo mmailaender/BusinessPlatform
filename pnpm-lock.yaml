@@ -22,12 +22,6 @@ dependencies:
   '@udecode/plate':
     specifier: 21.3.4
     version: 21.3.4(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-hyperscript@0.77.0)(slate-react@0.94.2)(slate@0.94.1)(styled-components@5.3.10)
-  '@udecode/plate-dnd':
-    specifier: 21.3.2
-    version: 21.3.2(@types/react@18.2.9)(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)
-  '@udecode/plate-ui-dnd':
-    specifier: 21.3.2
-    version: 21.3.2(@types/react@18.2.9)(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)(styled-components@5.3.10)
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.24)
@@ -39,7 +33,7 @@ dependencies:
     version: 13.4.4(eslint@8.42.0)(typescript@5.1.3)
   fqlx-client:
     specifier: github:mmailaender/Fauna-React
-    version: github.com/mmailaender/Fauna-React/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3)
+    version: github.com/mmailaender/Fauna-React/29c8fbd53e4c9f859843eb95d67ce90bf33294ba(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3)
   next:
     specifier: 13.4.4
     version: 13.4.4(react-dom@18.2.0)(react@18.2.0)
@@ -52,12 +46,6 @@ dependencies:
   react:
     specifier: 18.2.0
     version: 18.2.0
-  react-dnd:
-    specifier: 16.0.1
-    version: 16.0.1(@types/node@20.2.5)(@types/react@18.2.9)(react@18.2.0)
-  react-dnd-html5-backend:
-    specifier: 16.0.1
-    version: 16.0.1
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
@@ -1790,43 +1778,6 @@ packages:
       - scheduler
     dev: false
 
-  /@udecode/plate-dnd@21.3.2(@types/react@18.2.9)(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1):
-    resolution: {integrity: sha512-lzfciOD5kJoY1rGJG1uOIcsmcvYv8NJy/ow2gWlXChhON2nYmGlQKCO+oatDpNp1jWKqOjx38VJCzNzSq4cUTg==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dnd: '>=14.0.0'
-      react-dnd-html5-backend: '>=14.0.0'
-      react-dom: '>=16.8.0'
-      slate: '>=0.94.0'
-      slate-history: '>=0.93.0'
-      slate-react: '>=0.94.0'
-    dependencies:
-      '@udecode/plate-common': 21.3.2(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)
-      raf: 3.4.1
-      react: 18.2.0
-      react-dnd: 16.0.1(@types/node@20.2.5)(@types/react@18.2.9)(react@18.2.0)
-      react-dnd-html5-backend: 16.0.1
-      react-dom: 18.2.0(react@18.2.0)
-      slate: 0.94.1
-      slate-history: 0.93.0(slate@0.94.1)
-      slate-react: 0.94.2(react-dom@18.2.0)(react@18.2.0)(slate@0.94.1)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@babel/template'
-      - '@types/react'
-      - jotai-devtools
-      - jotai-immer
-      - jotai-optics
-      - jotai-redux
-      - jotai-tanstack-query
-      - jotai-urql
-      - jotai-valtio
-      - jotai-xstate
-      - jotai-zustand
-      - react-native
-      - scheduler
-    dev: false
-
   /@udecode/plate-emoji@21.3.3(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1):
     resolution: {integrity: sha512-CX3OBoDmQgVEiXmalrBC8J/nlv6DP8wlE4xYAuvyckYwCwnUUF0Wiq25q6VSQS9Hnk8TjvEwROpw7ZKmu2i5sQ==}
     peerDependencies:
@@ -3122,48 +3073,6 @@ packages:
       '@udecode/plate-common': 21.3.2(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)
       '@udecode/plate-styled-components': 21.3.2(@types/react@18.2.9)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)(styled-components@5.3.10)
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      slate: 0.94.1
-      slate-history: 0.93.0(slate@0.94.1)
-      slate-react: 0.94.2(react-dom@18.2.0)(react@18.2.0)(slate@0.94.1)
-      styled-components: 5.3.10(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@babel/template'
-      - '@types/react'
-      - jotai-devtools
-      - jotai-immer
-      - jotai-optics
-      - jotai-redux
-      - jotai-tanstack-query
-      - jotai-urql
-      - jotai-valtio
-      - jotai-xstate
-      - jotai-zustand
-      - react-is
-      - react-native
-      - scheduler
-    dev: false
-
-  /@udecode/plate-ui-dnd@21.3.2(@types/react@18.2.9)(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)(styled-components@5.3.10):
-    resolution: {integrity: sha512-C6De+ShLuxdW6XT3OVvFLnk05uHh7qtezIWsq+mk3moXlowQ/AV+aQMOeDVVmMK8SLHkl+FmuUmt8ieUkWDr5w==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dnd: '>=14.0.0'
-      react-dnd-html5-backend: '>=14.0.0'
-      react-dom: '>=16.8.0'
-      slate: '>=0.94.0'
-      slate-history: '>=0.93.0'
-      slate-react: '>=0.94.0'
-      styled-components: '>=5.0.0'
-    dependencies:
-      '@tippyjs/react': 4.2.6(react-dom@18.2.0)(react@18.2.0)
-      '@udecode/plate-common': 21.3.2(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)
-      '@udecode/plate-dnd': 21.3.2(@types/react@18.2.9)(react-dnd-html5-backend@16.0.1)(react-dnd@16.0.1)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)
-      '@udecode/plate-styled-components': 21.3.2(@types/react@18.2.9)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(scheduler@0.23.0)(slate-history@0.93.0)(slate-react@0.94.2)(slate@0.94.1)(styled-components@5.3.10)
-      react: 18.2.0
-      react-dnd: 16.0.1(@types/node@20.2.5)(@types/react@18.2.9)(react@18.2.0)
-      react-dnd-html5-backend: 16.0.1
       react-dom: 18.2.0(react@18.2.0)
       slate: 0.94.1
       slate-history: 0.93.0(slate@0.94.1)
@@ -7020,10 +6929,6 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /performance-now@2.1.0:
-    resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
-    dev: false
-
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: false
@@ -7505,12 +7410,6 @@ packages:
   /radash@10.8.1:
     resolution: {integrity: sha512-NzYo3XgM9Tzjf5iFPIMG2l5+LSOCi2H7Axe3Ry/1PrhlvuqxUoiLsmcTBtw4CfKtzy5Fzo79STiEj9JZWMfDQg==}
     engines: {node: '>=14.18.0'}
-    dev: false
-
-  /raf@3.4.1:
-    resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
-    dependencies:
-      performance-now: 2.1.0
     dev: false
 
   /randomatic@3.1.1:
@@ -9193,9 +9092,9 @@ packages:
     requiresBuild: true
     dev: false
 
-  github.com/mmailaender/Fauna-React/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3):
-    resolution: {tarball: https://codeload.github.com/mmailaender/Fauna-React/tar.gz/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2}
-    id: github.com/mmailaender/Fauna-React/d7c4f8e8d6b612a4b0b98335a7f21354f66affc2
+  github.com/mmailaender/Fauna-React/29c8fbd53e4c9f859843eb95d67ce90bf33294ba(@types/node@20.2.5)(react@18.2.0)(typescript@5.1.3):
+    resolution: {tarball: https://codeload.github.com/mmailaender/Fauna-React/tar.gz/29c8fbd53e4c9f859843eb95d67ce90bf33294ba}
+    id: github.com/mmailaender/Fauna-React/29c8fbd53e4c9f859843eb95d67ce90bf33294ba
     name: fqlx-client
     version: 0.1.0
     engines: {node: '>=10'}

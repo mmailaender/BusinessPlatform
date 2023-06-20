@@ -18,9 +18,9 @@ export default async function RootLayout({
     <html lang='en'>
       <ClerkProvider>
         <body>
-          <Reshaped theme='reshaped'>
-            <FqlxClientProvider>{children}</FqlxClientProvider>
-          </Reshaped>
+          {/* <Reshaped theme='reshaped'> */}
+          <FqlxClientProvider>{children}</FqlxClientProvider>
+          {/* </Reshaped> */}
         </body>
       </ClerkProvider>
     </html>

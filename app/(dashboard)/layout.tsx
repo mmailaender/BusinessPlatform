@@ -1,5 +1,5 @@
 import { UserButton } from '@clerk/nextjs/app-beta';
-import { View, Text, Button, Divider } from 'reshaped';
+import { View, Text, Button, Divider, Reshaped } from 'reshaped';
 import { Tabs } from './Tabs';
 
 export default function DashboardLayout({
@@ -8,7 +8,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <Reshaped theme='reshaped'>
       <section>
         {/* Header */}
         <View>
@@ -39,6 +39,6 @@ export default function DashboardLayout({
         </View>
       </section>
       {children}
-    </>
+    </Reshaped>
   );
 }
