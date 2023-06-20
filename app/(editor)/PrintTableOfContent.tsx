@@ -12,7 +12,7 @@ export default function PrintTableOfContent({
   sections,
 }: PrintTableOfContentProps) {
   return (
-    <View className='w-full ' height={360} paddingInline={20} paddingTop={24}>
+    <View className='w-full' height={360} paddingInline={20} paddingTop={24}>
       <View gap={20}>
         <Text variant='title-4'>Content</Text>
 
