@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button, View, Text, DropdownMenu, Card } from 'reshaped';
+import { Button, View, Text, DropdownMenu, Card, Tooltip } from 'reshaped';
 import { useQuery } from 'fqlx-client';
 import Link from 'next/link';
 import Template from '@/components/Icons/Template';
@@ -18,8 +18,15 @@ type TemplateFileProp = {
   template: TypeTemplate;
 };
 
+const maxLength = 25;
+
 export function TemplateFile({ template }: TemplateFileProp) {
   const query = useQuery<Query>();
+  const truncatedText =
+    template.name?.length > maxLength
+      ? `${template.name.substring(0, maxLength)}...`
+      : name;
+  const showTooltip = template.name?.length > maxLength;
 
   const handleTemplateDelete = async (id: string) => {
     await query.Template.byId(id).delete().exec();
@@ -114,7 +121,14 @@ export function TemplateFile({ template }: TemplateFileProp) {
             align='center'
             className='group-hover:text-neutral-faded'
           >
-            {template.name}
+            {showTooltip && (
+              <Tooltip text={template.name}>
+                {(attributes) => (
+                  <Text attributes={attributes}>{truncatedText as string}</Text>
+                )}
+              </Tooltip>
+            )}
+            {!showTooltip && template.name}
           </Text>
           <Text variant='caption-1' align='center' color='neutral-faded'>
             Today

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useQuery } from 'fqlx-client';
-import { Button, View, Text, DropdownMenu, Card } from 'reshaped';
+import { Button, View, Text, DropdownMenu, Card, Tooltip } from 'reshaped';
 import { useUser } from '@clerk/nextjs';
 import { Block, DocumentInput, Query } from '@/fqlx-generated/typedefs';
 import Document from '@/components/Icons/Document';
@@ -15,9 +15,16 @@ type DocumentFileProp = {
   document: any;
 };
 
+const maxLength = 25;
+
 export function DocumentFile({ document }: DocumentFileProp) {
   const query = useQuery<Query>();
   const { user } = useUser();
+  const truncatedText =
+    document.name?.length > maxLength
+      ? `${document.name.substring(0, maxLength)}...`
+      : name;
+  const showTooltip = document.name?.length > maxLength;
 
   const handleDocumentDelete = async (id: string) => {
     await query.Document.byId(id).delete().exec();
@@ -113,7 +120,14 @@ export function DocumentFile({ document }: DocumentFileProp) {
             align='center'
             className='group-hover:text-neutral-faded'
           >
-            {document.name}
+            {showTooltip && (
+              <Tooltip text={document.name}>
+                {(attributes) => (
+                  <Text attributes={attributes}>{truncatedText as string}</Text>
+                )}
+              </Tooltip>
+            )}
+            {!showTooltip && document.name}
           </Text>
           <Text variant='caption-1' align='center' color='neutral-faded'>
             Today
