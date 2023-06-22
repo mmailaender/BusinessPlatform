@@ -10,6 +10,7 @@ import {
 } from 'reshaped';
 import { debounce } from 'radash';
 import { useQuery } from 'fqlx-client';
+import { useUser } from '@clerk/nextjs';
 import { useRouter, useParams, usePathname } from 'next/navigation';
 import ArrowLeft from '@/components/Icons/ArrowLeft';
 import BinIcon from '@/components/Icons/BinIcon';
@@ -32,6 +33,7 @@ export default function CreateFile({
   const router = useRouter();
   const param = useParams();
   const path = usePathname();
+  const { user } = useUser();
   const isTemplate = path.includes('templates');
   const query = useQuery<Query>();
   const [fileName, setFileName] = useState('New Document');
@@ -84,12 +86,10 @@ export default function CreateFile({
 
   const handleDelete = async () => {
     if (isTemplate) {
-      const res = await query.Template.byId(param.id).delete().exec();
-      console.log('response', res);
+      await query.Template.byId(param.id).delete().exec();
       router.push('../templates');
     } else {
-      const res = await query.Document.byId(param.id).delete().exec();
-      console.log('response', res);
+      await query.Document.byId(param.id).delete().exec();
       router.push('../');
     }
   };
@@ -117,20 +117,6 @@ export default function CreateFile({
 
     for (const resolvedBlock of resolvedBlocks) {
       blocks.push(resolvedBlock.id);
-
-      // Condition for particular block to create
-      // if (
-      //   resolvedBlock.category === 'Section' ||
-      //   resolvedBlock.category === 'SubSection'
-      // ) {
-      //   const res = await query.Block.create({
-      //     content: resolvedBlock.content,
-      //   } as Block).exec();
-
-      //   blocks.push(res.id);
-      // } else {
-      //   blocks.push(resolvedBlock.id);
-      // }
     }
 
     if (blocks.length > 0) {
@@ -139,14 +125,13 @@ export default function CreateFile({
           name: `${fileName} (Copy)`,
           blocks: blocks as unknown as Block[],
         }).exec();
-        console.log('response', res);
         router.push(`../templates/${res.id}`);
       } else {
         const res = await query.Document.create({
           name: `${fileName} (Copy)`,
+          owner: user?.id,
           blocks: blocks as unknown as Block[],
-        } as DocumentInput).exec();
-        console.log('response', res);
+        } as unknown as DocumentInput).exec();
         router.push(`../documents/${res.id}`);
       }
     }

@@ -1,7 +1,18 @@
 'use client';
 
 import React from 'react';
-import { View, Text, useToggle, Modal, Dismissible } from 'reshaped';
+import {
+  View,
+  Text,
+  useToggle,
+  Modal,
+  Dismissible,
+  Actionable,
+} from 'reshaped';
+import { useQuery } from 'fqlx-client';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@clerk/nextjs';
+import { Block, DocumentInput, Query } from '@/fqlx-generated/typedefs';
 import CreateDocument from '@/components/Icons/CreateDocument';
 import TemplateType from './TemplateType';
 import { TemplatetypeScratch } from './TemplatetypeScratch';
@@ -12,6 +23,54 @@ export default function CreateFile() {
     activate: activateModal,
     deactivate: deactivateModal,
   } = useToggle(false);
+  const query = useQuery<Query>();
+  const router = useRouter();
+  const { user } = useUser();
+  const templates = query.Template.all().exec();
+
+  const createDocumentFromScratch = async () => {
+    const res = await query.Document.create({
+      name: 'Untitled',
+      owner: user?.id,
+      blocks: [],
+    } as unknown as DocumentInput).exec();
+
+    if (res.id) {
+      router.push(`/documents/${res.id}`);
+    }
+  };
+
+  const handleCreateDocument = async (template: any) => {
+    const blocksPromises: Promise<Block>[] = [];
+
+    template.blocks.forEach((m: any) => {
+      blocksPromises.push(query.Block.byId(m as unknown as string).exec());
+    });
+
+    const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
+
+    let blocks: string[] = [];
+
+    for (const resolvedBlock of resolvedBlocks) {
+      const res = await query.Block.create({
+        content: resolvedBlock.content,
+      } as Block).exec();
+
+      blocks.push(res.id);
+    }
+
+    if (blocks.length > 0) {
+      const res = await query.Document.create({
+        name: 'Untitled',
+        owner: user?.id,
+        blocks: blocks as unknown as Block[],
+      } as unknown as DocumentInput).exec();
+
+      if (res.id) {
+        router.push(`/documents/${res.id}`);
+      }
+    }
+  };
 
   return (
     <>
@@ -60,12 +119,14 @@ export default function CreateFile() {
           </Dismissible>
 
           <View gap={3} paddingTop={6} className='overflow-y-auto h-[300px]'>
-            <TemplatetypeScratch />
-            <TemplateType />
-            <TemplateType />
-            <TemplateType />
-            <TemplateType />
-            <TemplateType />
+            <Actionable onClick={createDocumentFromScratch}>
+              <TemplatetypeScratch />
+            </Actionable>
+            {templates.data.map((template) => (
+              <Actionable onClick={() => handleCreateDocument(template)}>
+                <TemplateType key={template.id} name={template.name} />
+              </Actionable>
+            ))}
           </View>
         </View>
       </Modal>

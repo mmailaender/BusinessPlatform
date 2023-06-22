@@ -9,6 +9,8 @@ export function TemplatetypeScratch() {
       width='100%'
       className='flex flex-row group bg-page items-center'
       gap={4}
+      direction='row'
+      align='center'
     >
       <View
         aspectRatio={1 / 1}

@@ -98,13 +98,11 @@ export default function TemplateByIdPage({ params }: PageProps) {
         try {
           if (JSON.stringify(templateArray) !== JSON.stringify(template)) {
             const pos = getPointFromLocation(editorRef);
-            const templateRes = await query.Template.byId(templateId)
+            await query.Template.byId(templateId)
               .update({
                 blocks: resolvedBlocksId as unknown as Block[],
               } as TemplateInput)
               .exec();
-
-            console.log('Updated', { templateRes });
 
             focusEditor(editorRef, pos);
           }
@@ -168,9 +166,7 @@ export default function TemplateByIdPage({ params }: PageProps) {
         </View>
         <View className='basis-1/12 print:hidden'></View>
         <View className='basis-6/12 print:basis-full min-w-0'>
-          <div>
-            <Plate value={template} onChange={handleTemplateChange} />
-          </div>
+          <Plate value={template} onChange={handleTemplateChange} />
         </View>
       </View>
     </View>

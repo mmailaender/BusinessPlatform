@@ -6,7 +6,6 @@ import { useQuery } from 'fqlx-client';
 import Link from 'next/link';
 import Template from '@/components/Icons/Template';
 import MoreIcon from '@/components/Icons/MoreIcon';
-import PrintIcon from '@/components/Icons/PrintIcon';
 import DuplicateIcon from '@/components/Icons/DuplicateIcon';
 import BinIcon from '@/components/Icons/BinIcon';
 import {
@@ -23,8 +22,7 @@ export function TemplateFile({ template }: TemplateFileProp) {
   const query = useQuery<Query>();
 
   const handleTemplateDelete = async (id: string) => {
-    const res = await query.Template.byId(id).delete().exec();
-    console.log('response', res);
+    await query.Template.byId(id).delete().exec();
   };
 
   const handleCreateDuplicate = async () => {
@@ -40,19 +38,6 @@ export function TemplateFile({ template }: TemplateFileProp) {
 
     for (const resolvedBlock of resolvedBlocks) {
       blocks.push(resolvedBlock.id);
-
-      // if (
-      //   resolvedBlock.category === 'Section' ||
-      //   resolvedBlock.category === 'SubSection'
-      // ) {
-      //   const res = await query.Block.create({
-      //     content: resolvedBlock.content,
-      //   } as Block).exec();
-
-      //   blocks.push(res.id);
-      // } else {
-      //   blocks.push(resolvedBlock.id);
-      // }
     }
 
     if (blocks.length > 0) {
@@ -60,7 +45,6 @@ export function TemplateFile({ template }: TemplateFileProp) {
         name: `${template.name} (Copy)`,
         blocks: blocks as unknown as Block[],
       }).exec();
-      console.log('response', res);
     }
   };
 
@@ -97,11 +81,6 @@ export function TemplateFile({ template }: TemplateFileProp) {
                 )}
               </DropdownMenu.Trigger>
               <DropdownMenu.Content>
-                <DropdownMenu.Section>
-                  <DropdownMenu.Item startSlot={<PrintIcon />}>
-                    Print
-                  </DropdownMenu.Item>
-                </DropdownMenu.Section>
                 <DropdownMenu.Section>
                   <DropdownMenu.Item
                     onClick={handleCreateDuplicate}
