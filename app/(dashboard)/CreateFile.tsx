@@ -123,8 +123,11 @@ export default function CreateFile() {
               <TemplatetypeScratch />
             </Actionable>
             {templates.data.map((template) => (
-              <Actionable onClick={() => handleCreateDocument(template)}>
-                <TemplateType key={template.id} name={template.name} />
+              <Actionable
+                key={template.id}
+                onClick={() => handleCreateDocument(template)}
+              >
+                <TemplateType name={template.name} />
               </Actionable>
             ))}
           </View>
