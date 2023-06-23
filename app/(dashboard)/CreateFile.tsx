@@ -56,7 +56,7 @@ export default function CreateFile() {
         content: resolvedBlock.content,
       } as Block).exec();
 
-      blocks.push(res.id);
+      blocks.push(res.id as string);
     }
 
     if (blocks.length > 0) {
@@ -127,7 +127,7 @@ export default function CreateFile() {
                 key={template.id}
                 onClick={() => handleCreateDocument(template)}
               >
-                <TemplateType name={template.name} />
+                <TemplateType name={template.name as string} />
               </Actionable>
             ))}
           </View>

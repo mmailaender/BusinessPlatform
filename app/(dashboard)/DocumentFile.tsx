@@ -42,7 +42,7 @@ export function DocumentFile({ document }: DocumentFileProp) {
     let blocks: string[] = [];
 
     for (const resolvedBlock of resolvedBlocks) {
-      blocks.push(resolvedBlock.id);
+      blocks.push(resolvedBlock.id as string);
     }
 
     if (blocks.length > 0) {

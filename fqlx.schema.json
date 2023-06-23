@@ -4,6 +4,9 @@
       "id": "string",
       "name": "string",
       "blocks": "Block[]"
+    },
+    "constraints": {
+      "required": ["id", "name", "blocks"]
     }
   },
   "Document": {
@@ -13,6 +16,9 @@
       "ownerOrg": "Organization",
       "name": "string",
       "blocks": "Block[]"
+    },
+    "constraints": {
+      "required": ["id", "owner", "name", "blocks"]
     }
   },
   "User": {

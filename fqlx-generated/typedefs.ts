@@ -17,15 +17,15 @@ export interface Template {
     /**
  * id for the Template
  */
- id: string;
+ id?: string;
 /**
  * name for the Template
  */
- name: string;
+ name?: string;
 /**
  * blocks for the Template
  */
- blocks: Block[];
+ blocks?: Block[];
 
   }
 
@@ -34,11 +34,11 @@ export interface Template {
     /**
  * name for the Template
  */
- name: string;
+ name?: string;
 /**
  * blocks for the Template
  */
- blocks: Block[];
+ blocks?: Block[];
 
   } 
 
@@ -115,23 +115,23 @@ export interface Template {
     /**
  * id for the Document
  */
- id: string;
+ id?: string;
 /**
  * owner for the Document
  */
- owner: User;
+ owner?: User;
 /**
  * ownerOrg for the Document
  */
- ownerOrg: Organization;
+ ownerOrg?: Organization;
 /**
  * name for the Document
  */
- name: string;
+ name?: string;
 /**
  * blocks for the Document
  */
- blocks: Block[];
+ blocks?: Block[];
 
   }
 
@@ -140,19 +140,19 @@ export interface Template {
     /**
  * owner for the Document
  */
- owner: User;
+ owner?: User;
 /**
  * ownerOrg for the Document
  */
- ownerOrg: Organization;
+ ownerOrg?: Organization;
 /**
  * name for the Document
  */
- name: string;
+ name?: string;
 /**
  * blocks for the Document
  */
- blocks: Block[];
+ blocks?: Block[];
 
   } 
 
@@ -233,23 +233,23 @@ export interface Template {
     /**
  * id for the User
  */
- id: string;
+ id?: string;
 /**
  * firstName for the User
  */
- firstName: string;
+ firstName?: string;
 /**
  * lastName for the User
  */
- lastName: string;
+ lastName?: string;
 /**
  * clerkId for the User
  */
- clerkId: string;
+ clerkId?: string;
 /**
  * email for the User
  */
- email: string;
+ email?: string;
 
   }
 
@@ -258,19 +258,19 @@ export interface Template {
     /**
  * firstName for the User
  */
- firstName: string;
+ firstName?: string;
 /**
  * lastName for the User
  */
- lastName: string;
+ lastName?: string;
 /**
  * clerkId for the User
  */
- clerkId: string;
+ clerkId?: string;
 /**
  * email for the User
  */
- email: string;
+ email?: string;
 
   } 
 
@@ -351,31 +351,31 @@ export interface Template {
     /**
  * id for the Block
  */
- id: string;
+ id?: string;
 /**
  * owner for the Block
  */
- owner: User;
+ owner?: User;
 /**
  * ownerOrg for the Block
  */
- ownerOrg: Organization;
+ ownerOrg?: Organization;
 /**
  * type for the Block
  */
- type: string;
+ type?: string;
 /**
  * name for the Block
  */
- name: string;
+ name?: string;
 /**
  * category for the Block
  */
- category: string;
+ category?: string;
 /**
  * content for the Block
  */
- content: string;
+ content?: string;
 
   }
 
@@ -384,27 +384,27 @@ export interface Template {
     /**
  * owner for the Block
  */
- owner: User;
+ owner?: User;
 /**
  * ownerOrg for the Block
  */
- ownerOrg: Organization;
+ ownerOrg?: Organization;
 /**
  * type for the Block
  */
- type: string;
+ type?: string;
 /**
  * name for the Block
  */
- name: string;
+ name?: string;
 /**
  * category for the Block
  */
- category: string;
+ category?: string;
 /**
  * content for the Block
  */
- content: string;
+ content?: string;
 
   } 
 
@@ -489,7 +489,7 @@ export interface Template {
     /**
  * id for the Organization
  */
- id: string;
+ id?: string;
 
   }
 
@@ -568,22 +568,22 @@ export interface Template {
     /**
  * @returns This return fqlx methods for the Template 
  */ 
-Template: PaginateData<Template> & TemplateMethods;
+Template: TemplateMethods;
 /**
  * @returns This return fqlx methods for the Document 
  */ 
-Document: PaginateData<Document> & DocumentMethods;
+Document: DocumentMethods;
 /**
  * @returns This return fqlx methods for the User 
  */ 
-User: PaginateData<User> & UserMethods;
+User: UserMethods;
 /**
  * @returns This return fqlx methods for the Block 
  */ 
-Block: PaginateData<Block> & BlockMethods;
+Block: BlockMethods;
 /**
  * @returns This return fqlx methods for the Organization 
  */ 
-Organization: PaginateData<Organization> & OrganizationMethods;
+Organization: OrganizationMethods;
 
   }

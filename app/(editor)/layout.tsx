@@ -55,11 +55,11 @@ export default function CreateFile({
     if (isTemplate) {
       query.Template.byId(param.id)
         .exec()
-        .then((data) => setFileName(data.name));
+        .then((data) => setFileName(data.name as string));
     } else {
       query.Document.byId(param.id)
         .exec()
-        .then((data) => setFileName(data.name));
+        .then((data) => setFileName(data.name as string));
     }
   }, []);
 
@@ -100,15 +100,19 @@ export default function CreateFile({
     if (isTemplate) {
       const template = await query.Template.byId(param.id).exec();
 
-      template.blocks.forEach((m) => {
-        blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-      });
+      if (template.blocks) {
+        template.blocks.forEach((m) => {
+          blocksPromises.push(query.Block.byId(m as unknown as string).exec());
+        });
+      }
     } else {
       const document = await query.Document.byId(param.id).exec();
 
-      document.blocks.forEach((m) => {
-        blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-      });
+      if (document.blocks) {
+        document.blocks.forEach((m) => {
+          blocksPromises.push(query.Block.byId(m as unknown as string).exec());
+        });
+      }
     }
 
     const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
@@ -116,7 +120,7 @@ export default function CreateFile({
     let blocks: string[] = [];
 
     for (const resolvedBlock of resolvedBlocks) {
-      blocks.push(resolvedBlock.id);
+      blocks.push(resolvedBlock.id as string);
     }
 
     if (blocks.length > 0) {

@@ -82,7 +82,7 @@ export default function TemplateByIdPage({ params }: PageProps) {
         const templateArray: any[] = [];
 
         const resolvedBlocksId = resolvedBlocks.map((block) => {
-          const blockData = JSON.parse(block.content);
+          const blockData = JSON.parse(block.content as string);
 
           templateArray.push(
             { ...blockData[0], id: block.id },
@@ -126,20 +126,21 @@ export default function TemplateByIdPage({ params }: PageProps) {
     const template: any[] = [];
 
     const blocksPromises: Promise<Block>[] = [];
+    if (templateRes.blocks) {
+      templateRes.blocks.forEach((m) => {
+        blocksPromises.push(query.Block.byId(m as unknown as string).exec());
+      });
 
-    templateRes.blocks.forEach((m) => {
-      blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-    });
+      const resolvedBlocks = await Promise.all(blocksPromises);
 
-    const resolvedBlocks = await Promise.all(blocksPromises);
+      resolvedBlocks.forEach((block) => {
+        const blockData = JSON.parse(block.content as string);
+        template.push({ ...blockData[0], id: block.id }, ...blockData.slice(1));
+      });
 
-    resolvedBlocks.forEach((block) => {
-      const blockData = JSON.parse(block.content);
-      template.push({ ...blockData[0], id: block.id }, ...blockData.slice(1));
-    });
-
-    setTemplate(template);
-    setBlocksId(templateRes.blocks);
+      setTemplate(template);
+      setBlocksId(templateRes.blocks);
+    }
   };
 
   useEffect(() => {

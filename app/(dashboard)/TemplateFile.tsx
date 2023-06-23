@@ -23,10 +23,10 @@ const maxLength = 25;
 export function TemplateFile({ template }: TemplateFileProp) {
   const query = useQuery<Query>();
   const truncatedText =
-    template.name?.length > maxLength
-      ? `${template.name.substring(0, maxLength)}...`
+    (template.name as string).length > maxLength
+      ? `${(template.name as string).substring(0, maxLength)}...`
       : name;
-  const showTooltip = template.name?.length > maxLength;
+  const showTooltip = (template.name as string).length > maxLength;
 
   const handleTemplateDelete = async (id: string) => {
     await query.Template.byId(id).delete().exec();
@@ -35,23 +35,25 @@ export function TemplateFile({ template }: TemplateFileProp) {
   const handleCreateDuplicate = async () => {
     const blocksPromises: Promise<Block>[] = [];
 
-    template.blocks.forEach((m) => {
-      blocksPromises.push(query.Block.byId(m as unknown as string).exec());
-    });
+    if (template.blocks) {
+      template.blocks.forEach((m) => {
+        blocksPromises.push(query.Block.byId(m as unknown as string).exec());
+      });
 
-    const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
+      const resolvedBlocks = (await Promise.all(blocksPromises)) as Block[];
 
-    let blocks: string[] = [];
+      let blocks: string[] = [];
 
-    for (const resolvedBlock of resolvedBlocks) {
-      blocks.push(resolvedBlock.id);
-    }
+      for (const resolvedBlock of resolvedBlocks) {
+        blocks.push(resolvedBlock.id as string);
+      }
 
-    if (blocks.length > 0) {
-      const res = await query.Template.create({
-        name: `${template.name} (Copy)`,
-        blocks: blocks as unknown as Block[],
-      }).exec();
+      if (blocks.length > 0) {
+        const res = await query.Template.create({
+          name: `${template.name} (Copy)`,
+          blocks: blocks as unknown as Block[],
+        }).exec();
+      }
     }
   };
 
@@ -96,7 +98,7 @@ export function TemplateFile({ template }: TemplateFileProp) {
                     Duplicate
                   </DropdownMenu.Item>
                   <DropdownMenu.Item
-                    onClick={() => handleTemplateDelete(template.id)}
+                    onClick={() => handleTemplateDelete(template.id as string)}
                     startSlot={<BinIcon />}
                   >
                     Delete

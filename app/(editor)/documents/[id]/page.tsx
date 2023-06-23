@@ -82,7 +82,7 @@ const DocumentPage = ({ params }: PageProps) => {
         const documentArray: any[] = [];
 
         const resolvedBlocksId = resolvedBlocks.map((block) => {
-          const blockData = JSON.parse(block.content);
+          const blockData = JSON.parse(block.content as string);
 
           documentArray.push(
             { ...blockData[0], id: block.id },
@@ -126,22 +126,23 @@ const DocumentPage = ({ params }: PageProps) => {
     const document: any[] = [];
 
     const blocksPromises: Promise<Block>[] = [];
+    if (DocumentRes.blocks) {
+      DocumentRes.blocks.forEach((m) => {
+        return blocksPromises.push(
+          query.Block.byId(m as unknown as string).exec()
+        );
+      });
 
-    DocumentRes.blocks.forEach((m) => {
-      return blocksPromises.push(
-        query.Block.byId(m as unknown as string).exec()
-      );
-    });
+      const resolvedBlocks = await Promise.all(blocksPromises);
 
-    const resolvedBlocks = await Promise.all(blocksPromises);
+      resolvedBlocks.forEach((block) => {
+        const blockData = JSON.parse(block.content as string);
+        document.push({ ...blockData[0], id: block.id }, ...blockData.slice(1));
+      });
 
-    resolvedBlocks.forEach((block) => {
-      const blockData = JSON.parse(block.content);
-      document.push({ ...blockData[0], id: block.id }, ...blockData.slice(1));
-    });
-
-    setDocument(document);
-    setBlocksId(DocumentRes.blocks);
+      setDocument(document);
+      setBlocksId(DocumentRes.blocks);
+    }
   };
 
   useEffect(() => {
