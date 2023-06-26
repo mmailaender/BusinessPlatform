@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { View } from 'reshaped';
-import dynamic from 'next/dynamic';
-import { debounce } from 'radash';
-import { useQuery } from 'fqlx-client';
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { View } from "reshaped";
+import dynamic from "next/dynamic";
+import { debounce } from "radash";
+import { useQuery } from "fqlx-client";
 import {
   getPointFromLocation,
   focusEditor,
   isEditorFocused,
-} from '@udecode/plate';
-import { MyValue } from '@/components/Plate/interfaces/plateTypes';
-import { editorRef } from '@/components/Plate/HeadingToolbar';
-import { Block, DocumentInput, Query } from '@/fqlx-generated/typedefs';
-import PrintCover from '../../PrintCover';
-import ContentTemplate from '../../PrintTableOfContent';
-import Watermark from '../../Watermark';
-import { getDocumentSections } from './utils/getSections';
-import { documentsBlocks } from './utils/getMappedBlocksDocument';
+} from "@udecode/plate";
+import { MyValue } from "@/components/Plate/interfaces/plateTypes";
+import { editorRef } from "@/components/Plate/HeadingToolbar";
+import { Block, DocumentInput, Query } from "@/fqlx-generated/typedefs";
+import PrintCover from "../../PrintCover";
+import ContentTemplate from "../../PrintTableOfContent";
+import Watermark from "../../Watermark";
+import { getDocumentSections } from "./utils/getSections";
+import { documentsBlocks } from "./utils/getMappedBlocksDocument";
 
-const Plate = dynamic(() => import('@/components/Plate'), { ssr: false });
-const FileNavigation = dynamic(() => import('@/app/(editor)/FileNavigation'), {
+const Plate = dynamic(() => import("@/components/Plate"), { ssr: false });
+const FileNavigation = dynamic(() => import("@/app/(editor)/FileNavigation"), {
   ssr: false,
 });
 
@@ -156,23 +156,23 @@ const DocumentPage = ({ params }: PageProps) => {
 
   return (
     <>
-      <View className='hidden print:block'>
+      <View className="hidden print:block">
         <PrintCover />
       </View>
-      <View className='hidden print:block fixed bottom-0'>
+      <div className="hidden print:block fixed bottom-0">
         <Watermark />
-      </View>
-      <View className='hidden print:block'>
+      </div>
+      <View className="hidden print:block">
         <ContentTemplate sections={sections} />
       </View>
-      <View className='flex flex-row px-x6 pt-x16'>
-        <View className='basis-2/12 print:hidden  min-w-0'>
-          <View position='sticky' insetTop={20}>
+      <View className="flex flex-row px-x6 pt-x16">
+        <View className="basis-2/12 print:hidden  min-w-0">
+          <View position="sticky" insetTop={20}>
             <FileNavigation sections={sections} />
           </View>
         </View>
-        <View className='basis-1/12 print:hidden'></View>
-        <View className='basis-6/12 print:basis-full print:px-x12 min-w-0'>
+        <View className="basis-1/12 print:hidden"></View>
+        <View className="basis-6/12 print:basis-full print:px-x12 min-w-0">
           <Plate value={document} onChange={handleDocumentChange} />
         </View>
       </View>
