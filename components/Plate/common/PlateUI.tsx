@@ -19,6 +19,7 @@ import {
   ELEMENT_BLOCKQUOTE,
   MARK_SUPERSCRIPT,
   MARK_COLOR,
+  ELEMENT_TABLE,
   ELEMENT_TODO_LI,
   MediaEmbedElement,
   StyledElement,
@@ -92,6 +93,18 @@ export const plateUI = withStyledDraggables(
           lineHeight: "var(--rs-line-height-body-2)",
           fontWeight: "var(--rs-font-weight-regular)",
           fontSize: "var(--rs-font-size-body-2)",
+        },
+      } as Record<string, any>,
+      prefixClassNames: "p",
+    }) as RenderFunction<any>,
+
+    [ELEMENT_TABLE]: withProps(StyledElement, {
+      as: "Table",
+      styles: {
+        root: {
+          width: "100%",
+          breakInside: "avoid-page",
+          padding: "4px 0",
         },
       } as Record<string, any>,
       prefixClassNames: "p",
