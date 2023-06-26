@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import {
   TCodeBlockElement,
   Value,
   getRootProps,
   StyledElementProps,
-} from '@udecode/plate';
+} from "@udecode/plate";
 
 export const H1Element = <V extends Value>(
   props: StyledElementProps<V, TCodeBlockElement>
@@ -19,7 +19,7 @@ export const H1Element = <V extends Value>(
       {...rootProps}
       {...nodeProps}
       id={`${element?.id}`}
-      className={`py-1 px-0 mt-2 text-[length:var(--rs-font-size-featured-1)] font-[var(--rs-font-weight-heavy)] leading-[var(--rs-line-height-featured-1)] ${rootProps.className}`}
+      className={`print:break-before-page py-1 px-0 mt-2 text-[length:var(--rs-font-size-featured-1)] font-[var(--rs-font-weight-heavy)] leading-[var(--rs-line-height-featured-1)] ${rootProps.className}`}
     >
       {children}
     </h1>

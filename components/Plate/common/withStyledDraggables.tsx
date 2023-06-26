@@ -77,7 +77,7 @@ export const withStyledDraggables = (components: any) => {
         onRenderDragHandle: () => {
           return (
             <Tippy {...grabberTooltipProps}>
-              <button type="button" className="drag-button">
+              <button type="button" className="drag-button, break-inside-avoid">
                 <DragIndicator style={styles.dragButton} />
               </button>
             </Tippy>

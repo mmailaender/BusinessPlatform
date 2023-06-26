@@ -27,18 +27,18 @@ import {
   ELEMENT_OL,
   inline,
   RenderFunction,
-} from '@udecode/plate';
-import { withStyledDraggables } from './withStyledDraggables';
-import { H1Element } from './H1Element';
-import { H2Element } from './H2Element';
-import { H3Element } from './H3Element';
+} from "@udecode/plate";
+import { withStyledDraggables } from "./withStyledDraggables";
+import { H1Element } from "./H1Element";
+import { H2Element } from "./H2Element";
+import { H3Element } from "./H3Element";
 
 export const plateUI = withStyledDraggables(
   createPlateUI({
     [ELEMENT_MEDIA_EMBED]: withProps(MediaEmbedElement, {
       nodeProps: {
         twitterOptions: {
-          theme: 'dark',
+          theme: "dark",
         },
       },
     }) as RenderFunction<any>,
@@ -48,14 +48,14 @@ export const plateUI = withStyledDraggables(
       styles: {
         root: {
           margin: 0,
-          padding: '4px 0',
-          fontFamily: 'var(--rs-font-family-body-2)',
-          lineHeight: 'var(--rs-line-height-body-2)',
-          fontWeight: 'var(--rs-font-weight-regular)',
-          fontSize: 'var(--rs-font-size-body-2)',
+          padding: "4px 0",
+          fontFamily: "var(--rs-font-family-body-2)",
+          lineHeight: "var(--rs-line-height-body-2)",
+          fontWeight: "var(--rs-font-weight-regular)",
+          fontSize: "var(--rs-font-size-body-2)",
         },
       } as Record<string, any>,
-      prefixClassNames: 'p',
+      prefixClassNames: "p",
     }) as RenderFunction<any>,
     // [ELEMENT_UL]: withProps(StyledElement, {
     //   // as: 'p',
@@ -83,18 +83,18 @@ export const plateUI = withStyledDraggables(
     // }),
 
     [ELEMENT_TODO_LI]: withProps(StyledElement, {
-      as: 'ToDo List',
+      as: "ToDo List",
       styles: {
         root: {
           margin: 0,
-          padding: '4px 0',
-          fontFamily: 'var(--rs-font-family-body-2)',
-          lineHeight: 'var(--rs-line-height-body-2)',
-          fontWeight: 'var(--rs-font-weight-regular)',
-          fontSize: 'var(--rs-font-size-body-2)',
+          padding: "4px 0",
+          fontFamily: "var(--rs-font-family-body-2)",
+          lineHeight: "var(--rs-line-height-body-2)",
+          fontWeight: "var(--rs-font-weight-regular)",
+          fontSize: "var(--rs-font-size-body-2)",
         },
       } as Record<string, any>,
-      prefixClassNames: 'p',
+      prefixClassNames: "p",
     }) as RenderFunction<any>,
 
     [ELEMENT_H1]: H1Element,
@@ -102,19 +102,19 @@ export const plateUI = withStyledDraggables(
     [ELEMENT_H3]: H3Element,
 
     [ELEMENT_LINK]: withProps(StyledElement, {
-      as: 'a',
+      as: "a",
       styles: {
         root: {
           margin: 0,
-          padding: '4px 0',
-          color: 'var(--rs-color-foreground-primary)',
-          fontFamily: 'var(--rs-font-family-body-2)',
-          lineHeight: 'var(--rs-line-height-body-2)',
-          fontWeight: 'var(--rs-font-weight-regular)',
-          fontSize: 'var(--rs-font-size-body-2)',
+          padding: "4px 0",
+          color: "var(--rs-color-foreground-primary)",
+          fontFamily: "var(--rs-font-family-body-2)",
+          lineHeight: "var(--rs-line-height-body-2)",
+          fontWeight: "var(--rs-font-weight-regular)",
+          fontSize: "var(--rs-font-size-body-2)",
         },
       } as Record<string, any>,
-      prefixClassNames: 'p',
+      prefixClassNames: "p",
     }) as RenderFunction<any>,
   })
 );

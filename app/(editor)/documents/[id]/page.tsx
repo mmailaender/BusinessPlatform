@@ -159,7 +159,7 @@ const DocumentPage = ({ params }: PageProps) => {
       <View className="hidden print:block">
         <PrintCover />
       </View>
-      <div className="hidden print:block fixed bottom-0">
+      <div className="hidden print:block fixed bottom-0 right-0 z-10">
         <Watermark />
       </div>
       <View className="hidden print:block">
