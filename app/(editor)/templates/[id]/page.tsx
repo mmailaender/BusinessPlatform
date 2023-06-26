@@ -5,7 +5,11 @@ import { debounce } from 'radash';
 import { View } from 'reshaped';
 import { useQuery } from 'fqlx-client';
 import dynamic from 'next/dynamic';
-import { focusEditor, getPointFromLocation } from '@udecode/plate';
+import {
+  focusEditor,
+  getPointFromLocation,
+  isEditorFocused,
+} from '@udecode/plate';
 import { MyValue } from '@/components/Plate/interfaces/plateTypes';
 import { Block, Query, TemplateInput } from '@/fqlx-generated/typedefs';
 import { editorRef } from '@/components/Plate/HeadingToolbar';
@@ -94,17 +98,18 @@ export default function TemplateByIdPage({ params }: PageProps) {
 
         setTemplate(templateArray);
         setBlocksId(resolvedBlocksId as unknown as Block[]);
+        const focus = isEditorFocused(editorRef);
 
         try {
           if (JSON.stringify(templateArray) !== JSON.stringify(template)) {
             const pos = getPointFromLocation(editorRef);
-            await query.Template.byId(templateId)
+            const res = await query.Template.byId(templateId)
               .update({
                 blocks: resolvedBlocksId as unknown as Block[],
               } as TemplateInput)
               .exec();
 
-            focusEditor(editorRef, pos);
+            if (focus) focusEditor(editorRef, pos);
           }
         } catch (e) {
           console.log({ e });

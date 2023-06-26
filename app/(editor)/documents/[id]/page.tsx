@@ -5,7 +5,11 @@ import { View } from 'reshaped';
 import dynamic from 'next/dynamic';
 import { debounce } from 'radash';
 import { useQuery } from 'fqlx-client';
-import { getPointFromLocation, focusEditor } from '@udecode/plate';
+import {
+  getPointFromLocation,
+  focusEditor,
+  isEditorFocused,
+} from '@udecode/plate';
 import { MyValue } from '@/components/Plate/interfaces/plateTypes';
 import { editorRef } from '@/components/Plate/HeadingToolbar';
 import { Block, DocumentInput, Query } from '@/fqlx-generated/typedefs';
@@ -94,6 +98,7 @@ const DocumentPage = ({ params }: PageProps) => {
 
         setDocument(documentArray);
         setBlocksId(resolvedBlocksId as unknown as Block[]);
+        const focus = isEditorFocused(editorRef);
 
         try {
           if (JSON.stringify(documentArray) !== JSON.stringify(document)) {
@@ -104,7 +109,7 @@ const DocumentPage = ({ params }: PageProps) => {
               } as DocumentInput)
               .exec();
 
-            focusEditor(editorRef, pos);
+            if (focus) focusEditor(editorRef, pos);
           }
         } catch (e) {
           console.log({ e });
