@@ -9,10 +9,7 @@ export const blocks = (value: any) => {
       //block
       const obj: { [key: string]: any } = {};
 
-      if (
-        (index === 0 && ['p', 'h1'].includes(curr.type)) ||
-        curr.type === 'h1'
-      ) {
+      if (index === 0 || curr.type === 'h1') {
         key = curr.children[0].text as string;
         obj[key] = {
           type: 'Template',
