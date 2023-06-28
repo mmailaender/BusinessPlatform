@@ -3,7 +3,7 @@ export const blocks = (value: any) => {
   return value.reduce(
     (
       acc: any[],
-      curr: { type: string; children: { text: string }[] },
+      curr: { id: string; type: string; children: { text: string }[] },
       index: number
     ) => {
       //block
@@ -12,6 +12,7 @@ export const blocks = (value: any) => {
       if (index === 0 || curr.type === 'h1') {
         key = curr.children[0].text as string;
         obj[key] = {
+          id: curr.id,
           type: 'Template',
           category: 'Section',
           name: curr.type,

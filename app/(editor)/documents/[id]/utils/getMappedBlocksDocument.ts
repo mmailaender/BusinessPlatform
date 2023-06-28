@@ -3,7 +3,7 @@ export const documentsBlocks = (value: any) => {
   return value.reduce(
     (
       acc: any[],
-      curr: { type: string; children: { text: string }[] },
+      curr: { id: string; type: string; children: { text: string }[] },
       index: number
     ) => {
       const obj: { [key: string]: any } = {};
@@ -11,6 +11,7 @@ export const documentsBlocks = (value: any) => {
       if (index === 0 || curr.type === 'h1') {
         key = curr.children[0].text as string;
         obj[key] = {
+          id: curr.id,
           type: 'Document',
           category: 'Section',
           name: curr.type,

@@ -17,28 +17,32 @@ export interface Template {
     /**
  * id for the Template
  */
- id?: string;
+ id: string;
 /**
  * name for the Template
  */
- name?: string;
+ name: string;
 /**
  * blocks for the Template
  */
- blocks?: Block[];
+ blocks: Block[];
 
   }
 
 
   export interface TemplateInput {
     /**
+ * id for the Template
+ */
+ id?: string;
+/**
  * name for the Template
  */
- name?: string;
+ name: string;
 /**
  * blocks for the Template
  */
- blocks?: Block[];
+ blocks: Block[];
 
   } 
 
@@ -115,11 +119,11 @@ export interface Template {
     /**
  * id for the Document
  */
- id?: string;
+ id: string;
 /**
  * owner for the Document
  */
- owner?: User;
+ owner: User;
 /**
  * ownerOrg for the Document
  */
@@ -127,20 +131,24 @@ export interface Template {
 /**
  * name for the Document
  */
- name?: string;
+ name: string;
 /**
  * blocks for the Document
  */
- blocks?: Block[];
+ blocks: Block[];
 
   }
 
 
   export interface DocumentInput {
     /**
+ * id for the Document
+ */
+ id?: string;
+/**
  * owner for the Document
  */
- owner?: User;
+ owner: User;
 /**
  * ownerOrg for the Document
  */
@@ -148,11 +156,11 @@ export interface Template {
 /**
  * name for the Document
  */
- name?: string;
+ name: string;
 /**
  * blocks for the Document
  */
- blocks?: Block[];
+ blocks: Block[];
 
   } 
 
@@ -256,6 +264,10 @@ export interface Template {
 
   export interface UserInput {
     /**
+ * id for the User
+ */
+ id?: string;
+/**
  * firstName for the User
  */
  firstName?: string;
@@ -382,6 +394,10 @@ export interface Template {
 
   export interface BlockInput {
     /**
+ * id for the Block
+ */
+ id?: string;
+/**
  * owner for the Block
  */
  owner?: User;
@@ -495,7 +511,11 @@ export interface Template {
 
 
   export interface OrganizationInput {
-    
+    /**
+ * id for the Organization
+ */
+ id?: string;
+
   } 
 
 
