@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { View } from 'reshaped';
 import { useQuery } from 'fqlx-client';
 import { Query } from '@/fqlx-generated/typedefs';
@@ -8,7 +9,14 @@ import { CreateTemplate } from '../CreateTemplate';
 
 export default function TemplatePage() {
   const query = useQuery<Query>();
-  const templates = query.Template.all().exec();
+  const search = useSearchParams();
+  const templates = query.Template.all().order('desc(.ts)').exec();
+  const filterTemplate = query.Template.all()
+    .where(`(a) => a.name.includes("${search.get('search')}")`)
+    .order('desc(.ts)')
+    .exec();
+
+  const filteredTemplates = search.get('search') ? filterTemplate : templates;
 
   return (
     <View direction='row'>
@@ -16,7 +24,7 @@ export default function TemplatePage() {
         <CreateTemplate />
       </View.Item>
 
-      {templates.data.map((template) => (
+      {filteredTemplates.data.map((template) => (
         <View.Item key={template.id} columns={{ xl: 2, l: 3, m: 4, s: 6 }}>
           <TemplateFile template={template} />
         </View.Item>

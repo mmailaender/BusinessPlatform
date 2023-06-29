@@ -17,10 +17,14 @@ export function Tabs() {
       >
         <ReshapedTabs.List>
           <ReshapedTabs.Item value='0' icon={<Docs />}>
-            <Link href='/'>Documents</Link>
+            <Link href='/' passHref>
+              Documents
+            </Link>
           </ReshapedTabs.Item>
           <ReshapedTabs.Item value='1' icon={<Template />}>
-            <Link href='/templates'>Templates</Link>
+            <Link href='/templates' passHref>
+              Templates
+            </Link>
           </ReshapedTabs.Item>
         </ReshapedTabs.List>
       </ReshapedTabs>

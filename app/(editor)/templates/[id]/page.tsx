@@ -52,13 +52,14 @@ export default function TemplateByIdPage({ params }: PageProps) {
     useCallback(async (value: MyValue) => {
       const mappedBlocks = blocks(value);
 
-      const blocksIds = (await query.Template.byId(templateId).exec()).blocks;
+      const existingBlocks = (await query.Template.byId(templateId).exec())
+        .blocks;
 
       const currentBlocksId = mappedBlocks.map(
         (obj: any) => (Object.values(obj)[0] as any).id
       );
 
-      let blocksIdClone = [...blocksIds];
+      let blocksIdClone = [...existingBlocks];
 
       mappedBlocks.forEach(async (singleBlock: any) => {
         const block = Object.values(singleBlock)[0] as unknown as {

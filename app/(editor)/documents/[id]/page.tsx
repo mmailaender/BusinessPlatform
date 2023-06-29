@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { View } from 'reshaped';
 import dynamic from 'next/dynamic';
 import { debounce } from 'radash';
@@ -52,13 +52,14 @@ const DocumentPage = ({ params }: PageProps) => {
     useCallback(async (value: MyValue) => {
       const mappedBlocks = documentsBlocks(value);
 
-      const blocksIds = (await query.Document.byId(DocumentId).exec()).blocks;
+      const existingBlocks = (await query.Document.byId(DocumentId).exec())
+        .blocks;
 
       const currentBlocksId = mappedBlocks.map(
         (obj: any) => (Object.values(obj)[0] as any).id
       );
 
-      let blocksIdClone = [...blocksIds];
+      let blocksIdClone = [...existingBlocks];
 
       mappedBlocks.forEach(async (singleBlock: any) => {
         const block = Object.values(singleBlock)[0] as unknown as {
@@ -151,9 +152,9 @@ const DocumentPage = ({ params }: PageProps) => {
       <View className='hidden print:block'>
         <PrintCover />
       </View>
-      <div className='hidden print:block fixed bottom-0 right-0 z-10'>
+      <View className='hidden print:block fixed bottom-0 right-0 z-10'>
         <Watermark />
-      </div>
+      </View>
       <View className='hidden print:block'>
         <ContentTemplate sections={sections} />
       </View>

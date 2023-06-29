@@ -1,6 +1,7 @@
 import { UserButton } from '@clerk/nextjs/app-beta';
-import { View, Text, Button, Divider } from 'reshaped';
+import { View, Text, Divider, TextField } from 'reshaped';
 import { Tabs } from './Tabs';
+import SearchField from '@/components/SearchField';
 
 export default function DashboardLayout({
   children,
@@ -26,7 +27,7 @@ export default function DashboardLayout({
               Business platform
             </Text>
             <View direction='row' gap={4} align='center'>
-              <Button>Search</Button>
+              <SearchField />
               <UserButton />
             </View>
           </View>
