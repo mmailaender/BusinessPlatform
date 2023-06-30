@@ -13,7 +13,7 @@ export default function DashBoard() {
   const documents = query.Document.all().order('desc(.ts)').exec();
   const filterDocument = query.Document.all()
     .where(`(a) => a.name.includes("${search.get('search')}")`)
-    .order('desc(.ts)')
+    .order('asc(.name)')
     .exec();
 
   const filteredDocuments = search.get('search') ? filterDocument : documents;

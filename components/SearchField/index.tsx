@@ -2,9 +2,9 @@
 import React, { useCallback, useEffect } from 'react';
 import { TextField } from 'reshaped';
 import { useState } from 'react';
-import { Search } from '@styled-icons/material';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { debounce } from 'radash';
+import SearchIcon from '../Icons/SearchIcon';
 
 const MAX_LENGTH = 5;
 const BASE_WIDTH = 90;
@@ -28,7 +28,7 @@ const SearchField = () => {
     const inputLength = inputValue.length;
     const newWidth =
       inputLength > MAX_LENGTH
-        ? BASE_WIDTH + (inputLength - MAX_LENGTH) * 8
+        ? BASE_WIDTH + (inputLength - MAX_LENGTH) * 7
         : BASE_WIDTH;
 
     setInputWidth(newWidth);
@@ -46,6 +46,7 @@ const SearchField = () => {
 
   useEffect(() => {
     setSearchValue('');
+    router.replace(pathname, { shallow: true });
   }, [pathname]);
 
   return (
@@ -57,7 +58,7 @@ const SearchField = () => {
         handleChange(event);
         handleTextFieldWidthChange(event.value);
       }}
-      icon={<Search />}
+      icon={<SearchIcon />}
       attributes={{ style: { width: inputWidth, borderRadius: '20px' } }}
       inputAttributes={{ style: { fontWeight: 600 } }}
     />

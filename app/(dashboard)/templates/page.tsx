@@ -13,7 +13,7 @@ export default function TemplatePage() {
   const templates = query.Template.all().order('desc(.ts)').exec();
   const filterTemplate = query.Template.all()
     .where(`(a) => a.name.includes("${search.get('search')}")`)
-    .order('desc(.ts)')
+    .order('asc(.name)')
     .exec();
 
   const filteredTemplates = search.get('search') ? filterTemplate : templates;
