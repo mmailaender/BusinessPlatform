@@ -2,7 +2,9 @@
 
 import { useAuth } from '@clerk/nextjs';
 import { FqlxProvider } from 'fqlx-client';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { Loader } from 'reshaped';
 
 const FAUNA_ENDPOINT = 'https://db.fauna.com';
 
@@ -13,6 +15,8 @@ interface FqlxClientProviderProps {
 export default function FqlxClientProvider({
   children,
 }: FqlxClientProviderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [token, setToken] = useState('');
   const { userId, getToken } = useAuth();
 
@@ -20,7 +24,7 @@ export default function FqlxClientProvider({
     const localToken = await getToken({ template: 'fauna' });
     if (localToken !== token) {
       console.log('new token ', localToken);
-      setToken(localToken || 'failed');
+      setToken(localToken || 'invalid');
     }
   };
 
@@ -46,9 +50,19 @@ export default function FqlxClientProvider({
     fetchToken();
   }, [userId]);
 
+  useEffect(() => {
+    if (token === 'invalid') {
+      router.push('/sign-in');
+    }
+  }, [token]);
+
   return (
     <>
-      {token ? (
+      {!token && <Loader />}
+
+      {pathname === '/sign-in' && children}
+
+      {token && token !== 'invalid' && (
         <FqlxProvider
           config={{
             fqlxSecret: token,
@@ -58,8 +72,6 @@ export default function FqlxClientProvider({
         >
           <>{children}</>
         </FqlxProvider>
-      ) : (
-        <div>Loading...</div>
       )}
     </>
   );
