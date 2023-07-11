@@ -1,5 +1,5 @@
-import { UserButton } from '@clerk/nextjs/app-beta';
-import { View, Text, Divider, TextField } from 'reshaped';
+import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
+import { View, Text, Divider } from 'reshaped';
 import { Tabs } from './Tabs';
 import SearchField from '@/components/SearchField';
 
@@ -28,6 +28,7 @@ export default function DashboardLayout({
             </Text>
             <View direction='row' gap={4} align='center'>
               <SearchField />
+              <OrganizationSwitcher />
               <UserButton />
             </View>
           </View>
