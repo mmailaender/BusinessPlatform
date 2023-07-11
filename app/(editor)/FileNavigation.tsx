@@ -25,23 +25,6 @@ export default function FileNavigation({ sections }: FileNavigationProps) {
             Sections
           </Text>
         </View.Item>
-        <DropdownMenu position='bottom'>
-          <DropdownMenu.Trigger>
-            {(attributes) => (
-              <Button
-                size='small'
-                variant='outline'
-                rounded
-                icon={<PlusIcon />}
-                attributes={attributes}
-              ></Button>
-            )}
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item>Add Sectoion</DropdownMenu.Item>
-            <DropdownMenu.Item>Add Subsection</DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
       </View>
 
       {/* Sections */}

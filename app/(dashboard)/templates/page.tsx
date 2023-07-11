@@ -10,9 +10,10 @@ import { CreateTemplate } from '../CreateTemplate';
 export default function TemplatePage() {
   const query = useQuery<Query>();
   const search = useSearchParams();
+  const searchText = search.get('search')?.toLowerCase();
   const templates = query.Template.all().order('desc(.ts)').exec();
   const filterTemplate = query.Template.all()
-    .where(`(a) => a.name.includes("${search.get('search')}")`)
+    .where(`(a) => a.name.toLowerCase().includes("${searchText}")`)
     .order('asc(.name)')
     .exec();
 

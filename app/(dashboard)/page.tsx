@@ -10,9 +10,10 @@ import { DocumentFile } from './DocumentFile';
 export default function DashBoard() {
   const query = useQuery<Query>();
   const search = useSearchParams();
+  const searchText = search.get('search')?.toLowerCase();
   const documents = query.Document.all().order('desc(.ts)').exec();
   const filterDocument = query.Document.all()
-    .where(`(a) => a.name.includes("${search.get('search')}")`)
+    .where(`(a) => a.name.toLowerCase().includes("${searchText}")`)
     .order('asc(.name)')
     .exec();
 
