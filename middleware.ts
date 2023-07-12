@@ -9,6 +9,12 @@ export default authMiddleware({
       const signInUrl = new URL('/sign-in', req.url);
       return NextResponse.redirect(signInUrl);
     }
+
+    console.log('=====auth.orgId=====', auth.orgId);
+    if (!auth.orgId) {
+      const createOrganizationUrl = new URL('/organization/create', req.url);
+      return NextResponse.redirect(createOrganizationUrl);
+    }
   },
 });
 
