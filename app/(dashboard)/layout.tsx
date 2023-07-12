@@ -28,7 +28,7 @@ export default function DashboardLayout({
             </Text>
             <View direction='row' gap={4} align='center'>
               <SearchField />
-              <OrganizationSwitcher />
+              <OrganizationSwitcher hidePersonal="true" />
               <UserButton />
             </View>
           </View>

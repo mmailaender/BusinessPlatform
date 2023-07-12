@@ -1399,6 +1399,10 @@ packages:
       form-data: 3.0.1
     dev: false
 
+  /@types/node@16.18.38:
+    resolution: {integrity: sha512-6sfo1qTulpVbkxECP+AVrHV9OoJqhzCsfTNp5NIG+enM4HyM3HvZCO798WShIXBN0+QtDIcutJCjsVYnQP5rIQ==}
+    dev: false
+
   /@types/node@16.18.6:
     resolution: {integrity: sha512-vmYJF0REqDyyU0gviezF/KHq/fYaUbFhkcNbQCuPGFQj6VTbXuHZoxs/Y7mutWe73C8AC6l9fFu8mSYiBAqkGA==}
     dev: false
@@ -8670,7 +8674,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: false
 
-  /ts-node@10.9.1(@types/node@16.18.6)(typescript@4.8.4):
+  /ts-node@10.9.1(@types/node@16.18.38)(typescript@4.8.4):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -8689,7 +8693,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 16.18.6
+      '@types/node': 16.18.38
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -8796,11 +8800,11 @@ packages:
     hasBin: true
     dependencies:
       '@types/json-schema': 7.0.12
-      '@types/node': 16.18.6
+      '@types/node': 16.18.38
       glob: 7.2.3
       path-equal: 1.2.5
       safe-stable-stringify: 2.4.3
-      ts-node: 10.9.1(@types/node@16.18.6)(typescript@4.8.4)
+      ts-node: 10.9.1(@types/node@16.18.38)(typescript@4.8.4)
       typescript: 4.8.4
       yargs: 17.7.2
     transitivePeerDependencies:
