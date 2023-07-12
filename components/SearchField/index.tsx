@@ -46,7 +46,7 @@ const SearchField = () => {
 
   useEffect(() => {
     setSearchValue('');
-    router.replace(pathname, { shallow: true });
+    router.replace(pathname);
   }, [pathname]);
 
   return (
