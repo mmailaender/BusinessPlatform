@@ -21,12 +21,12 @@ export default function ContentLine({
   );
 }
 
-export function SecondaryContentLine({ subTitle }: { subTitle: string }) {
+export function SecondaryContentLine({ subTitle }: any) {
   return (
     <View gap={2} paddingStart={4}>
       <View className=' flex flex-row justify-between'>
         <Text variant='body-2' weight='regular'>
-          {subTitle}
+          {subTitle.h2}
         </Text>
       </View>
     </View>

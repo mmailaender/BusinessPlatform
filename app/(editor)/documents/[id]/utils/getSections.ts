@@ -19,7 +19,10 @@ export const getDocumentSections = (document: any) => {
         }
 
         if (elementType === 'h2' && prev?.[section]) {
-          prev[section][section] = [...prev[section][section], text];
+          prev[section][section] = [
+            ...prev[section][section],
+            { id: curr?.id, h2: text },
+          ];
 
           return prev;
         }
