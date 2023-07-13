@@ -5,3 +5,9 @@
 .slate-ToolbarButton-active {
   color: var(--rs-color-foreground-primary) !important;
 }
+
+@media print {
+  .slate-ImageElement-caption::placeholder {
+    color: transparent !important;
+  }
+}
