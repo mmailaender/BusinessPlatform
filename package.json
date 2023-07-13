@@ -23,7 +23,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
-    "fqlx-client": "github:mmailaender/Fauna-React",
+    "fqlx-client": "github:mmailaender/Fauna-Typed",
     "next": "13.4.9",
     "postcss": "8.4.24",
     "radash": "10.8.1",
