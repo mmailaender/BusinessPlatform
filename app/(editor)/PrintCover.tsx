@@ -1,6 +1,7 @@
 'use client';
 
 import { View, Text } from 'reshaped';
+import { useOrganization } from '@clerk/nextjs';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useParams, usePathname } from 'next/navigation';
@@ -8,6 +9,7 @@ import { useQuery } from 'fqlx-client';
 import { Query } from '@/fqlx-generated/typedefs';
 
 export default function PrintCover() {
+  const org = useOrganization();
   const [type, setType] = useState<'Template' | 'Document'>('Template');
   const param = useParams();
   const path = usePathname();
@@ -23,13 +25,7 @@ export default function PrintCover() {
   }, [path]);
 
   return (
-    <View
-      className='w-full'
-      height={376}
-      justify='end'
-      paddingBottom={64}
-      paddingInline={20}
-    >
+    <View className='w-full' justify='end' paddingBottom={50} paddingTop={20}>
       <View width={80} height={80}>
         <Image
           alt='x-group logo'
@@ -43,12 +39,14 @@ export default function PrintCover() {
           <Text variant='title-3'>{name}</Text>
         </View>
         <View gap={16}>
-          <View gap={3}>
-            <Text variant='body-1'>FOR COMPANY</Text>
-            <Text variant='title-6' weight='regular'>
-              Musterfirma GmbH
-            </Text>
-          </View>
+          {org && (
+            <View gap={3}>
+              <Text variant='body-1'>FOR COMPANY</Text>
+              <Text variant='title-6' weight='regular'>
+                {org.organization?.name}
+              </Text>
+            </View>
+          )}
           <View gap={3}>
             <Text variant='body-1'>CONSULTANT</Text>
             <Text variant='title-6' weight='regular'>
